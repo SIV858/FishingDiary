@@ -6,6 +6,7 @@ using System.Text;
 namespace FishingDiary.Models
 {
     /// <summary>
+    /// One report
     /// Один отчёт
     /// </summary>
     public class Report

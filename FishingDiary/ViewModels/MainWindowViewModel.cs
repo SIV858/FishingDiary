@@ -26,6 +26,7 @@ namespace FishingDiary.ViewModels
         public double dFontSize => Properties.FontSize;
 
         /// <summary>
+        /// Height images
         /// Высота картинок
         /// </summary>
         public double PicsHeight
@@ -37,6 +38,7 @@ namespace FishingDiary.ViewModels
         }
 
         /// <summary>
+        /// Height buttons
         /// Высота кнопок
         /// </summary>
         public double ButtonsHeight
@@ -48,6 +50,7 @@ namespace FishingDiary.ViewModels
         }
 
         /// <summary>
+        /// Width window
         /// Ширина окна
         /// </summary>
         public double Width
@@ -64,6 +67,7 @@ namespace FishingDiary.ViewModels
         }
 
         /// <summary>
+        /// Height window
         /// Высота окна
         /// </summary>
         public double Height
@@ -81,6 +85,7 @@ namespace FishingDiary.ViewModels
         }
 
         /// <summary>
+        /// Update window elements
         /// Функция обновления элементов окна
         /// </summary>
         private void UpdateViews()

@@ -9,6 +9,7 @@ namespace FishingDiary.Models
 {
 
     /// <summary>
+    /// Available languages
     /// Доступные языки
     /// </summary>
     public enum Languages
@@ -18,6 +19,7 @@ namespace FishingDiary.Models
     }
 
     /// <summary>
+    /// Class for getting labels text
     /// Класс для получения надписей элементов
     /// </summary>
     public static class LanguageText
@@ -238,30 +240,34 @@ namespace FishingDiary.Models
         }
 
         /// <summary>
+        /// Get current language
         /// Получить текущий язык
         /// </summary>
-        /// <returns>Язык</returns>
+        /// <returns>Language</returns>
         public static string GetSelectionItemLanguage()
         {
             return LanguagesToString(Properties.CurrentLanguage);
         }
 
         /// <summary>
+        /// Set language
         /// Установить язык
         /// </summary>
-        /// <param name="sLanguage">Элемент перечисления языков</param>
+        /// <param name="sLanguage">Language in text format</param>
         public static void SetSelectionItemLanguage(string sLanguage)
         {
             Properties.CurrentLanguage = StringToLanguages(sLanguage);
         }
 
         /// <summary>
+        /// Get language collection
         /// Получение коллекции языков
         /// </summary>
-        /// <returns>Коллекции языков</returns>
+        /// <returns>Language collection</returns>
         public static Collection<string> GetLanguageCollection()
         {
-            //Получение коллекции из перечисления
+            // Getting a collection from an enum
+            // Получение коллекции из перечисления
             Array arr = Enum.GetValues(typeof(Languages));
 
             Collection<string> coll = new Collection<string>();
@@ -275,10 +281,11 @@ namespace FishingDiary.Models
         }
 
         /// <summary>
+        /// Languages enum to string
         /// Преобразование перечисления языков в строку
         /// </summary>
-        /// <param name="lang">Элемент перечисления языков</param>
-        /// <returns>Строка</returns>     
+        /// <param name="lang">Languages enum element</param>
+        /// <returns>Language in string format</returns>     
 
         private static string LanguagesToString(Languages lang)
         {
@@ -296,10 +303,11 @@ namespace FishingDiary.Models
 
 
         /// <summary>
+        /// String to Languages enum
         /// Преобразование строки в перечисление языков 
         /// </summary>
-        /// <param name="lang">Строка</param>
-        /// <returns>Элемент перечисления языков</returns>     
+        /// <param name="lang">Language in string format</param>
+        /// <returns>Languages enum element</returns>     
 
         private static Languages StringToLanguages(string sLang)
         {

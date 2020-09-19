@@ -37,6 +37,7 @@ namespace FishingDiary.ViewModels
         public bool IsLanguageChanged => mIsLanguageChanged;
 
         /// <summary>
+        /// Apply settings
         /// Приминение настроек
         /// </summary>
         public void ApplySettings()

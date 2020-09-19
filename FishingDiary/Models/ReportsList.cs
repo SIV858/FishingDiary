@@ -7,24 +7,26 @@ namespace FishingDiary.Models
 {
     public class ReportsList
     {
-
-        //Список отчётов
+        // Reports list
+        // Список отчётов
         private List<Report> mListReports = new List<Report>();
 
         /// <summary>
+        /// Add report
         /// Добавить отчёт
         /// </summary>
-        /// <param name="report">Отчёт</param>
+        /// <param name="report">Reports</param>
         public void AddReport(Report report)
         {
             mListReports.Add(report);
         }
 
         /// <summary>
+        /// Remove report
         /// Удалить отчёт
         /// </summary>
-        /// <param name="report">Отчёт</param>
-        /// <returns>Успешность удаления</returns>
+        /// <param name="report">Report</param>
+        /// <returns>Removal result</returns>
         public bool DeleteReport(Report report)
         {
             return mListReports.Remove(report);

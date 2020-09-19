@@ -7,7 +7,7 @@ namespace FishingDiary.Models
 {
     public static class Properties
     {
-        private static Languages mCurrentLanguage = Languages.Russian;
+        private static Languages mCurrentLanguage = Languages.English;
         private static double mFontSize = 15.0;
 
         public static Languages CurrentLanguage

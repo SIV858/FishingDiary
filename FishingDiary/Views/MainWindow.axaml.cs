@@ -27,6 +27,7 @@ namespace FishingDiary.Views
         }
 
         /// <summary>
+        /// Handling the event of clicking the "Settings" button
         /// Обработка события нажатия на кнопку настроек
         /// </summary>
         private void OnSettingsClick(object sender, RoutedEventArgs e)
@@ -41,6 +42,7 @@ namespace FishingDiary.Views
 
 
         /// <summary>
+        /// Handling the event of clicking the "Add" button
         /// Обработка события нажатия на кнопку добавления
         /// </summary>
         private void OnAddClick(object sender, RoutedEventArgs e)

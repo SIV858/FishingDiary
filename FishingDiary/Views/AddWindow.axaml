@@ -11,7 +11,7 @@
 	<Design.DataContext>
 		<vm:AddWindowViewModel/>
 	</Design.DataContext>
-
+<!--
 	<StackPanel>
 		<DockPanel>
 			<ListBox>
@@ -84,5 +84,5 @@
 			<Button>Отмена</Button>
 		</DockPanel>
 	</StackPanel>
-
+-->
 </Window>
