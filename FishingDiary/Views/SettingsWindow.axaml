@@ -1,0 +1,42 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="clr-namespace:FishingDiary.ViewModels;assembly=FishingDiary"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="FishingDiary.Views.SettingsWindow"
+		Width="770"
+		Height="430"
+		MinHeight="200"
+		MinWidth="310"	
+		CanResize="False"
+		Title="{Binding txtHead}">
+	<Design.DataContext>
+		<vm:SettingsWindowViewModel/>
+	</Design.DataContext>
+    <DockPanel Margin="5,5,5,5">
+		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Width="100" FontSize="{Binding dFontSize}"  Text="{Binding txtLang}" />
+			<ComboBox  Items="{Binding LangItems}"  FontSize="{Binding dFontSize}"  SelectedItem="{Binding txtSelectionItem}" >
+				
+			</ComboBox>
+		</DockPanel>
+
+		<DockPanel DockPanel.Dock="Bottom" Height="30">
+			<Button Click="OnApplyClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtApply}"/>
+			<Button Click="OnCancelClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtCancel}"/>
+			<Button Click="OnOkClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtOk}"/>
+			<TextBlock Text=""/>
+
+		</DockPanel>
+
+		<DockPanel DockPanel.Dock="Top">
+			<!--SelectionChanged="OnSelectionChanged"
+			
+			Items="{Binding LangItems}"
+			
+			
+			-->
+		</DockPanel>
+	</DockPanel>
+</Window>

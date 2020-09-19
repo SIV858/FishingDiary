@@ -1,0 +1,52 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:FishingDiary.ViewModels;assembly=FishingDiary"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
+        x:Class="FishingDiary.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="{Binding txtHead}"
+		Height="{Binding Height, Mode=TwoWay}" 
+		Width="{Binding Width, Mode=TwoWay}"
+		MinHeight="450"
+		MinWidth="500">
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<DockPanel>
+		<DockPanel DockPanel.Dock="Top" Height="{Binding PicsHeight, Mode=TwoWay}">
+			<Image Stretch="Fill" Source="/Assets/top.jpg"/>
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<Button Click="OnSettingsClick" Name="buttonSettings" DockPanel.Dock="Bottom" FontSize="{Binding dFontSize}" Height="{Binding ButtonsHeight, Mode=TwoWay}" Content="{Binding txtSettingsButton}"/>
+			<Button Name="buttonView" DockPanel.Dock="Bottom" FontSize="{Binding dFontSize}" Height="{Binding ButtonsHeight, Mode=TwoWay}" Content="{Binding txtViewButton}"/>
+			<Button Click="OnAddClick" Name="buttonAdd" DockPanel.Dock="Bottom" FontSize="{Binding dFontSize}" Height="{Binding ButtonsHeight, Mode=TwoWay}" Content="{Binding txtAddButton}"/>			
+								
+		<!--<Button Click="AddReport" Name="buttonAdd" DockPanel.Dock="Bottom">
+				Добавить новый отчёт
+			</Button>
+			
+
+			
+			
+			
+					Height="{Binding Height}" 
+		Width="{Binding Width, Mode=OneWayToSource}"
+			
+	Width="{Binding Width, Mode=TwoWay}"
+		<Button  Name="buttonAdd2" DockPanel.Dock="Bottom">
+			<Panel>
+				<Image  Source="/Assets/main2.jpg"/>
+			</Panel>
+		</Button>-->
+
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Bottom" Height="{Binding PicsHeight, Mode=TwoWay}">
+					<Image  Stretch="Fill" DockPanel.Dock="Top" Source="/Assets/bottom.jpg"/>
+		</DockPanel>
+
+	</DockPanel>
+
+</Window>
