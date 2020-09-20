@@ -11,6 +11,13 @@
 	<Design.DataContext>
 		<vm:AddWindowViewModel/>
 	</Design.DataContext>
+	<DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Text="{Binding txtDate}" FontSize="{Binding dFontSize}"/>
+		</DockPanel>
+		<DockPanel></DockPanel>
+	</DockPanel>
+	
 <!--
 	<StackPanel>
 		<DockPanel>
