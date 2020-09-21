@@ -16,7 +16,7 @@
 	</Design.DataContext>
     <DockPanel Margin="5,5,5,5">
 		<DockPanel DockPanel.Dock="Top">
-			<TextBlock Width="100" FontSize="{Binding dFontSize}"  Text="{Binding txtLang}" />
+			<TextBlock Width="100" FontSize="{Binding dFontSize}" VerticalAlignment="Center" Text="{Binding txtLang}" />
 			<ComboBox  Items="{Binding LangItems}"  FontSize="{Binding dFontSize}"  SelectedItem="{Binding txtSelectionItem}" >
 				
 			</ComboBox>

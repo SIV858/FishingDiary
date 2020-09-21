@@ -41,6 +41,9 @@ namespace FishingDiary.Models
         private static string sButtonApplyRussian = "Применить";
         private static string sButtonApplyEnglish = "Apply";
 
+        private static string sButtonAddRussian = "Добавить";
+        private static string sButtonAddEnglish = "Add";
+
         /// <summary>
         /// //////////////////////////////////////////////////////////////////////
         /// MainWindow
@@ -186,6 +189,20 @@ namespace FishingDiary.Models
 
                 default:
                     return sButtonApplyEnglish;
+            }
+        }
+
+        public static string GetAddButtonText()
+        {
+            switch (Properties.CurrentLanguage)
+            {
+                case Languages.Russian:
+                    return sButtonAddRussian;
+                case Languages.English:
+                    return sButtonAddEnglish;
+
+                default:
+                    return sButtonAddEnglish;
             }
         }
         /// <summary>
