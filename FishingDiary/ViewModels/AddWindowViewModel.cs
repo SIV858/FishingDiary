@@ -10,8 +10,11 @@ namespace FishingDiary.ViewModels
 {
     public class AddWindowViewModel : ViewModelBase
     {
+        // Fishing date
         private DateTime mStartDateTime = DateTime.Now;
         private DateTime mEndDateTime = DateTime.Now;
+
+        private string mWater = "";
 
 
         public string txtHead => LanguageText.GetAddWindowHeadText();
@@ -23,8 +26,8 @@ namespace FishingDiary.ViewModels
 
         public string txtGeneralInfo => LanguageText.GetAddWindowGeneralText();
         public string txtDate => LanguageText.GetAddWindowDateText();
-        public string txWeather => LanguageText.GetAddWindowWeatherText();
-        public string txWater => LanguageText.GetAddWindowWaterText();
+        public string txtWeather => LanguageText.GetAddWindowWeatherText();
+        public string txtWater => LanguageText.GetAddWindowWaterText();
         public string txtTemperature => LanguageText.GetAddWindowTemperatureText();
         public string txtPrecipitation => LanguageText.GetAddWindowPrecipitationText();
         public string txtDirection => LanguageText.GetAddWindowDirectionText();
@@ -43,6 +46,12 @@ namespace FishingDiary.ViewModels
         public string txtTotalWeight => LanguageText.GetAddWindowTotalWeightText();
         public string txtDescription => LanguageText.GetAddWindowDescriptionText();
 
+
+        public string Water
+        {
+            get => mWater;
+            set => this.RaiseAndSetIfChanged(ref mWater, value);
+        }
 
         public DateTime StartDateTime
         {
