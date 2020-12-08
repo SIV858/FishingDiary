@@ -16,9 +16,9 @@
 			<TextBlock DockPanel.Dock="Top" Text="{Binding txtGeneralInfo}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 			<DockPanel DockPanel.Dock="Bottom">
 				<TextBlock Text="{Binding txtDate}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<DatePicker FontSize="{Binding dFontSize}" DisplayDate="{Binding StartDateTime}"/>
+				<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding StartDateTime, Mode=TwoWay}"/>
 				<TextBlock Text="-" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<DatePicker FontSize="{Binding dFontSize}" DisplayDate="{Binding EndDateTime}"/>
+				<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding EndDateTime, Mode=TwoWay}"/>
 				<TextBlock Text=""/>
 			</DockPanel>
 		</DockPanel>
