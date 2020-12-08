@@ -28,6 +28,9 @@ namespace FishingDiary.Views
         /// </summary>
         private void OnAddClick(object sender, RoutedEventArgs e)
         {
+            AddWindowViewModel model = (AddWindowViewModel)this.DataContext;
+            model.AddCurrentReport();
+
             MainWindow mainWindow = new MainWindow()
             {
                 DataContext = new MainWindowViewModel(),

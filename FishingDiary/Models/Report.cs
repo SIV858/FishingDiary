@@ -11,44 +11,131 @@ namespace FishingDiary.Models
     /// </summary>
     public class Report
     {
-        private DateTime mStartDate;
-        private DateTime mEndDate;
+        /// <summary>
+        /// Start date fishing
+        /// Начальная дата рыбалки
+        /// </summary>
+        public DateTime StartDate = DateTime.Now;
 
-        private string mBodyOfWater;
+        /// <summary>
+        /// End date fishing
+        /// Конечная дата рыбалки
+        /// </summary>
+        public DateTime EndDate = DateTime.Now;
 
-        private AirTemperature mAirTemperature;
+        /// <summary>
+        /// Body Of Water
+        /// Водоём
+        /// </summary>
+        public string BodyOfWater = "";
 
-        private Precipitation mPrecipitation;
+        /// <summary>
+        /// Air Temperature
+        /// Температура воздуха
+        /// </summary>
+        public AirTemperature AirTemperature;
 
-        private WindDirection mWindDirection;
+        /// <summary>
+        /// Precipitation
+        /// Осадки
+        /// </summary>
+        public Precipitation Precipitation;
 
-        private WindSpeed mWindSpeed;
+        /// <summary>
+        /// Wind Direction 
+        /// Направление ветра
+        /// </summary>
+        public WindDirection WindDirection;
 
-        private ushort mPressure;
+        /// <summary>
+        /// Wind Speed
+        /// Скорость ветра
+        /// </summary>
+        public WindSpeed WindSpeed;
 
-        private MoonPhase mMoonPhase;
+        /// <summary>
+        /// Pressure
+        /// Давление
+        /// </summary>
+        public ushort Pressure;
 
-        private bool fWaxingMoon;
+        /// <summary>
+        /// Moon Phase
+        /// Фаза луны
+        /// </summary>
+        public MoonPhase MoonPhase;
 
-        private string mFishingMethod; //bobber, baiting, trolling, Feeder, Carpfishing, fly fishing, ice fishing
+        /// <summary>
+        /// Waxing Moon
+        /// Луна растёт?
+        /// </summary>
+        public bool WaxingMoon;
 
-        private string mFishingTackle; //rod, spinning, feeder, winter fishing rod
+        /// <summary>
+        /// Fishing Method
+        /// Способ ловли
+        /// </summary>
+        public string FishingMethod; //bobber, baiting, trolling, Feeder, Carpfishing, fly fishing, ice fishing
 
-        private string mGroundbait; //pearl barley, corn, millet
+        /// <summary>
+        /// Fishing Tackle
+        /// Рыболовные снасти
+        /// </summary>
+        public string FishingTackle; //rod, spinning, feeder, winter fishing rod
 
-        private string mBaits; //bread, maggot, worms 
+        /// <summary>
+        /// Groundbait
+        /// Прикормка
+        /// </summary>
+        public string Groundbait; //pearl barley, corn, millet
 
-        private Biting mBiting; 
+        /// <summary>
+        /// Baits
+        /// Насадки
+        /// </summary>
+        public string Baits; //bread, maggot, worms 
 
-        private string mCaughtFish;
+        /// <summary>
+        /// Biting
+        /// Клёв
+        /// </summary>
+        public Biting Biting;
 
-        private string mBiggest;
+        /// <summary>
+        /// Caught Fish
+        /// Пойманная рыба
+        /// </summary>
+        public string CaughtFish;
 
-        private float mWeight;
+        /// <summary>
+        /// Biggest fish
+        /// Самая крупная рыба
+        /// </summary>
+        public string Biggest;
 
-        private float mTotalWeight;
+        /// <summary>
+        /// Weight
+        /// Вес
+        /// </summary>
+        public float Weight;
 
-        private string mDescription;
+        /// <summary>
+        /// Total Weight fishes
+        /// Общий вес всей рыбы
+        /// </summary>
+        public float TotalWeight;
+
+        /// <summary>
+        /// Description fishing
+        /// Описание рыбалки
+        /// </summary>
+        public string Description;
+
+
+        public void SaveReport()
+        {
+            // to do
+        }
 
     }
 }

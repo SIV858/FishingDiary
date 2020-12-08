@@ -10,12 +10,8 @@ namespace FishingDiary.ViewModels
 {
     public class AddWindowViewModel : ViewModelBase
     {
-        // Fishing date
-        private DateTime mStartDateTime = DateTime.Now;
-        private DateTime mEndDateTime = DateTime.Now;
-
-        private string mWater = "";
-
+        // Current report
+        private Report report = new Report();
 
         public string txtHead => LanguageText.GetAddWindowHeadText();
 
@@ -49,21 +45,29 @@ namespace FishingDiary.ViewModels
 
         public string Water
         {
-            get => mWater;
-            set => this.RaiseAndSetIfChanged(ref mWater, value);
+            get => report.BodyOfWater;
+            set => this.RaiseAndSetIfChanged(ref report.BodyOfWater, value);
         }
 
         public DateTime StartDateTime
         {
-            get => mStartDateTime;
-            set => this.RaiseAndSetIfChanged(ref mStartDateTime, value);
+            get => report.StartDate;
+            set => this.RaiseAndSetIfChanged(ref report.StartDate, value);
         }
 
         public DateTime EndDateTime
         {
-            get => mEndDateTime;
-            set => this.RaiseAndSetIfChanged(ref mEndDateTime, value);
+            get => report.EndDate;
+            set => this.RaiseAndSetIfChanged(ref report.EndDate, value);
         }
 
+        /// <summary>
+        /// Add current report
+        /// Добавление текущего отчёта
+        /// </summary>
+        public void AddCurrentReport()
+        {
+            ReportsList.AddReport(report);
+        }
     }
 }

@@ -2,21 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
+using System.Xml;
 
 namespace FishingDiary.Models
 {
-    public class ReportsList
+    public static class ReportsList
     {
         // Reports list
         // Список отчётов
-        private List<Report> mListReports = new List<Report>();
+        private static List<Report> mListReports = new List<Report>();
 
         /// <summary>
         /// Add report
         /// Добавить отчёт
         /// </summary>
         /// <param name="report">Reports</param>
-        public void AddReport(Report report)
+        public static void AddReport(Report report)
         {
             mListReports.Add(report);
         }
@@ -27,10 +29,44 @@ namespace FishingDiary.Models
         /// </summary>
         /// <param name="report">Report</param>
         /// <returns>Removal result</returns>
-        public bool DeleteReport(Report report)
+        public static bool DeleteReport(Report report)
         {
             return mListReports.Remove(report);
         }
 
+        /// <summary>
+        /// Loading report from file
+        /// </summary>
+        /// <param name="sNameFile">Name file</param>
+        /// <returns></returns>
+        public static bool LoadReportList(string sNameMainFile)
+        {
+            FileStream file = new FileStream(sNameMainFile, FileMode.Open);
+
+            // to do
+
+            file.Close();
+
+            return true;
+        }
+
+        /// <summary>
+        /// Save the report to a file
+        /// </summary>
+        /// <param name="sNameFile">Name file</param>
+        /// <returns></returns>
+        public static bool SaveReportList(string sNameMainFile)
+        {
+            FileStream file = new FileStream(sNameMainFile, FileMode.Create);
+
+            foreach(Report report in mListReports)
+            {
+                // to do
+            }
+
+            file.Close();
+
+            return true;
+        }
     }
 }
