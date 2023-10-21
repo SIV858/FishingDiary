@@ -1,9 +1,11 @@
 ﻿//10.09.20
+using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using FishingDiary.ViewModels;
 using FishingDiary.Views;
+using FishingDiary.Models;
 
 namespace FishingDiary
 {
@@ -18,10 +20,34 @@ namespace FishingDiary
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow
+                try
                 {
-                    DataContext = new MainWindowViewModel(),
-                };
+                    CommonData.GenLanguages = new GeneralLaguages();
+
+                    // if a file exist then read it
+                    CommonData.CurrentLang = new CurrentLanguage();
+
+                    if (CommonData.CurrentLang.LoadCurrentLanguage())
+                    {
+                        // Load MainWindow
+                        desktop.MainWindow = new MainWindow
+                        {
+                            DataContext = new MainWindowViewModel(),
+                        };
+                    }
+                    // else create a form SelectLanguages
+                    else
+                    {
+                        desktop.MainWindow = new SelectLanguageWindow
+                        {
+                            DataContext = new SelectLanguagesViewModel(),
+                        };
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(null, ex.Message, "Error", MessageBox.MessageBoxButtons.Ok);
+                }
             }
 
             base.OnFrameworkInitializationCompleted();

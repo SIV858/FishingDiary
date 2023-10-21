@@ -1,0 +1,57 @@
+{
+  "CommonTexts": {
+    "sButtonOk": "OK",
+    "sButtonCancel": "Cancel",
+    "sButtonExit": "Exit",
+    "sButtonApply": "Apply",
+    "sButtonAdd": "Add",
+    "sButtonYes": "Yes",
+    "sButtonNo": "No",
+    "sTextError": "Error"
+  },
+  "SelectLanguage": {
+    "sHead": "Languages",
+    "sChooseLanguage": "Choose language:",
+    "sErrorCorruptedFile": "The current language file not found or is corrupted"
+  },
+  "MainWindow": {
+    "sHead": "Fishing reports",
+    "sAddButton": "Add a new report",
+    "sViewButton": "View reports",
+    "sSettings": "Settings"
+  },
+  "Settings": {
+    "sHead": "Settings",
+    "sLanguage": "Language: "
+  },
+  "GeneralReport": {
+    "sGeneral": "General information",
+    "sDate": "Fishing date:",
+    "sWater": "Body of water:",
+    "sWeather": "Weather",
+    "sTemperature": "Air temperature:",
+    "sTemperatureLessThan": "Less than -40",
+    "sTemperatureMoreThan": "More than +40",
+    "sPrecipitation": "Precipitation:",
+    "sDirection": "Wind direction:",
+    "sSpeed": "Wind speed:",
+    "sPressure": "Pressure:",
+    "sMoonPhase": "Moon Phase",
+    "sGrowing": "Is the Moon growing?",
+    "sInformation": "Fishing information",
+    "sMethod": "Fishing method:",
+    "sTackle": "Fishing tackle:",
+    "sGroundbait": "Groundbait:",
+    "sBaits": "Baits:",
+    "sResult": "Fishing result",
+    "sBiting": "Biting:",
+    "sCaught": "Caught fish:",
+    "sBiggest": "Biggest:",
+    "sWeight": "Weight:",
+    "sTotalWeight": "Total weight:",
+    "sDescription": "Description"
+  },
+  "AddReport": {
+    "sHead": "Add report"
+  }
+}

@@ -1,5 +1,4 @@
 ﻿//19.09.20
-
 using FishingDiary.Models;
 using System;
 using System.Collections.Generic;
@@ -13,34 +12,34 @@ namespace FishingDiary.ViewModels
         // Current report
         private Report report = new Report();
 
-        public string txtHead => LanguageText.GetAddWindowHeadText();
+        public string txtHead => CommonData.GenLanguages.AddReport.sHead;
 
         public double dFontSize => Properties.FontSize;
 
-        public string txtAdd => LanguageText.GetAddButtonText();
-        public string txtCancel => LanguageText.GetCancelButtonText();
+        public string txtAdd => CommonData.GenLanguages.CommonTexts.sButtonAdd;
+        public string txtCancel => CommonData.GenLanguages.CommonTexts.sButtonCancel;
 
-        public string txtGeneralInfo => LanguageText.GetAddWindowGeneralText();
-        public string txtDate => LanguageText.GetAddWindowDateText();
-        public string txtWeather => LanguageText.GetAddWindowWeatherText();
-        public string txtWater => LanguageText.GetAddWindowWaterText();
-        public string txtTemperature => LanguageText.GetAddWindowTemperatureText();
-        public string txtPrecipitation => LanguageText.GetAddWindowPrecipitationText();
-        public string txtDirection => LanguageText.GetAddWindowDirectionText();
-        public string txtSpeed => LanguageText.GetAddWindowSpeedText();
-        public string txtPressure => LanguageText.GetAddWindowPressureText();
-        public string txtInformation => LanguageText.GetAddWindowInformationText();
-        public string txtMethod => LanguageText.GetAddWindowMethodText();
-        public string txtTackle => LanguageText.GetAddWindowTackleText();
-        public string txtGroundbait => LanguageText.GetAddWindowGroundbaitText();
-        public string txtBaits => LanguageText.GetAddWindowBaitsText();
-        public string txtResult => LanguageText.GetAddWindowResultText();
-        public string txtBiting => LanguageText.GetAddWindowBitingText();
-        public string txtCaughtTxt => LanguageText.GetAddWindowCaughtText();
-        public string txtBiggest => LanguageText.GetAddWindowBiggestText();
-        public string txtWeight => LanguageText.GetAddWindowWeightText();
-        public string txtTotalWeight => LanguageText.GetAddWindowTotalWeightText();
-        public string txtDescription => LanguageText.GetAddWindowDescriptionText();
+        public string txtGeneralInfo => CommonData.GenLanguages.GeneralReport.sGeneral;
+        public string txtDate => CommonData.GenLanguages.GeneralReport.sDate;
+        public string txtWeather => CommonData.GenLanguages.GeneralReport.sWeather;
+        public string txtWater => CommonData.GenLanguages.GeneralReport.sWater;
+        public string txtTemperature => CommonData.GenLanguages.GeneralReport.sTemperature;
+        public string txtPrecipitation => CommonData.GenLanguages.GeneralReport.sPrecipitation;
+        public string txtDirection => CommonData.GenLanguages.GeneralReport.sDirection;
+        public string txtSpeed => CommonData.GenLanguages.GeneralReport.sSpeed;
+        public string txtPressure => CommonData.GenLanguages.GeneralReport.sPressure;
+        public string txtInformation => CommonData.GenLanguages.GeneralReport.sInformation;
+        public string txtMethod => CommonData.GenLanguages.GeneralReport.sMethod;
+        public string txtTackle => CommonData.GenLanguages.GeneralReport.sTackle;
+        public string txtGroundbait => CommonData.GenLanguages.GeneralReport.sGroundbait;
+        public string txtBaits => CommonData.GenLanguages.GeneralReport.sBaits;
+        public string txtResult => CommonData.GenLanguages.GeneralReport.sResult;
+        public string txtBiting => CommonData.GenLanguages.GeneralReport.sBiting;
+        public string txtCaughtTxt => CommonData.GenLanguages.GeneralReport.sCaught;
+        public string txtBiggest => CommonData.GenLanguages.GeneralReport.sBiggest;
+        public string txtWeight => CommonData.GenLanguages.GeneralReport.sWeight;
+        public string txtTotalWeight => CommonData.GenLanguages.GeneralReport.sTotalWeight;
+        public string txtDescription => CommonData.GenLanguages.GeneralReport.sDescription;
 
 
         public string Water

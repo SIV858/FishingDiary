@@ -36,8 +36,17 @@ namespace FishingDiary.Views
             {
                 DataContext = new SettingsWindowViewModel(),
             };
-            settingsWindow.Show();
-            this.Close();
+
+            // window redraw delegate
+            Action redrawWindow = delegate () {             
+                MainWindowViewModel model = (MainWindowViewModel)this.DataContext;
+                model.Redraw();
+            };
+
+            TaskAwaiter taskAwaiter = settingsWindow.ShowDialog(this).GetAwaiter();
+
+            // redraw the window after exiting the settings
+            taskAwaiter.OnCompleted(redrawWindow);
         }
 
 
@@ -51,8 +60,7 @@ namespace FishingDiary.Views
             {
                 DataContext = new AddWindowViewModel(),
             };
-            addWindow.Show();
-            this.Close();
+            addWindow.ShowDialog(this);
         }
     }
 }

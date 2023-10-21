@@ -25,13 +25,27 @@
 			</DockPanel>
 			<TextBlock DockPanel.Dock="Top" Text="{Binding txtWeather}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 			<DockPanel DockPanel.Dock="Top">
-				<TextBlock Text="{Binding txtDate}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding StartDateTime, Mode=TwoWay}"/>
-				<TextBlock Text="-" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding EndDateTime, Mode=TwoWay}"/>
-				<TextBlock Text="   "/>
-				<TextBlock Text="{Binding txtWater}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<TextBox Text="{Binding Water, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+				<TextBlock Text="{Binding txtTemperature}"/>
+				<ComboBox  Padding="5" SelectedIndex="12">
+					<ComboBoxItem>Менее -40</ComboBoxItem>
+					<ComboBoxItem>-40...-35</ComboBoxItem>
+					<ComboBoxItem>-35...-30</ComboBoxItem>
+					<ComboBoxItem>-30...-25</ComboBoxItem>
+					<ComboBoxItem>-25...-20</ComboBoxItem>
+					<ComboBoxItem>-20...-15</ComboBoxItem>
+					<ComboBoxItem>-15...-10</ComboBoxItem>
+					<ComboBoxItem>-10...-5</ComboBoxItem>
+					<ComboBoxItem>-5...-0</ComboBoxItem>
+					<ComboBoxItem>+0...+5</ComboBoxItem>
+					<ComboBoxItem>+5...+10</ComboBoxItem>
+					<ComboBoxItem>+10...+15</ComboBoxItem>
+					<ComboBoxItem>+15...+20</ComboBoxItem>
+					<ComboBoxItem>+20...+25</ComboBoxItem>
+					<ComboBoxItem>+25...+30</ComboBoxItem>
+					<ComboBoxItem>+30...+35</ComboBoxItem>
+					<ComboBoxItem>+35...+40</ComboBoxItem>
+					<ComboBoxItem>Более +40</ComboBoxItem>
+				</ComboBox>
 			</DockPanel>
 		</DockPanel>
 		<DockPanel DockPanel.Dock="Bottom">

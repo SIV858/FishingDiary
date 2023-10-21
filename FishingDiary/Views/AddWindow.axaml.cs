@@ -31,11 +31,6 @@ namespace FishingDiary.Views
             AddWindowViewModel model = (AddWindowViewModel)this.DataContext;
             model.AddCurrentReport();
 
-            MainWindow mainWindow = new MainWindow()
-            {
-                DataContext = new MainWindowViewModel(),
-            };
-            mainWindow.Show();
             this.Close();
         }
 
@@ -45,11 +40,6 @@ namespace FishingDiary.Views
         /// </summary>
         private void OnCancelClick(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow()
-            {
-                DataContext = new MainWindowViewModel(),
-            };
-            mainWindow.Show();
             this.Close();
         }
     }

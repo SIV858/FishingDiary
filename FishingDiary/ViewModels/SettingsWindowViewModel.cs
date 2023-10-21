@@ -11,19 +11,44 @@ namespace FishingDiary.ViewModels
     public class SettingsWindowViewModel : ViewModelBase
     {
 
-        private string mSelectionItem = LanguageText.GetSelectionItemLanguage();
+        private string mSelectionItem;
 
         private bool mIsLanguageChanged = false;
 
-        public string txtHead => LanguageText.GetSettingsWindowHeadText();
-
-        public string txtOk => LanguageText.GetOkButtonText();
-        public string txtCancel => LanguageText.GetCancelButtonText();
-        public string txtApply => LanguageText.GetApplyButtonText();
-
-        public string txtLang => LanguageText.GetSettingsWindowLangText();
+        private string mHead = CommonData.GenLanguages.Settings.sHead;
+        private string mOk = CommonData.GenLanguages.CommonTexts.sButtonOk;
+        private string mCancel = CommonData.GenLanguages.CommonTexts.sButtonCancel;
+        private string mApply = CommonData.GenLanguages.CommonTexts.sButtonApply;
+        private string mLang = CommonData.GenLanguages.Settings.sLanguage;
 
         public double dFontSize => Properties.FontSize;
+
+        public string txtHead
+        {
+            get => mHead;
+            set => this.RaiseAndSetIfChanged(ref mHead, value);
+        }
+        public string txtOk
+        {
+            get => mOk;
+            set => this.RaiseAndSetIfChanged(ref mOk, value);
+        }
+        public string txtCancel
+        {
+            get => mCancel;
+            set => this.RaiseAndSetIfChanged(ref mCancel, value);
+        }
+
+        public string txtApply
+        {
+            get => mApply;
+            set => this.RaiseAndSetIfChanged(ref mApply, value);
+        }
+        public string txtLang
+        {
+            get => mLang;
+            set => this.RaiseAndSetIfChanged(ref mLang, value);
+        }
 
         public string txtSelectionItem
         {
@@ -31,8 +56,27 @@ namespace FishingDiary.ViewModels
             set => this.RaiseAndSetIfChanged(ref mSelectionItem, value);
         }
 
+        public SettingsWindowViewModel()
+        {
+            mSelectionItem = CommonData.CurrentLang.Language;
 
-        public Collection<string> LangItems => LanguageText.GetLanguageCollection();
+            //Load languages
+            AvailableLanguages availableLanguages = new AvailableLanguages(PathsAndConstants.LANGUAGES_PATH);
+            mLangItems = new ObservableCollection<string>();
+
+            foreach (var sLang in availableLanguages.Languages)
+            {
+                mLangItems.Add(sLang);
+            }
+        }
+
+        public ObservableCollection<string> mLangItems;
+
+        public ObservableCollection<string> LangItems
+        {
+            get => mLangItems;
+            set => this.RaiseAndSetIfChanged(ref mLangItems, value);
+        }
 
         public bool IsLanguageChanged => mIsLanguageChanged;
 
@@ -40,13 +84,30 @@ namespace FishingDiary.ViewModels
         /// Apply settings
         /// Приминение настроек
         /// </summary>
-        public void ApplySettings()
+        public bool ApplySettings()
         {
-            if (mSelectionItem != LanguageText.GetSelectionItemLanguage())
+            if (mSelectionItem != CommonData.CurrentLang.Language)
             {
-                LanguageText.SetSelectionItemLanguage(mSelectionItem);
+                LanguageParser parser = new LanguageParser(PathsAndConstants.LOCALE_PATH + mSelectionItem + PathsAndConstants.EXT_JSON);
+                if (!parser.ParseLanguageFile())
+                {
+                    return false;
+                }
+                CommonData.CurrentLang.CreateCurrentLanguageFile(mSelectionItem);
+                CommonData.ParsingLanguage = true;
                 mIsLanguageChanged = true;
+                UpdateLang();
             }
+            return true;
+        }
+
+        private void UpdateLang()
+        {
+            txtHead = CommonData.GenLanguages.Settings.sHead;
+            txtOk = CommonData.GenLanguages.CommonTexts.sButtonOk;
+            txtCancel = CommonData.GenLanguages.CommonTexts.sButtonCancel;
+            txtApply = CommonData.GenLanguages.CommonTexts.sButtonApply;
+            txtLang = CommonData.GenLanguages.Settings.sLanguage;
         }
 
 

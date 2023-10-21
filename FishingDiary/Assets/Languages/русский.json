@@ -1,0 +1,57 @@
+{
+  "CommonTexts": {
+    "sButtonOk": "ОК",
+    "sButtonCancel": "Отмена",
+    "sButtonExit": "Выйти",
+    "sButtonApply": "Применить",
+    "sButtonAdd": "Добавить",
+    "sButtonYes": "Да",
+    "sButtonNo": "Нет",
+    "sTextError": "Ошибка"
+  },
+  "SelectLanguage": {
+    "sHead": "Выбор языка",
+    "sChooseLanguage": "Выберите язык:",
+    "sErrorCorruptedFile": "Текущий файл языка не найден или повреждён"
+  },
+  "MainWindow": {
+    "sHead": "Рыболовные отчёты",
+    "sAddButton": "Добавить новый отчёт",
+    "sViewButton": "Посмотреть отчёты",
+    "sSettings": "Настройки"
+  },
+  "Settings": {
+    "sHead": "Настройки",
+    "sLanguage": "Язык: "
+  },
+  "GeneralReport": {
+    "sGeneral": "Общая информаация",
+    "sDate": "Дата рыбалки:",
+    "sWater": "Водоём:",
+    "sWeather": "Погода",
+    "sTemperature": "Температура воздуха:",
+    "sTemperatureLessThan": "Менее чем -40",
+    "sTemperatureMoreThan": "Более чем +40",
+    "sPrecipitation": "Осадки:",
+    "sDirection": "Направление ветра:",
+    "sSpeed": "Скорость ветра:",
+    "sPressure": "Давление:",
+    "sMoonPhase": "Фаза Луны",
+    "sGrowing": "Растущая луна?",
+    "sInformation": "Информация о ловле",
+    "sMethod": "Способ ловли:",
+    "sTackle": "Снасти:",
+    "sGroundbait": "Прикормка:",
+    "sBaits": "Насадки:",
+    "sResult": "Результат ловли",
+    "sBiting": "Клёв:",
+    "sCaught": "Пойманные рыбы:",
+    "sBiggest": "Самая крупная:",
+    "sWeight": "Вес:",
+    "sTotalWeight": "Общий вес:",
+    "sDescription": "Описание"
+  },
+  "AddReport": {
+    "sHead": "Добавить отчёт"
+  }
+}

@@ -11,4 +11,7 @@
     <PackageReference Include="Avalonia.Desktop" Version="0.9.11" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.11" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="md &quot;$(TargetDir)locale&quot;&#xD;&#xA;copy &quot;$(ProjectDir)assets\languages\languages.json&quot; &quot;$(TargetDir)locale\Languages.json&quot;&#xD;&#xA;copy &quot;$(ProjectDir)assets\languages\english.json&quot; &quot;$(TargetDir)locale\english.json&quot;&#xD;&#xA;copy &quot;$(ProjectDir)assets\languages\русский.json&quot; &quot;$(TargetDir)locale\русский.json&quot;" />
+  </Target>
 </Project>

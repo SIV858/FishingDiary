@@ -29,12 +29,11 @@ namespace FishingDiary.Views
         private void OnOkClick(object sender, RoutedEventArgs e)
         {
             SettingsWindowViewModel model = (SettingsWindowViewModel)this.DataContext;
-            model.ApplySettings();
-            MainWindow mainWindow = new MainWindow()
+            if (!model.ApplySettings())
             {
-                DataContext = new MainWindowViewModel(),
-            };
-            mainWindow.Show();
+                MessageBox.Show(this, CommonData.GenLanguages.SelectLanguage.sErrorCorruptedFile, CommonData.GenLanguages.CommonTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                return;
+            }
             this.Close();
         }
 
@@ -44,11 +43,6 @@ namespace FishingDiary.Views
         /// </summary>
         private void OnCancelClick(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow()
-            {
-                DataContext = new MainWindowViewModel(),
-            };
-            mainWindow.Show();
             this.Close();
         }
 
@@ -60,23 +54,18 @@ namespace FishingDiary.Views
         private void OnApplyClick(object sender, RoutedEventArgs e)
         {
             SettingsWindowViewModel model = (SettingsWindowViewModel)this.DataContext;
-            model.ApplySettings();
+            if (!model.ApplySettings())
+            {
+                MessageBox.Show(this, CommonData.GenLanguages.SelectLanguage.sErrorCorruptedFile, CommonData.GenLanguages.CommonTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                return;
+            }
 
             //If the language has changed, then redraw the window, location and size unchanged
             //Если изменился язык, то перерисовываем окно на том же месте и с теми же размерам 
-            if (model.IsLanguageChanged)
-            {
-                SettingsWindow settingsWindow = new SettingsWindow()
-                {
-                    DataContext = new SettingsWindowViewModel(),
-                    Position = new PixelPoint(this.Position.X, this.Position.Y),
-                    Height = this.Height,
-                    Width = this.Width,
-                    WindowState = this.WindowState,
-                };
-                settingsWindow.Show();
-                this.Close();
-            }
+            //if (model.IsLanguageChanged)
+            //{
+            //    this.InitializeComponent();
+            //}
         }
     }
 }
