@@ -33,43 +33,43 @@ namespace FishingDiary.Models
         /// Air Temperature
         /// Температура воздуха
         /// </summary>
-        public AirTemperature AirTemperature;
+        public AirTemperature AirTemperature = AirTemperature.Plus15_Plus20;
 
         /// <summary>
         /// Precipitation
         /// Осадки
         /// </summary>
-        public Precipitation Precipitation;
+        public Precipitation Precipitation = Precipitation.Sun;
 
         /// <summary>
         /// Wind Direction 
         /// Направление ветра
         /// </summary>
-        public WindDirection WindDirection;
+        public WindDirection WindDirection = WindDirection.NorthWest;
 
         /// <summary>
         /// Wind Speed
         /// Скорость ветра
         /// </summary>
-        public WindSpeed WindSpeed;
+        public WindSpeed WindSpeed = WindSpeed.S2;
 
         /// <summary>
         /// Pressure
         /// Давление
         /// </summary>
-        public ushort Pressure;
+        public ushort Pressure = 745;
 
         /// <summary>
         /// Moon Phase
         /// Фаза луны
         /// </summary>
-        public MoonPhase MoonPhase;
+        public MoonPhase MoonPhase = MoonPhase.P50;
 
         /// <summary>
         /// Waxing Moon
         /// Луна растёт?
         /// </summary>
-        public bool WaxingMoon;
+        public bool WaxingMoon = true;
 
         /// <summary>
         /// Fishing Method
@@ -102,22 +102,10 @@ namespace FishingDiary.Models
         public Biting Biting;
 
         /// <summary>
-        /// Caught Fish
-        /// Пойманная рыба
+        /// List of fish
+        /// Список рыб
         /// </summary>
-        public string CaughtFish;
-
-        /// <summary>
-        /// Biggest fish
-        /// Самая крупная рыба
-        /// </summary>
-        public string Biggest;
-
-        /// <summary>
-        /// Weight
-        /// Вес
-        /// </summary>
-        public float Weight;
+        public List<RecordFish> CaughtFish;
 
         /// <summary>
         /// Total Weight fishes

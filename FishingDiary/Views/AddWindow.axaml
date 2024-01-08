@@ -1,5 +1,6 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:views="clr-namespace:FishingDiary.Views"
 		xmlns:vm="clr-namespace:FishingDiary.ViewModels;assembly=FishingDiary"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -13,40 +14,7 @@
 	</Design.DataContext>
 	<DockPanel Margin="5,5,5,5">
 		<DockPanel DockPanel.Dock="Top">
-			<TextBlock DockPanel.Dock="Top" Text="{Binding txtGeneralInfo}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<DockPanel DockPanel.Dock="Top">
-				<TextBlock Text="{Binding txtDate}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding StartDateTime, Mode=TwoWay}"/>
-				<TextBlock Text="-" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding EndDateTime, Mode=TwoWay}"/>
-				<TextBlock Text="   "/>
-				<TextBlock Text="{Binding txtWater}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<TextBox Text="{Binding Water, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
-			</DockPanel>
-			<TextBlock DockPanel.Dock="Top" Text="{Binding txtWeather}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<DockPanel DockPanel.Dock="Top">
-				<TextBlock Text="{Binding txtTemperature}"/>
-				<ComboBox  Padding="5" SelectedIndex="12">
-					<ComboBoxItem>Менее -40</ComboBoxItem>
-					<ComboBoxItem>-40...-35</ComboBoxItem>
-					<ComboBoxItem>-35...-30</ComboBoxItem>
-					<ComboBoxItem>-30...-25</ComboBoxItem>
-					<ComboBoxItem>-25...-20</ComboBoxItem>
-					<ComboBoxItem>-20...-15</ComboBoxItem>
-					<ComboBoxItem>-15...-10</ComboBoxItem>
-					<ComboBoxItem>-10...-5</ComboBoxItem>
-					<ComboBoxItem>-5...-0</ComboBoxItem>
-					<ComboBoxItem>+0...+5</ComboBoxItem>
-					<ComboBoxItem>+5...+10</ComboBoxItem>
-					<ComboBoxItem>+10...+15</ComboBoxItem>
-					<ComboBoxItem>+15...+20</ComboBoxItem>
-					<ComboBoxItem>+20...+25</ComboBoxItem>
-					<ComboBoxItem>+25...+30</ComboBoxItem>
-					<ComboBoxItem>+30...+35</ComboBoxItem>
-					<ComboBoxItem>+35...+40</ComboBoxItem>
-					<ComboBoxItem>Более +40</ComboBoxItem>
-				</ComboBox>
-			</DockPanel>
+			<views:GeneralReportView Content="{Binding generalReport}"/>
 		</DockPanel>
 		<DockPanel DockPanel.Dock="Bottom">
 			<Button Click="OnCancelClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtCancel}"/>
@@ -56,8 +24,7 @@
 		<DockPanel DockPanel.Dock="Top">
 		</DockPanel>
 	</DockPanel>
-	
-<!--
+	<!--
 	<StackPanel>
 		<DockPanel>
 			<ListBox>

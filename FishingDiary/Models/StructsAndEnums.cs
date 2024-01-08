@@ -43,13 +43,13 @@ namespace FishingDiary.Models
     public enum WindDirection
     {
         North,
-        NorthEast,
         East,
-        SouthEast,
         South,
-        SouthWest,
         West,
-        NorthWest
+        NorthWest,
+        NorthEast,
+        SouthEast,
+        SouthWest
     }
 
     public enum WindSpeed
