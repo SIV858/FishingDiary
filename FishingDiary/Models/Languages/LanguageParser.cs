@@ -41,6 +41,32 @@ namespace FishingDiary.Models
             return true;
         }
 
+        public string GetDataPath()
+        {
+            GeneralLaguages genLang;
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(mLanguage))
+                {
+                    string json = reader.ReadToEnd();
+
+                    var readOnlySpan = new ReadOnlySpan<byte>(Encoding.UTF8.GetBytes(json));
+                    genLang = JsonSerializer.Deserialize<GeneralLaguages>(readOnlySpan);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                return String.Empty;
+            }
+            catch (JsonException)
+            {
+                return String.Empty;
+            }
+
+            return PathsAndConstants.COMMON_DATA_PATH + "\\" + genLang.LanguagePaths.sDataPath + "\\";
+        }
+
         private string mLanguage = null;
     }
 }

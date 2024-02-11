@@ -26,6 +26,45 @@ namespace FishingDiary.Views
             AvaloniaXamlLoader.Load(this);
         }
 
+
+        /// <summary>
+        /// Handling the event of clicking the "Add" button
+        /// Обработка события нажатия на кнопку добавления
+        /// </summary>
+        private void OnAddClick(object sender, RoutedEventArgs e)
+        {
+            AddWindow addWindow = new AddWindow()
+            {
+                DataContext = new AddWindowViewModel(),
+            };
+            addWindow.ShowDialog(this);
+        }
+
+
+        /// <summary>
+        /// Handling the event of clicking the "View" button
+        /// </summary>
+        private void OnViewClick(object sender, RoutedEventArgs e)
+        {
+            ViewWindow viewWindow = new ViewWindow()
+            {
+                DataContext = new ViewWindowViewModel(),
+            };
+            viewWindow.ShowDialog(this);
+        }
+
+        /// <summary>
+        /// Handling the event of clicking the "Editor" button
+        /// </summary>
+        private void OnEditorClick(object sender, RoutedEventArgs e)
+        {
+            EditorWindow editorWindow = new EditorWindow()
+            {
+                DataContext = new EditorWindowViewModel(),
+            };
+            editorWindow.ShowDialog(this);
+        }
+
         /// <summary>
         /// Handling the event of clicking the "Settings" button
         /// Обработка события нажатия на кнопку настроек
@@ -49,18 +88,5 @@ namespace FishingDiary.Views
             taskAwaiter.OnCompleted(redrawWindow);
         }
 
-
-        /// <summary>
-        /// Handling the event of clicking the "Add" button
-        /// Обработка события нажатия на кнопку добавления
-        /// </summary>
-        private void OnAddClick(object sender, RoutedEventArgs e)
-        {
-            AddWindow addWindow = new AddWindow()
-            {
-                DataContext = new AddWindowViewModel(),
-            };
-            addWindow.ShowDialog(this);
-        }
     }
 }

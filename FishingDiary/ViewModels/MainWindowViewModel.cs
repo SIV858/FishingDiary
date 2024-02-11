@@ -15,13 +15,14 @@ namespace FishingDiary.ViewModels
 
         private double mButtonsHeight = 30;
 
-        private double mPicsHeight = 180;
+        private double mPicsHeight = 165;
 
 
         private string mHead = CommonData.GenLanguages.MainWindow.sHead;
         private string mAddButton = CommonData.GenLanguages.MainWindow.sAddButton;
-        private string mSettingsButton = CommonData.GenLanguages.MainWindow.sSettings;
         private string mViewButton = CommonData.GenLanguages.MainWindow.sViewButton;
+        private string mEditorButton = CommonData.GenLanguages.MainWindow.sEditorButton;
+        private string mSettingsButton = CommonData.GenLanguages.MainWindow.sSettings;
 
         public double dFontSize => Properties.FontSize;
 
@@ -45,6 +46,12 @@ namespace FishingDiary.ViewModels
         {
             get => mViewButton;
             set => this.RaiseAndSetIfChanged(ref mViewButton, value);
+        }
+
+        public string txtEditorButton
+        {
+            get => mEditorButton;
+            set => this.RaiseAndSetIfChanged(ref mEditorButton, value);
         }
 
 
@@ -131,16 +138,17 @@ namespace FishingDiary.ViewModels
         /// </summary>
         private void UpdateViews()
         {
-            PicsHeight = mHeight / 2.5;
             ButtonsHeight = mHeight / 15;
+            PicsHeight = mHeight / (mHeight / ((mHeight - ButtonsHeight * 4) / 2));
         }
 
         private void UpdateLang()
         {
             txtHead = CommonData.GenLanguages.MainWindow.sHead;
             txtAddButton = CommonData.GenLanguages.MainWindow.sAddButton;
-            txtSettingsButton = CommonData.GenLanguages.MainWindow.sSettings;
             txtViewButton = CommonData.GenLanguages.MainWindow.sViewButton;
+            mEditorButton = CommonData.GenLanguages.MainWindow.sEditorButton;
+            txtSettingsButton = CommonData.GenLanguages.MainWindow.sSettings;
         }
     }
 }

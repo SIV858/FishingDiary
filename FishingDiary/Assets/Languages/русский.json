@@ -1,4 +1,7 @@
 {
+  "LanguagePaths": {
+    "sDataPath": "Rus"
+  },
   "CommonTexts": {
     "sButtonOk": "ОК",
     "sButtonCancel": "Отмена",
@@ -18,6 +21,7 @@
     "sHead": "Рыболовные отчёты",
     "sAddButton": "Добавить новый отчёт",
     "sViewButton": "Посмотреть отчёты",
+    "sEditorButton": "Редактор параметров",
     "sSettings": "Настройки"
   },
   "Settings": {
@@ -60,9 +64,9 @@
     "sFullMoon": "Полнолуние",
     "sGrowing": "Растущая луна?",
     "sInformation": "Информация о ловле",
-    "sMethod": "Способ ловли:",
+    "sMethod": "Способы ловли:",
     "sTackle": "Снасти:",
-    "sGroundbait": "Прикормка:",
+    "sGroundbait": "Прикормки:",
     "sBaits": "Насадки:",
     "sResult": "Результат ловли",
     "sBiting": "Клёв:",
@@ -74,5 +78,15 @@
   },
   "AddReport": {
     "sHead": "Добавить отчёт"
+  },
+  "EditorTexts": {
+    "sHead": "Редактор параметров",
+    "EditParamDict": {
+      "Methods": "Способы ловли",
+      "Fishing_tackle": "Рыболовные снасти",
+      "Baits": "Насадки",
+      "Groundbaits": "Прикормки",
+      "Fishes": "Рыбы"
+    }
   }
 }

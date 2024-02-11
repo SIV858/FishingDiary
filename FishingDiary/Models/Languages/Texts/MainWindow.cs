@@ -10,6 +10,7 @@ namespace FishingDiary.Models
         public string sHead { get; set; } = "Fishing reports";
         public string sAddButton { get; set; } = "Add a new report";
         public string sViewButton { get; set; } = "View reports";
+        public string sEditorButton { get; set; } = "Edit info";
         public string sSettings { get; set; } = "Settings";
     }
 }

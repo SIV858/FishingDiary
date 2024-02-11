@@ -7,9 +7,23 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.9.11" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.9.11" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.11" />
+    <None Remove="Assets\Data\Baits.json" />
+    <None Remove="Assets\Data\EditTables.json" />
+    <None Remove="Assets\Data\En\Fishes.json" />
+    <None Remove="Assets\Data\Fishing_tackle.json" />
+    <None Remove="Assets\Data\Groundbaits.json" />
+    <None Remove="Assets\Data\Methods.json" />
+    <None Remove="Assets\Data\Rus\Baits.json" />
+    <None Remove="Assets\Data\Rus\Fishes.json" />
+    <None Remove="Assets\Data\Rus\Fishing_tackle.json" />
+    <None Remove="Assets\Data\Rus\Groundbaits.json" />
+    <None Remove="Assets\Data\Rus\Methods.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.9.12" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.9.12" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.9.12" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.12" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\GeneralReportView.axaml.cs">
@@ -17,6 +31,6 @@
     </Compile>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="md &quot;$(TargetDir)locale&quot;&#xD;&#xA;copy &quot;$(ProjectDir)assets\languages\languages.json&quot; &quot;$(TargetDir)locale\Languages.json&quot;&#xD;&#xA;copy &quot;$(ProjectDir)assets\languages\english.json&quot; &quot;$(TargetDir)locale\english.json&quot;&#xD;&#xA;copy &quot;$(ProjectDir)assets\languages\русский.json&quot; &quot;$(TargetDir)locale\русский.json&quot;" />
+    <Exec Command="md &quot;$(TargetDir)locale&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\languages\*&quot; &quot;$(TargetDir)locale\&quot;&#xD;&#xA;md &quot;$(TargetDir)Data&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\*&quot; &quot;$(TargetDir)Data&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\Rus&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\En\*&quot; &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\Rus\*&quot; &quot;$(TargetDir)Data\Rus&quot;" />
   </Target>
 </Project>

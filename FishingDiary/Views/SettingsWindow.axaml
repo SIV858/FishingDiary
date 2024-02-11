@@ -27,7 +27,6 @@
 			<Button Click="OnCancelClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtCancel}"/>
 			<Button Click="OnOkClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtOk}"/>
 			<TextBlock Text=""/>
-
 		</DockPanel>
 
 		<DockPanel DockPanel.Dock="Top">

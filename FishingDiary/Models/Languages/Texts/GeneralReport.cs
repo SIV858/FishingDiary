@@ -55,9 +55,9 @@ namespace FishingDiary.Models
         public string sGrowing { get; set; } = "Is the moon growing?";
 
         public string sInformation { get; set; } = "Fishing information";
-        public string sMethod { get; set; } = "Fishing method:";
+        public string sMethod { get; set; } = "Fishing methods:";
         public string sTackle { get; set; } = "Fishing tackle:";
-        public string sGroundbait { get; set; } = "Groundbait:";
+        public string sGroundbait { get; set; } = "Groundbaits:";
         public string sBaits { get; set; } = "Baits:";
         public string sResult { get; set; } = "Fishing result";
 
