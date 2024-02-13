@@ -84,14 +84,39 @@ namespace FishingDiary.ViewModels
         public DateTime StartDateTime
         {
             get => CurrentReport.StartDate;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, value + CurrentReport.StartDate.TimeOfDay);
+        }
+
+        public int StartHour
+        {
+            get => CurrentReport.StartDate.Hour;
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, CurrentReport.StartDate.AddHours(value - CurrentReport.StartDate.Hour));
+        }
+
+        public int StartMinute
+        {
+            get => CurrentReport.StartDate.Minute;
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, CurrentReport.StartDate.AddMinutes(value - CurrentReport.StartDate.Minute));
         }
 
         public DateTime EndDateTime
         {
             get => CurrentReport.EndDate;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, value + CurrentReport.EndDate.TimeOfDay);
         }
+
+        public int EndtHour
+        {
+            get => CurrentReport.EndDate.Hour;
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, CurrentReport.EndDate.AddHours(value - CurrentReport.EndDate.Hour));
+        }
+
+        public int EndMinute
+        {
+            get => CurrentReport.EndDate.Minute;
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, CurrentReport.EndDate.AddMinutes(value - CurrentReport.EndDate.Minute));
+        }
+
 
         public AirTemperature Temperature
         {
