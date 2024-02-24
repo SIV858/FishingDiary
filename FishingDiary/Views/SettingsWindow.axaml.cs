@@ -31,7 +31,7 @@ namespace FishingDiary.Views
             SettingsWindowViewModel model = (SettingsWindowViewModel)this.DataContext;
             if (!model.ApplySettings())
             {
-                MessageBox.Show(this, CommonData.GenLanguages.SelectLanguage.sErrorCorruptedFile, CommonData.GenLanguages.CommonTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                MessageBox.Show(this, CommonData.GenLanguages.ErrorTexts.sErrorCorruptedLanguageFile, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
                 return;
             }
             this.Close();
@@ -56,7 +56,7 @@ namespace FishingDiary.Views
             SettingsWindowViewModel model = (SettingsWindowViewModel)this.DataContext;
             if (!model.ApplySettings())
             {
-                MessageBox.Show(this, CommonData.GenLanguages.SelectLanguage.sErrorCorruptedFile, CommonData.GenLanguages.CommonTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                MessageBox.Show(this, CommonData.GenLanguages.ErrorTexts.sErrorCorruptedLanguageFile, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
                 return;
             }
 

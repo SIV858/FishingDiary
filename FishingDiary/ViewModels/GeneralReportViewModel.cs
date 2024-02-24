@@ -13,6 +13,9 @@ namespace FishingDiary.ViewModels
         // Current report
         public Report CurrentReport { get; }
 
+        int _addId = PathsAndConstants.UNDEFINED_ID;
+        string _paramString = String.Empty;
+
         public double dFontSize => Properties.FontSize;
 
         public string txtGeneralInfo => CommonData.GenLanguages.GeneralReport.sGeneral;
@@ -74,6 +77,12 @@ namespace FishingDiary.ViewModels
         public string txtWeight => CommonData.GenLanguages.GeneralReport.sWeight;
         public string txtTotalWeight => CommonData.GenLanguages.GeneralReport.sTotalWeight;
         public string txtDescription => CommonData.GenLanguages.GeneralReport.sDescription;
+        public string txtClear => CommonData.GenLanguages.CommonTexts.sButtonClear;
+
+        public List<string> Methods => CommonData.EditableTexts.MethodsText;
+        public List<string> Tackles => CommonData.EditableTexts.TacklesText;
+        public List<string> Groundbaits => CommonData.EditableTexts.GroundbaitsText;
+        public List<string> Baits => CommonData.EditableTexts.BaitsText;
 
         public string Water
         {
@@ -156,6 +165,115 @@ namespace FishingDiary.ViewModels
             set => this.RaiseAndSetIfChanged(ref CurrentReport.WaxingMoon, value);
         }
 
+        public int AddMethod
+        {
+            get => _addId;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _addId, value);
+                if (_addId != PathsAndConstants.UNDEFINED_ID)
+                {
+                    CurrentReport.AddMethod(_addId);
+                    ListMethods = CurrentReport.GetMethodsText();
+                }
+            }
+        }
+
+        public string ListMethods
+        {
+            get => _paramString;
+            set => this.RaiseAndSetIfChanged(ref _paramString, value);
+        }
+
+        public int AddTackle
+        {
+            get => _addId;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _addId, value);
+                if (_addId != PathsAndConstants.UNDEFINED_ID)
+                {
+                    CurrentReport.AddFishingTackle(_addId);
+                    ListTackle = CurrentReport.GetFishingTacklesText();
+                }
+            }
+        }
+
+        public string ListTackle
+        {
+            get => _paramString;
+            set => this.RaiseAndSetIfChanged(ref _paramString, value);
+        }
+
+        public int AddGroundbait
+        {
+            get => _addId;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _addId, value);
+                if (_addId != PathsAndConstants.UNDEFINED_ID)
+                {
+                    CurrentReport.AddGroundbait(_addId);
+                    ListGroundbaits = CurrentReport.GetGroundbaitsText();
+                }
+            }
+        }
+
+        public string ListGroundbaits
+        {
+            get => _paramString;
+            set => this.RaiseAndSetIfChanged(ref _paramString, value);
+        }
+
+        public int AddBait
+        {
+            get => _addId;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _addId, value);
+                if (_addId != PathsAndConstants.UNDEFINED_ID)
+                {
+                    CurrentReport.AddBait(_addId);
+                    ListBaits = CurrentReport.GetBaitsText();
+                }
+            }
+        }
+
+        public string ListBaits
+        {
+            get => _paramString;
+            set => this.RaiseAndSetIfChanged(ref _paramString, value);
+        }
+
+
+
+        public void ClearMethods()
+        {
+            CurrentReport.ClearMethods();
+            ListMethods = String.Empty;
+            AddMethod = PathsAndConstants.UNDEFINED_ID;
+        }
+
+        public void ClearTackles()
+        {
+            CurrentReport.ClearFishingTackles();
+            ListTackle = String.Empty;
+            AddTackle = PathsAndConstants.UNDEFINED_ID;
+        }
+
+        public void ClearGroundbaits()
+        {
+            CurrentReport.ClearGroundbaits();
+            ListGroundbaits = String.Empty;
+            AddGroundbait = PathsAndConstants.UNDEFINED_ID;
+        }
+
+        public void ClearBaits()
+        {
+            CurrentReport.ClearBaits();
+            ListBaits = String.Empty;
+            AddBait = PathsAndConstants.UNDEFINED_ID;
+        }
 
         /// <summary>
         /// Constructor

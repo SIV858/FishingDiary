@@ -11,12 +11,18 @@
     "sButtonAdd": "Add",
     "sButtonYes": "Yes",
     "sButtonNo": "No",
-    "sTextError": "Error"
+    "sButtonClear": "Clear"
+  },
+  "ErrorTexts": {
+    "sTextError": "Error",
+    "sErrorCorruptedLanguageFile": "The current language file not found or is corrupted",
+    "sErrorFileNotFound": "The following file was not found: ",
+    "sErrorCorruptedFile": "The following file is corrupted: ",
+    "sParamNotFound": "Parameter with given ID not found (Parameter:ID): "
   },
   "SelectLanguage": {
     "sHead": "Languages",
-    "sChooseLanguage": "Choose language:",
-    "sErrorCorruptedFile": "The current language file not found or is corrupted"
+    "sChooseLanguage": "Choose language:"
   },
   "MainWindow": {
     "sHead": "Fishing reports",

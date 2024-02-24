@@ -9,6 +9,5 @@ namespace FishingDiary.Models
     {
         public string sHead { get; set; } = "Languages";
         public string sChooseLanguage { get; set; } = "Choose language:";
-        public string sErrorCorruptedFile { get; set; } = "The current language file not found or is corrupted";
     }
 }

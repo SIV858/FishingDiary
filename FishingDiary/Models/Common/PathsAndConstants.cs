@@ -14,6 +14,13 @@ namespace FishingDiary.Models
         private static string _languagesPath = _localePath + "Languages.json";
         private static string _currentLanguagePath = _localePath + "CurrentLanguage.json";
         private static string _extJSON = ".json";
+        private static string _baitsFile = "Baits" + _extJSON;
+        private static string _fishesFile = "Fishes" + _extJSON;
+        private static string _fishingTackleFile = "Fishing_tackle" + _extJSON;
+        private static string _groundbaitsFile = "Groundbaits" + _extJSON;
+        private static string _methodsFile = "Methods" + _extJSON;
+
+        public const int UNDEFINED_ID = -1;
 
         public static string CURRENT_DIRECTORY
         {
@@ -46,6 +53,26 @@ namespace FishingDiary.Models
         public static string EXT_JSON
         {
             get => _extJSON;
+        }
+        public static string BAITS_FILE
+        {
+            get => _baitsFile;
+        }
+        public static string FISHES_FILE
+        {
+            get => _fishesFile;
+        }
+        public static string FISHING_TACKLE_FILE
+        {
+            get => _fishingTackleFile;
+        }
+        public static string GROUNDBAITS_FILE
+        {
+            get => _groundbaitsFile;
+        }
+        public static string METHODS_FILE
+        {
+            get => _methodsFile;
         }
 
     }

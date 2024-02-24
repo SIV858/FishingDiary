@@ -12,18 +12,18 @@ namespace FishingDiary.Models
     {
         private string _ColumnName;
 
-        private List<TableElement> _DataList;
+        private List<DataElement> _DataList;
 
         public string ColumnName => _ColumnName;
-        public ObservableCollection<TableElement> DataList
+        public ObservableCollection<DataElement> DataList
         {
             get
             {
-                return new ObservableCollection<TableElement>(_DataList);
+                return new ObservableCollection<DataElement>(_DataList);
             }
         }
            
-        public ObservableCollection<TableElement> ElementsList { get; }
+        public ObservableCollection<DataElement> ElementsList { get; }
 
         public ColumnTable(string ColumnName)
         {
@@ -38,7 +38,7 @@ namespace FishingDiary.Models
                 string json = reader.ReadToEnd();
 
                 var readOnlySpan = new ReadOnlySpan<byte>(Encoding.UTF8.GetBytes(json));
-                _DataList = JsonSerializer.Deserialize<List<TableElement>>(readOnlySpan);
+                _DataList = JsonSerializer.Deserialize<List<DataElement>>(readOnlySpan);
             }
 
         }

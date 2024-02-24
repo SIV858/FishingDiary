@@ -18,9 +18,6 @@ namespace FishingDiary.Models
         {
             try
             {
-                //GeneralLaguages gen = new GeneralLaguages();
-                //string s = JsonSerializer.Serialize<GeneralLaguages>(gen);
-
                 using (StreamReader reader = new StreamReader(mLanguage))
                 {
                     string json = reader.ReadToEnd();
@@ -31,11 +28,27 @@ namespace FishingDiary.Models
             }
             catch(FileNotFoundException)
             {
-                return false;
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sErrorFileNotFound + mLanguage);
             }
             catch (JsonException)
             {
-                return false;
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sErrorCorruptedFile + mLanguage);
+            }
+
+            try
+            {
+                // Parsing editable parameters
+                string DataPath = PathsAndConstants.COMMON_DATA_PATH + "\\" + CommonData.GenLanguages.LanguagePaths.sDataPath + "\\";
+                CommonData.EditableTexts = new EditableTexts(DataPath);
+                CommonData.EditableTexts.Parse();
+            }
+            catch (FileNotFoundException ex)
+            {
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sErrorFileNotFound + ex.Message);
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sErrorCorruptedFile + ex.Message);
             }
 
             return true;

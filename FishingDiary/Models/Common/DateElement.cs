@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FishingDiary.Models
 {
-    public class TableElement
+    public class DataElement
     {
         public uint Id { get; set; }
         public string Text { get; set; }

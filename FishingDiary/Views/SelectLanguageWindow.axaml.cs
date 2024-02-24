@@ -31,7 +31,7 @@ namespace FishingDiary.Views
             SelectLanguagesViewModel model = (SelectLanguagesViewModel)this.DataContext;
             if (!model.ApplyLanguage())
             {
-                MessageBox.Show(this, CommonData.GenLanguages.SelectLanguage.sErrorCorruptedFile, CommonData.GenLanguages.CommonTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                MessageBox.Show(this, CommonData.GenLanguages.ErrorTexts.sErrorCorruptedLanguageFile, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
                 return;
             }
             MainWindow mainWindow = new MainWindow()

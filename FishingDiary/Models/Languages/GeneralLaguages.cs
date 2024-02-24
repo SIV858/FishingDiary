@@ -21,6 +21,7 @@ namespace FishingDiary.Models
 
         public CLanguagePaths LanguagePaths { get; set; }
         public CCommonTexts CommonTexts { get; set; }
+        public CErrorTexts ErrorTexts { get; set; }
         public CSelectLanguage SelectLanguage { get; set; }
         public CMainWindow MainWindow { get; set; }
         public CSettings Settings { get; set; }

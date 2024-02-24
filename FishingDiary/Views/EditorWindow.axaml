@@ -17,7 +17,7 @@
 	<TabControl Items="{Binding EditTables}">
 		<TabControl.ItemTemplate>
 			<DataTemplate>
-				<TextBlock Text="{Binding TableName}" />
+				<TextBlock Text="{Binding TableName}" FontSize="{Binding dFontSize}"/>
 			</DataTemplate>
 		</TabControl.ItemTemplate>
 		<TabControl.ContentTemplate>
@@ -39,7 +39,7 @@
 								<DataGrid.Columns>
 									<DataGridTextColumn Binding="{Binding Text}">
 										<DataGridTextColumn.Header>
-											<TextBlock Text="{Binding ColumnName}"/>
+											<TextBlock Text="{Binding ColumnName}" FontSize="{Binding dFontSize}"/>
 										</DataGridTextColumn.Header>
 									</DataGridTextColumn>
 								</DataGrid.Columns>

@@ -17,8 +17,6 @@ namespace FishingDiary.Models
         public string sButtonYes { get; set; } = "Yes";
         public string sButtonNo { get; set; } = "No";
 
-
-
-        public string sTextError { get; set; } = "Error";
+        public string sButtonClear { get; set; } = "Clear";
     }
 }

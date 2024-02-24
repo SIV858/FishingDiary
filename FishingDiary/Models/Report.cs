@@ -30,6 +30,11 @@ namespace FishingDiary.Models
         public string BodyOfWater = "";
 
         /// <summary>
+        /// The path to the photo of the pond
+        /// </summary>
+        public string PhotoPath;
+
+        /// <summary>
         /// Air Temperature
         /// Температура воздуха
         /// </summary>
@@ -75,25 +80,25 @@ namespace FishingDiary.Models
         /// Fishing Method
         /// Способ ловли
         /// </summary>
-        public string FishingMethod; //bobber, baiting, trolling, Feeder, Carpfishing, fly fishing, ice fishing
+        public List<DataElement> FishingMethods = new List<DataElement>(); //bobber, baiting, trolling, Feeder, Carpfishing, fly fishing, ice fishing
 
         /// <summary>
         /// Fishing Tackle
         /// Рыболовные снасти
         /// </summary>
-        public string FishingTackle; //rod, spinning, feeder, winter fishing rod
+        public List<DataElement> FishingTackles = new List<DataElement>(); //rod, spinning, feeder, winter fishing rod
 
         /// <summary>
         /// Groundbait
         /// Прикормка
         /// </summary>
-        public string Groundbait; //pearl barley, corn, millet
+        public List<DataElement> Groundbaits = new List<DataElement>(); //pearl barley, corn, millet
 
         /// <summary>
         /// Baits
         /// Насадки
         /// </summary>
-        public string Baits; //bread, maggot, worms 
+        public List<DataElement> Baits = new List<DataElement>(); //bread, maggot, worms 
 
         /// <summary>
         /// Biting
@@ -118,6 +123,129 @@ namespace FishingDiary.Models
         /// Описание рыбалки
         /// </summary>
         public string Description;
+
+
+        public void AddMethod(int Id)
+        {
+            if (!AddElemById(Id, CommonData.EditableTexts.Methods, FishingMethods))
+            {
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sParamNotFound +
+                    CommonData.GenLanguages.GeneralReport.sMethod + Id.ToString());
+            }
+        }
+
+        public string GetMethodsText()
+        {
+            return GetElemsText(FishingMethods);
+        }
+
+        public void ClearMethods()
+        {
+            FishingMethods.Clear();
+        }
+
+        public void AddFishingTackle(int Id)
+        {
+            if (!AddElemById(Id, CommonData.EditableTexts.FishingTackle, FishingTackles))
+            {
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sParamNotFound +
+                    CommonData.GenLanguages.GeneralReport.sTackle + Id.ToString());
+            }
+        }
+
+        public string GetFishingTacklesText()
+        {
+            return GetElemsText(FishingTackles);
+        }
+
+        public void ClearFishingTackles()
+        {
+            FishingTackles.Clear();
+        }
+
+        public void AddGroundbait(int Id)
+        {
+            if (!AddElemById(Id, CommonData.EditableTexts.Groundbaits, Groundbaits))
+            {
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sParamNotFound +
+                    CommonData.GenLanguages.GeneralReport.sGroundbait + Id.ToString());
+            }
+        }
+
+        public string GetGroundbaitsText()
+        {
+            return GetElemsText(Groundbaits);
+        }
+
+        public void ClearGroundbaits()
+        {
+            Groundbaits.Clear();
+        }
+
+        public void AddBait(int Id)
+        {
+            if (!AddElemById(Id, CommonData.EditableTexts.Baits, Baits))
+            {
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sParamNotFound +
+                    CommonData.GenLanguages.GeneralReport.sBaits + Id.ToString());
+            }
+        }
+
+        public string GetBaitsText()
+        {
+            return GetElemsText(Baits);
+        }
+
+        public void ClearBaits()
+        {
+            Baits.Clear();
+        }
+
+        /// <summary>
+        /// Add an DataElement from one list to another by id
+        /// If such an DataElement already exists, it will not be added
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="source">The list in which the search is carried out</param>
+        /// <param name="destination">The list where the DataElement will be added</param>
+        /// <returns>Sign of an DataElement being in the source list</returns>
+        private bool AddElemById(int id, List<DataElement> source, List<DataElement> destination)
+        {
+            foreach (var method in source)
+            {
+                if (method.Id == id)
+                {
+                    // If such an element already exists, then do not add it
+                    if (!destination.Exists(x => x.Id == method.Id))
+                    {
+                        destination.Add(method);
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        /// <summary>
+        /// Get a text representation of a list of elements
+        /// </summary>
+        /// <param name="elements">List of elements</param>
+        /// <returns>Text representation of a list of elements/returns>
+        public string GetElemsText(List<DataElement> elements)
+        {
+            string elemsText = "";
+
+            if (elements != null)
+            {
+                foreach (var element in elements)
+                {
+                    elemsText += element.Text + ", ";
+                }
+            }
+
+            return elemsText;
+        }
 
 
         public void SaveReport()

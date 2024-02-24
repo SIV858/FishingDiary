@@ -10,12 +10,18 @@
     "sButtonAdd": "Добавить",
     "sButtonYes": "Да",
     "sButtonNo": "Нет",
-    "sTextError": "Ошибка"
+    "sButtonClear": "Очистить"
+  },
+  "ErrorTexts": {
+    "sTextError": "Ошибка",
+    "sErrorCorruptedLanguageFile": "Текущий файл языка не найден или повреждён",
+    "sErrorFileNotFound": "Следующий файл не найден: ",
+    "sErrorCorruptedFile": "Следующий файл повреждён: ",
+    "sParamNotFound": "Параметр с данным ID не найден (Параметр:ID): "
   },
   "SelectLanguage": {
     "sHead": "Выбор языка",
-    "sChooseLanguage": "Выберите язык:",
-    "sErrorCorruptedFile": "Текущий файл языка не найден или повреждён"
+    "sChooseLanguage": "Выберите язык:"
   },
   "MainWindow": {
     "sHead": "Рыболовные отчёты",

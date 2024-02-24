@@ -147,6 +147,28 @@
 		</DockPanel>
 		<TextBlock DockPanel.Dock="Top" Text="{Binding txtInformation}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Text="{Binding txtMethod}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<ComboBox SelectedIndex="{Binding AddMethod}" Items="{Binding Methods}" FontSize="{Binding dFontSize}" Width="200"/>
+			<Button Click="OnClearMethodsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
+			<TextBox Text="{Binding ListMethods, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Text="{Binding txtTackle}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<ComboBox SelectedIndex="{Binding AddTackle}" Items="{Binding Tackles}" FontSize="{Binding dFontSize}" Width="200"/>
+			<Button Click="OnClearTacklesClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
+			<TextBox Text="{Binding ListTackle, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Text="{Binding txtGroundbait}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<ComboBox SelectedIndex="{Binding AddGroundbait}" Items="{Binding Groundbaits}" FontSize="{Binding dFontSize}" Width="200"/>
+			<Button Click="OnClearGroundbaitsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
+			<TextBox Text="{Binding ListGroundbaits, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Text="{Binding txtBaits}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<ComboBox SelectedIndex="{Binding AddBait}" Items="{Binding Baits}" FontSize="{Binding dFontSize}" Width="200"/>
+			<Button Click="OnClearBaitsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
+			<TextBox Text="{Binding ListBaits, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
 		</DockPanel>
 	</DockPanel>
 </UserControl>

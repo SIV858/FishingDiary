@@ -9,6 +9,8 @@ namespace FishingDiary
     public static class CommonData
     {
         public static GeneralLaguages GenLanguages;
+        public static EditableTexts EditableTexts;
+
         public static CurrentLanguage CurrentLang;
         public static bool ParsingLanguage = false;
     }
