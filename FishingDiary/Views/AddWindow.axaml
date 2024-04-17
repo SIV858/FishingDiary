@@ -6,24 +6,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FishingDiary.Views.AddWindow"
-		MinHeight="450"
-		MinWidth="500"
+		Height="750" 
+		Width="1200"
+		MinHeight="730"
+		MinWidth="1000"
         Title="{Binding txtHead}">
 	<Design.DataContext>
 		<vm:AddWindowViewModel/>
 	</Design.DataContext>
 	<DockPanel Margin="5,5,5,5">
-		<DockPanel DockPanel.Dock="Top">
-			<views:GeneralReportView Content="{Binding generalReport}"/>
+			<DockPanel DockPanel.Dock="Bottom">
+				<Button Click="OnCancelClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtCancel}"/>
+				<Button Click="OnAddClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtAdd}"/>
+				<TextBlock Text=""/>
+			</DockPanel>
+					<DockPanel>
+				<views:GeneralReportView Content="{Binding generalReport}"/>
+			</DockPanel>	
 		</DockPanel>
-		<DockPanel DockPanel.Dock="Bottom">
-			<Button Click="OnCancelClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtCancel}"/>
-			<Button Click="OnAddClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtAdd}"/>
-			<TextBlock Text=""/>
-		</DockPanel>
-		<DockPanel DockPanel.Dock="Top">
-		</DockPanel>
-	</DockPanel>
 	<!--
 	<StackPanel>
 		<DockPanel>

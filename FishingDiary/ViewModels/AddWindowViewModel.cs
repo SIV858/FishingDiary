@@ -35,6 +35,10 @@ namespace FishingDiary.ViewModels
         public void AddCurrentReport()
         {
             ReportsList.AddReport(generalReport.CurrentReport);
+            if (!CommonData.EditableTexts.WatersText.Exists(x => x == generalReport.CurrentReport.BodyOfWater))
+            {
+                CommonData.EditableTexts.AddWater(generalReport.CurrentReport.BodyOfWater);
+            }
         }
     }
 }

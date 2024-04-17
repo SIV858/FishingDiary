@@ -2,173 +2,343 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+			 xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="FishingDiary.Views.GeneralReportView">
+             x:Class="FishingDiary.Views.GeneralReportView"
+			 >
 
-	<DockPanel DockPanel.Dock="Top">
-		<TextBlock DockPanel.Dock="Top" Text="{Binding txtGeneralInfo}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+	<StackPanel>
+		<StackPanel Orientation="Horizontal">
+			<DockPanel DockPanel.Dock="Left">
+				<TextBlock DockPanel.Dock="Top" Text="{Binding txtGeneralInfo}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+				<DockPanel DockPanel.Dock="Top">
+					<TextBlock Text="{Binding txtDate}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding StartDateTime, Mode=TwoWay}"/>
+					<TextBox Text="{Binding StartHour}"/>
+					<TextBlock Text=":" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<TextBox Text="{Binding StartMinute}"/>
+					<TextBlock Text="-" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding EndDateTime, Mode=TwoWay}"/>
+					<TextBox Text="{Binding EndtHour}"/>
+					<TextBlock Text=":" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<TextBox Text="{Binding EndMinute}"/>
+					<TextBlock Margin="10 5" Text="{Binding txtWater}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<AutoCompleteBox Items="{Binding Waters}" Text="{Binding Water, Mode=TwoWay}" x:Name="animals" FilterMode="StartsWith"  FontSize="{Binding dFontSize}"/>
+					<!--<TextBox Text="{Binding Water, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>-->
+				</DockPanel>
+				<TextBlock DockPanel.Dock="Top" Text="{Binding txtWeather}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+				<DockPanel DockPanel.Dock="Top">
+					<TextBlock Text="{Binding txtTemperature}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<ComboBox  Padding="5" SelectedIndex="{Binding Temperature}" FontSize="{Binding dFontSize}">
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtTemperatureLessThan}" />
+						</ComboBoxItem>
+						<ComboBoxItem>-40...-35</ComboBoxItem>
+						<ComboBoxItem>-35...-30</ComboBoxItem>
+						<ComboBoxItem>-30...-25</ComboBoxItem>
+						<ComboBoxItem>-25...-20</ComboBoxItem>
+						<ComboBoxItem>-20...-15</ComboBoxItem>
+						<ComboBoxItem>-15...-10</ComboBoxItem>
+						<ComboBoxItem>-10...-5</ComboBoxItem>
+						<ComboBoxItem>-5...-0</ComboBoxItem>
+						<ComboBoxItem>+0...+5</ComboBoxItem>
+						<ComboBoxItem>+5...+10</ComboBoxItem>
+						<ComboBoxItem>+10...+15</ComboBoxItem>
+						<ComboBoxItem>+15...+20</ComboBoxItem>
+						<ComboBoxItem>+20...+25</ComboBoxItem>
+						<ComboBoxItem>+25...+30</ComboBoxItem>
+						<ComboBoxItem>+30...+35</ComboBoxItem>
+						<ComboBoxItem>+35...+40</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtTemperatureMoreThan}" />
+						</ComboBoxItem>
+					</ComboBox>
+					<TextBlock Margin="10 5" Text="{Binding txtPrecipitation}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<ComboBox  Padding="5" SelectedIndex="{Binding Precipitation}" FontSize="{Binding dFontSize}">
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtSun}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtСloudy}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtOvercast}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtRain}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtThunderstorm}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtSnow}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtBlizzard}" />
+						</ComboBoxItem>
+					</ComboBox>
+					<TextBlock Margin="10 5" Text="{Binding txtPressure}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<TextBox Text="{Binding Pressure, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+				</DockPanel>
+				<DockPanel Margin="0 5" DockPanel.Dock="Top">
+					<TextBlock Text="{Binding txtDirection}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<ComboBox  Padding="5" SelectedIndex="{Binding WindDirection}" FontSize="{Binding dFontSize}">
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtNorth}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtEastern}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtSouth}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtWest}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtNorthwest}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtNortheast}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtSoutheast}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtSouthwest}" />
+						</ComboBoxItem>
+					</ComboBox>
+					<TextBlock Margin="10 5" Text="{Binding txtSpeed}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<ComboBox  Padding="5" SelectedIndex="{Binding WindSpeed}" FontSize="{Binding dFontSize}">
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtCalm}" />
+						</ComboBoxItem>
+						<ComboBoxItem>1</ComboBoxItem>
+						<ComboBoxItem>2</ComboBoxItem>
+						<ComboBoxItem>3</ComboBoxItem>
+						<ComboBoxItem>4</ComboBoxItem>
+						<ComboBoxItem>5</ComboBoxItem>
+						<ComboBoxItem>6</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtStrong}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtHurricane}" />
+						</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtTornado}" />
+						</ComboBoxItem>
+					</ComboBox>
+					<TextBlock Margin="10 5" Text="{Binding txtMoonPhase}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<ComboBox  Padding="5" SelectedIndex="{Binding MoonPhase}" FontSize="{Binding dFontSize}">
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtNewMoon}" />
+						</ComboBoxItem>
+						<ComboBoxItem>10%</ComboBoxItem>
+						<ComboBoxItem>20%</ComboBoxItem>
+						<ComboBoxItem>30%</ComboBoxItem>
+						<ComboBoxItem>40%</ComboBoxItem>
+						<ComboBoxItem>50%</ComboBoxItem>
+						<ComboBoxItem>60%</ComboBoxItem>
+						<ComboBoxItem>70%</ComboBoxItem>
+						<ComboBoxItem>80%</ComboBoxItem>
+						<ComboBoxItem>90%</ComboBoxItem>
+						<ComboBoxItem>
+							<TextBlock Text="{Binding txtFullMoon}" />
+						</ComboBoxItem>
+					</ComboBox>
+					<CheckBox Margin="10 5"  IsChecked="{Binding WaxingMoon}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<TextBlock Text="{Binding txtGrowing}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+				</DockPanel>
+				<TextBlock DockPanel.Dock="Top" Text="{Binding txtInformation}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+				<DockPanel DockPanel.Dock="Top">
+					<TextBlock Text="{Binding txtMethod}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<ComboBox SelectedIndex="{Binding AddMethod}" Items="{Binding Methods}" FontSize="{Binding dFontSize}" Width="200"/>
+					<Button Click="OnClearMethodsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
+					<TextBox Text="{Binding ListMethods, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+				</DockPanel>
+				<DockPanel DockPanel.Dock="Top">
+					<TextBlock Text="{Binding txtTackle}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<ComboBox SelectedIndex="{Binding AddTackle}" Items="{Binding Tackles}" FontSize="{Binding dFontSize}" Width="200"/>
+					<Button Click="OnClearTacklesClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
+					<TextBox Text="{Binding ListTackle, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+				</DockPanel>
+				<DockPanel DockPanel.Dock="Top">
+					<TextBlock Text="{Binding txtGroundbait}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<ComboBox SelectedIndex="{Binding AddGroundbait}" Items="{Binding Groundbaits}" FontSize="{Binding dFontSize}" Width="200"/>
+					<Button Click="OnClearGroundbaitsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
+					<TextBox Text="{Binding ListGroundbaits, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+				</DockPanel>
+				<DockPanel DockPanel.Dock="Top">
+					<TextBlock Text="{Binding txtBaits}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<ComboBox SelectedIndex="{Binding AddBait}" Items="{Binding Baits}" FontSize="{Binding dFontSize}" Width="200"/>
+					<Button Click="OnClearBaitsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
+					<TextBox Text="{Binding ListBaits, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+				</DockPanel>
+				<TextBlock Text=""/>
+			</DockPanel>
+			<StackPanel DockPanel.Dock="Right">
+				<TextBlock Margin="10 5"  HorizontalAlignment="Center" Text="{Binding txtPhoto}" FontSize="{Binding dFontSize}"/>
+				<Image Margin="20" Height="180" Width="320" 
+					Source="{Binding PhotoPath}"/>
+			<Button Click="OnAddPhoto" DockPanel.Dock="Left" MinWidth="150" MaxWidth="150" FontSize="{Binding dFontSize}" Content="{Binding txtOpenPhoto}"/>
+			</StackPanel>
+		</StackPanel>
+		<TextBlock DockPanel.Dock="Top" Text="{Binding txtResult}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+		<TextBlock DockPanel.Dock="Top" Text="{Binding txtCaught}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 		<DockPanel DockPanel.Dock="Top">
-			<TextBlock Text="{Binding txtDate}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding StartDateTime, Mode=TwoWay}"/>
-			<TextBox Text="{Binding StartHour}"/>
-			<TextBlock Text=":" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<TextBox Text="{Binding StartMinute}"/>
-			<TextBlock Text="-" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding EndDateTime, Mode=TwoWay}"/>
-			<TextBox Text="{Binding EndtHour}"/>
-			<TextBlock Text=":" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<TextBox Text="{Binding EndMinute}"/>
-			<TextBlock Margin="10 5" Text="{Binding txtWater}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<TextBox Text="{Binding Water, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+			<DataGrid Margin="0" Items="{Binding Fishes}"
+		  GridLinesVisibility="All"
+		  CanUserSortColumns="False"
+				 Height="170"
+		  BorderThickness="0" BorderBrush="Gray">
+				<i:Interaction.Behaviors>
+					<ia:EventTriggerBehavior EventName="SelectionChanged">
+						<ia:InvokeCommandAction Command="{Binding SelectionChangedCommand}"></ia:InvokeCommandAction>
+					</ia:EventTriggerBehavior>
+				</i:Interaction.Behaviors>
+				<DataGrid.Columns>
+					<!--ID-->
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding txtId}" FontSize="{Binding dFontSize}"/>
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Id, Mode=TwoWay}"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<!--NameFish-->
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding txtNameFish}" FontSize="{Binding dFontSize}"/>
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<ComboBox SelectedIndex="{Binding FishId}" Items="{Binding Fishes}"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<!--Quantity-->
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding txtQuantity}" FontSize="{Binding dFontSize}"/>
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<NumericUpDown Value="{Binding Quantity, Mode=TwoWay}"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<!--Bait-->
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding txtBait}" FontSize="{Binding dFontSize}"/>
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<ComboBox SelectedIndex="{Binding BaitId}" Items="{Binding Baits}"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<!--Method-->
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding txtMethodFish}" FontSize="{Binding dFontSize}"/>
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<ComboBox SelectedIndex="{Binding MethodId}" Items="{Binding Methods}"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<!--AverageLength-->
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding txtAverageLength}" FontSize="{Binding dFontSize}"/>
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<NumericUpDown Value="{Binding AverageLength, Mode=TwoWay}" Increment="0.5" FormatString="0.0"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<!--MaxLength-->
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding txtMaxLength}" FontSize="{Binding dFontSize}"/>
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<NumericUpDown Value="{Binding MaxLength, Mode=TwoWay}" Increment="0.5" FormatString="0.0"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<!--MaxWeight-->
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding txtMaxWeight}" FontSize="{Binding dFontSize}"/>
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<NumericUpDown Value="{Binding MaxWeight, Mode=TwoWay}"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<!--Time-->
+					<DataGridTextColumn Binding="{Binding Time}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding txtTime}" FontSize="{Binding dFontSize}"/>
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+				</DataGrid.Columns>
+			</DataGrid>
 		</DockPanel>
-		<TextBlock DockPanel.Dock="Top" Text="{Binding txtWeather}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 		<DockPanel DockPanel.Dock="Top">
-			<TextBlock Text="{Binding txtTemperature}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<ComboBox  Padding="5" SelectedIndex="{Binding Temperature}" FontSize="{Binding dFontSize}">
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtTemperatureLessThan}" />
-				</ComboBoxItem>
-				<ComboBoxItem>-40...-35</ComboBoxItem>
-				<ComboBoxItem>-35...-30</ComboBoxItem>
-				<ComboBoxItem>-30...-25</ComboBoxItem>
-				<ComboBoxItem>-25...-20</ComboBoxItem>
-				<ComboBoxItem>-20...-15</ComboBoxItem>
-				<ComboBoxItem>-15...-10</ComboBoxItem>
-				<ComboBoxItem>-10...-5</ComboBoxItem>
-				<ComboBoxItem>-5...-0</ComboBoxItem>
-				<ComboBoxItem>+0...+5</ComboBoxItem>
-				<ComboBoxItem>+5...+10</ComboBoxItem>
-				<ComboBoxItem>+10...+15</ComboBoxItem>
-				<ComboBoxItem>+15...+20</ComboBoxItem>
-				<ComboBoxItem>+20...+25</ComboBoxItem>
-				<ComboBoxItem>+25...+30</ComboBoxItem>
-				<ComboBoxItem>+30...+35</ComboBoxItem>
-				<ComboBoxItem>+35...+40</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtTemperatureMoreThan}" />
-				</ComboBoxItem>
-			</ComboBox>
-			<TextBlock Margin="10 5" Text="{Binding txtPrecipitation}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<ComboBox  Padding="5" SelectedIndex="{Binding Precipitation}" FontSize="{Binding dFontSize}">
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtSun}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtСloudy}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtOvercast}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtRain}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtThunderstorm}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtSnow}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtBlizzard}" />
-				</ComboBoxItem>
-			</ComboBox>
-			<TextBlock Margin="10 5" Text="{Binding txtPressure}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<TextBox Text="{Binding Pressure, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+			<Button Command="{Binding AddFish}" DockPanel.Dock="Left" MinWidth="150" MaxWidth="150" FontSize="{Binding dFontSize}" Content="{Binding txtAddRow}"/>
+			<Button Command="{Binding DeleteFish}" DockPanel.Dock="Right" MinWidth="150" MaxWidth="150" FontSize="{Binding dFontSize}" Content="{Binding txtDeleteRow}"/>
+			<TextBlock Text=""/>
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Text=" " FontSize="{Binding dFontSize}"/>
 		</DockPanel>
 		<DockPanel Margin="0 5" DockPanel.Dock="Top">
-			<TextBlock Text="{Binding txtDirection}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<ComboBox  Padding="5" SelectedIndex="{Binding WindDirection}" FontSize="{Binding dFontSize}">
+			<TextBlock Margin="0 5" Text="{Binding txtBiting}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<ComboBox  Padding="5" SelectedIndex="{Binding Biting}" FontSize="{Binding dFontSize}">
 				<ComboBoxItem>
-					<TextBlock Text="{Binding txtNorth}" />
+					<TextBlock Text="{Binding txtNoFish}" />
 				</ComboBoxItem>
 				<ComboBoxItem>
-					<TextBlock Text="{Binding txtEastern}" />
+					<TextBlock Text="{Binding txtWeak}" />
 				</ComboBoxItem>
 				<ComboBoxItem>
-					<TextBlock Text="{Binding txtSouth}" />
+					<TextBlock Text="{Binding txtAverage}" />
 				</ComboBoxItem>
 				<ComboBoxItem>
-					<TextBlock Text="{Binding txtWest}" />
+					<TextBlock Text="{Binding txtGood}" />
 				</ComboBoxItem>
 				<ComboBoxItem>
-					<TextBlock Text="{Binding txtNorthwest}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtNortheast}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtSoutheast}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtSouthwest}" />
+					<TextBlock Text="{Binding txtExcellent}" />
 				</ComboBoxItem>
 			</ComboBox>
-			<TextBlock Margin="10 5" Text="{Binding txtSpeed}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<ComboBox  Padding="5" SelectedIndex="{Binding WindSpeed}" FontSize="{Binding dFontSize}">
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtCalm}" />
-				</ComboBoxItem>
-				<ComboBoxItem>1</ComboBoxItem>
-				<ComboBoxItem>2</ComboBoxItem>
-				<ComboBoxItem>3</ComboBoxItem>
-				<ComboBoxItem>4</ComboBoxItem>
-				<ComboBoxItem>5</ComboBoxItem>
-				<ComboBoxItem>6</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtStrong}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtHurricane}" />
-				</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtTornado}" />
-				</ComboBoxItem>
-			</ComboBox>
-			<TextBlock Margin="10 5" Text="{Binding txtMoonPhase}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<ComboBox  Padding="5" SelectedIndex="{Binding MoonPhase}" FontSize="{Binding dFontSize}">
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtNewMoon}" />
-				</ComboBoxItem>
-				<ComboBoxItem>10%</ComboBoxItem>
-				<ComboBoxItem>20%</ComboBoxItem>
-				<ComboBoxItem>30%</ComboBoxItem>
-				<ComboBoxItem>40%</ComboBoxItem>
-				<ComboBoxItem>50%</ComboBoxItem>
-				<ComboBoxItem>60%</ComboBoxItem>
-				<ComboBoxItem>70%</ComboBoxItem>
-				<ComboBoxItem>80%</ComboBoxItem>
-				<ComboBoxItem>90%</ComboBoxItem>
-				<ComboBoxItem>
-					<TextBlock Text="{Binding txtFullMoon}" />
-				</ComboBoxItem>
-			</ComboBox>
-			<CheckBox Margin="10 5"  IsChecked="{Binding WaxingMoon}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<TextBlock Text="{Binding txtGrowing}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<TextBlock Margin="10 5" Text="{Binding txtTotalWeight}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<NumericUpDown Value="{Binding TotalWeight, Mode=TwoWay}" Increment="0.01" FormatString="0.00"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+			<TextBlock Text=""/>
 		</DockPanel>
-		<TextBlock DockPanel.Dock="Top" Text="{Binding txtInformation}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-		<DockPanel DockPanel.Dock="Top">
-			<TextBlock Text="{Binding txtMethod}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<ComboBox SelectedIndex="{Binding AddMethod}" Items="{Binding Methods}" FontSize="{Binding dFontSize}" Width="200"/>
-			<Button Click="OnClearMethodsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
-			<TextBox Text="{Binding ListMethods, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+		<TextBlock DockPanel.Dock="Top" Text="{Binding txtDescription}" FontSize="{Binding dFontSize}"/>
+		<DockPanel>
+			<TextBox Text="{Binding Description, Mode=TwoWay}" Height="80" AcceptsReturn="True" TextWrapping="Wrap" FontSize="{Binding dFontSize}"/>
 		</DockPanel>
-		<DockPanel DockPanel.Dock="Top">
-			<TextBlock Text="{Binding txtTackle}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<ComboBox SelectedIndex="{Binding AddTackle}" Items="{Binding Tackles}" FontSize="{Binding dFontSize}" Width="200"/>
-			<Button Click="OnClearTacklesClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
-			<TextBox Text="{Binding ListTackle, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
-		</DockPanel>
-		<DockPanel DockPanel.Dock="Top">
-			<TextBlock Text="{Binding txtGroundbait}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<ComboBox SelectedIndex="{Binding AddGroundbait}" Items="{Binding Groundbaits}" FontSize="{Binding dFontSize}" Width="200"/>
-			<Button Click="OnClearGroundbaitsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
-			<TextBox Text="{Binding ListGroundbaits, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
-		</DockPanel>
-		<DockPanel DockPanel.Dock="Top">
-			<TextBlock Text="{Binding txtBaits}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<ComboBox SelectedIndex="{Binding AddBait}" Items="{Binding Baits}" FontSize="{Binding dFontSize}" Width="200"/>
-			<Button Click="OnClearBaitsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
-			<TextBox Text="{Binding ListBaits, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
-		</DockPanel>
-	</DockPanel>
+	</StackPanel>
 </UserControl>

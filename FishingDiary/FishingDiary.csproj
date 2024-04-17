@@ -10,6 +10,7 @@
     <None Remove="Assets\Data\Baits.json" />
     <None Remove="Assets\Data\EditTables.json" />
     <None Remove="Assets\Data\En\Fishes.json" />
+    <None Remove="Assets\Data\En\Waters.txt" />
     <None Remove="Assets\Data\Fishing_tackle.json" />
     <None Remove="Assets\Data\Groundbaits.json" />
     <None Remove="Assets\Data\Methods.json" />
@@ -18,12 +19,14 @@
     <None Remove="Assets\Data\Rus\Fishing_tackle.json" />
     <None Remove="Assets\Data\Rus\Groundbaits.json" />
     <None Remove="Assets\Data\Rus\Methods.json" />
+    <None Remove="Assets\Data\Rus\Waters.json" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.9.12" />
     <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.9.12" />
     <PackageReference Include="Avalonia.Desktop" Version="0.9.12" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.12" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.9.12" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\GeneralReportView.axaml.cs">

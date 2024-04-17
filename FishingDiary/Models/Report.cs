@@ -1,6 +1,7 @@
 ﻿//17.09.20
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace FishingDiary.Models
@@ -110,7 +111,7 @@ namespace FishingDiary.Models
         /// List of fish
         /// Список рыб
         /// </summary>
-        public List<RecordFish> CaughtFish;
+        public ObservableCollection<RecordFish> CaughtFishes = new ObservableCollection<RecordFish>();
 
         /// <summary>
         /// Total Weight fishes
@@ -124,6 +125,11 @@ namespace FishingDiary.Models
         /// </summary>
         public string Description;
 
+
+        public Report()
+        {
+            PhotoPath = PathsAndConstants.NO_PHOTO_PATH;
+        }
 
         public void AddMethod(int Id)
         {
@@ -232,7 +238,7 @@ namespace FishingDiary.Models
         /// </summary>
         /// <param name="elements">List of elements</param>
         /// <returns>Text representation of a list of elements/returns>
-        public string GetElemsText(List<DataElement> elements)
+        private string GetElemsText(List<DataElement> elements)
         {
             string elemsText = "";
 
@@ -247,6 +253,20 @@ namespace FishingDiary.Models
             return elemsText;
         }
 
+        public void DeleteFish(RecordFish deleteFish)
+        {
+            foreach (var fish in CaughtFishes)
+            {
+                if (fish.Id > deleteFish.Id)
+                {
+                    fish.Id--;
+                }
+            }
+
+            CaughtFishes.Remove(deleteFish);
+
+            RecordFish.DecrementId();
+        }
 
         public void SaveReport()
         {

@@ -19,6 +19,8 @@ namespace FishingDiary.Models
         private static string _fishingTackleFile = "Fishing_tackle" + _extJSON;
         private static string _groundbaitsFile = "Groundbaits" + _extJSON;
         private static string _methodsFile = "Methods" + _extJSON;
+        private static string _watersFile = "Waters" + _extJSON;
+        private static string _noPhotoPath = _commonDatapath + "\\No_Photo.png";
 
         public const int UNDEFINED_ID = -1;
 
@@ -73,6 +75,15 @@ namespace FishingDiary.Models
         public static string METHODS_FILE
         {
             get => _methodsFile;
+        }
+        public static string WATERS_FILE
+        {
+            get => _watersFile;
+        }
+
+        public static string NO_PHOTO_PATH
+        {
+            get => _noPhotoPath;
         }
 
     }

@@ -1,8 +1,11 @@
 ﻿//03.01.24
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
+using System.Reactive;
 using ReactiveUI;
+using Avalonia.Controls;
+using Avalonia.Media.Imaging;
 
 using FishingDiary.Models;
 
@@ -16,12 +19,18 @@ namespace FishingDiary.ViewModels
         int _addId = PathsAndConstants.UNDEFINED_ID;
         string _paramString = String.Empty;
 
+        // current selected item in the fish table
+        private RecordFish _selectedFihsItem;
+
         public double dFontSize => Properties.FontSize;
 
         public string txtGeneralInfo => CommonData.GenLanguages.GeneralReport.sGeneral;
         public string txtDate => CommonData.GenLanguages.GeneralReport.sDate;
         public string txtWeather => CommonData.GenLanguages.GeneralReport.sWeather;
         public string txtWater => CommonData.GenLanguages.GeneralReport.sWater;
+        public List<string> Waters => CommonData.EditableTexts.WatersText;
+        public string txtPhoto => CommonData.GenLanguages.GeneralReport.sPhoto;
+
 
         // Temperature
         public string txtTemperature => CommonData.GenLanguages.GeneralReport.sTemperature;
@@ -71,8 +80,16 @@ namespace FishingDiary.ViewModels
         public string txtGroundbait => CommonData.GenLanguages.GeneralReport.sGroundbait;
         public string txtBaits => CommonData.GenLanguages.GeneralReport.sBaits;
         public string txtResult => CommonData.GenLanguages.GeneralReport.sResult;
+
         public string txtBiting => CommonData.GenLanguages.GeneralReport.sBiting;
-        public string txtCaughtTxt => CommonData.GenLanguages.GeneralReport.sCaught;
+        public string txtNoFish => CommonData.GenLanguages.GeneralReport.sNoFish;
+        public string txtWeak => CommonData.GenLanguages.GeneralReport.sWeak;
+        public string txtAverage => CommonData.GenLanguages.GeneralReport.sAverage;
+        public string txtGood => CommonData.GenLanguages.GeneralReport.sGood;
+        public string txtExcellent => CommonData.GenLanguages.GeneralReport.sExcellent;
+
+
+        public string txtCaught => CommonData.GenLanguages.GeneralReport.sCaught;
         public string txtBiggest => CommonData.GenLanguages.GeneralReport.sBiggest;
         public string txtWeight => CommonData.GenLanguages.GeneralReport.sWeight;
         public string txtTotalWeight => CommonData.GenLanguages.GeneralReport.sTotalWeight;
@@ -83,6 +100,30 @@ namespace FishingDiary.ViewModels
         public List<string> Tackles => CommonData.EditableTexts.TacklesText;
         public List<string> Groundbaits => CommonData.EditableTexts.GroundbaitsText;
         public List<string> Baits => CommonData.EditableTexts.BaitsText;
+
+        public string txtId => CommonData.GenLanguages.GeneralReport.sId;
+        public string txtNameFish => CommonData.GenLanguages.GeneralReport.sNameFish;
+        public string txtQuantity => CommonData.GenLanguages.GeneralReport.sQuantity;
+        public string txtBait => CommonData.GenLanguages.GeneralReport.sBait;
+        public string txtMethodFish => CommonData.GenLanguages.GeneralReport.sMethodFish;
+        public string txtAverageLength => CommonData.GenLanguages.GeneralReport.sAverageLength;
+        public string txtMaxLength => CommonData.GenLanguages.GeneralReport.sMaxLength;
+        public string txtMaxWeight => CommonData.GenLanguages.GeneralReport.sMaxWeight;
+        public string txtTime => CommonData.GenLanguages.GeneralReport.sTime;
+
+        public string txtAddRow => CommonData.GenLanguages.GeneralReport.sAddRow;
+        public string txtDeleteRow => CommonData.GenLanguages.GeneralReport.sDeleteRow;
+
+        public string txtOpenPhoto => CommonData.GenLanguages.GeneralReport.sOpenPhoto;
+
+        //public Bitmap? ImageFromBinding { get; } = Helpers.LoadFromResource(new Uri("F://programs for visual studio//FishingDiary//FishingDiary//Assets//Data//No_Photo.png"));
+
+        //public string PhotoPath
+        //{
+        //    непонятно как привязать изображение
+        //    get => "F://programs for visual studio//FishingDiary//FishingDiary//Assets//Data//No_Photo.png";
+        //    set => this.RaiseAndSetIfChanged(ref CurrentReport.PhotoPath, value);
+        //}
 
         public string Water
         {
@@ -165,6 +206,24 @@ namespace FishingDiary.ViewModels
             set => this.RaiseAndSetIfChanged(ref CurrentReport.WaxingMoon, value);
         }
 
+        public Biting Biting
+        {
+            get => CurrentReport.Biting;
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.Biting, value);
+        }
+
+        public float TotalWeight
+        {
+            get => CurrentReport.TotalWeight;
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.TotalWeight, value);
+        }
+
+        public string Description
+        {
+            get => CurrentReport.Description;
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.Description, value);
+        }
+
         public int AddMethod
         {
             get => _addId;
@@ -245,6 +304,19 @@ namespace FishingDiary.ViewModels
             set => this.RaiseAndSetIfChanged(ref _paramString, value);
         }
 
+        public ObservableCollection<RecordFish> Fishes 
+        {
+            get => CurrentReport.CaughtFishes;
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.CaughtFishes, value);
+        }
+
+
+        public ReactiveCommand<Unit, Unit> AddFish { get; set; }
+        public ReactiveCommand<Unit, Unit> DeleteFish { get; set; }
+
+        // selecting an item from the list of fish
+        public ReactiveCommand<SelectionChangedEventArgs, Unit> SelectionChangedCommand { get; set; }
+
 
 
         public void ClearMethods()
@@ -275,12 +347,38 @@ namespace FishingDiary.ViewModels
             AddBait = PathsAndConstants.UNDEFINED_ID;
         }
 
+        public void SetPhoto(string path)
+        {
+            //PhotoPath = path;
+        }
+
         /// <summary>
         /// Constructor
         /// </summary>
         public GeneralReportViewModel()
         {
+            AddFish = ReactiveCommand.Create(() =>
+            {
+                CurrentReport.CaughtFishes.Add(new RecordFish());         
+            });
+
+            //To do: ID is not updated when deleted. The problem should go away when updating Avalonia
+            DeleteFish = ReactiveCommand.Create(() =>
+            {
+                if (_selectedFihsItem != null)
+                {      
+                    CurrentReport.DeleteFish(_selectedFihsItem);
+                }
+            });
+
+            SelectionChangedCommand = ReactiveCommand.Create<SelectionChangedEventArgs>(SelectionChanged);
+
             CurrentReport = new Report();
+        }
+
+        public void SelectionChanged(SelectionChangedEventArgs args) 
+        {
+            _selectedFihsItem = (RecordFish)args.RemovedItems[0];
         }
     }
 }

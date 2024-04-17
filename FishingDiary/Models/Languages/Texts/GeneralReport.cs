@@ -10,6 +10,10 @@ namespace FishingDiary.Models
         public string sGeneral { get; set; } = "General information";
         public string sDate { get; set; } = "Fishing date:";
         public string sWater { get; set; } = "Body of water:";
+
+        public string sPhoto { get; set; } = "Fishing photo:";
+        public string sOpenPhoto { get; set; } = "Open photo";
+
         public string sWeather { get; set; } = "Weather";
 
         // Temperature
@@ -70,6 +74,21 @@ namespace FishingDiary.Models
         public string sExcellent { get; set; } = "Excellent";
 
         public string sCaught { get; set; } = "Caught fish:";
+        // Fish table
+        public string sId { get; set; } = "Id";
+        public string sNameFish { get; set; } = "Name fish";
+        public string sQuantity { get; set; } = "Quantity";
+        public string sBait { get; set; } = "Bait";
+        public string sMethodFish { get; set; } = "Method";
+        public string sAverageLength { get; set; } = "Average length";
+        public string sMaxLength { get; set; } = "Max length";
+        public string sMaxWeight { get; set; } = "Max Weight";
+        public string sTime { get; set; } = "Time";
+
+        public string sAddRow { get; set; } = "Add row";
+        public string sDeleteRow { get; set; } = "Delete row";
+
+
         public string sBiggest { get; set; } = "Biggest:";
         public string sWeight { get; set; } = "Weight:";
         public string sTotalWeight { get; set; } = "Total weight:";

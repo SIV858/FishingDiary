@@ -4,6 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using FishingDiary.ViewModels;
+using System.Threading.Tasks;
 
 namespace FishingDiary.Views
 {
@@ -53,6 +54,37 @@ namespace FishingDiary.Views
         {
             GeneralReportViewModel model = (GeneralReportViewModel)this.DataContext;
             model.ClearBaits();
+        }
+
+
+        /// <summary>
+        /// Handling the event of clicking the "Add photo" button
+        /// </summary>
+        private void OnAddPhoto(object sender, RoutedEventArgs e)
+        {
+            GeneralReportViewModel model = (GeneralReportViewModel)this.DataContext;
+
+            OpenPhotoFile(model);
+        }
+
+        private async void OpenPhotoFile(GeneralReportViewModel model)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Open Solution";
+
+            Window window = (Window)this.VisualRoot;
+
+            openFileDialog.Filters.Add(new FileDialogFilter
+            {
+                Name = "Photo Files",
+                Extensions = { "jpg" }
+            });
+
+
+            openFileDialog.InitialDirectory = System.IO.Directory.GetCurrentDirectory();
+            var result = await openFileDialog.ShowAsync(window);
+
+            model.SetPhoto(result[0]);
         }
     }
 }

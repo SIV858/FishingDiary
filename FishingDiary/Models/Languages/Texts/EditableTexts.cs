@@ -18,12 +18,15 @@ namespace FishingDiary.Models
         private List<DataElement> _FishingTackles;
         private List<DataElement> _Groundbaits;
         private List<DataElement> _Methods;
+        private List<DataElement> _Waters;
 
         public List<DataElement> Baits => _Baits;
         public List<DataElement> Fishes => _Fishes;
         public List<DataElement> FishingTackle => _FishingTackles;
         public List<DataElement> Groundbaits => _Groundbaits;
         public List<DataElement> Methods => _Methods;
+        public List<DataElement> Waters => _Waters;
+
         public List<string> MethodsText 
         {
             get
@@ -53,24 +56,48 @@ namespace FishingDiary.Models
             }
         }
 
+        public List<string> FishesText
+        {
+            get
+            {
+                return _Fishes.ConvertAll<string>(x => x.Text);
+            }
+        }
+        public List<string> WatersText
+        {
+            get
+            {
+                return _Waters.ConvertAll<string>(x => x.Text);
+            }
+        }
 
         public EditableTexts(string DataPath)
         {
             _DataPath = DataPath;
         }
 
+        /// <summary>
+        /// Add water to list and udpate data file
+        /// </summary>
+        /// <param name="water">water</param>
+        public void AddWater(string water)
+        {
+            _Waters.Add(new DataElement()
+            {
+                Id = (uint)_Waters.Count,
+                Text = water
+            });
+            UpdateFile(_DataPath + PathsAndConstants.WATERS_FILE, _Waters);
+        }
+
         public void Parse()
         {
-            string fileName = _DataPath + PathsAndConstants.BAITS_FILE;
-            ParseList(fileName, out _Baits);
-            fileName = _DataPath + PathsAndConstants.FISHES_FILE;
-            ParseList(fileName, out _Fishes);
-            fileName = _DataPath + PathsAndConstants.FISHING_TACKLE_FILE;
-            ParseList(fileName, out _FishingTackles);
-            fileName = _DataPath + PathsAndConstants.GROUNDBAITS_FILE;
-            ParseList(fileName, out _Groundbaits);
-            fileName = _DataPath + PathsAndConstants.METHODS_FILE;
-            ParseList(fileName, out _Methods);
+            ParseList(_DataPath + PathsAndConstants.BAITS_FILE, out _Baits);
+            ParseList(_DataPath + PathsAndConstants.FISHES_FILE, out _Fishes);
+            ParseList(_DataPath + PathsAndConstants.FISHING_TACKLE_FILE, out _FishingTackles);
+            ParseList(_DataPath + PathsAndConstants.GROUNDBAITS_FILE, out _Groundbaits);
+            ParseList(_DataPath + PathsAndConstants.METHODS_FILE, out _Methods);
+            ParseList(_DataPath + PathsAndConstants.WATERS_FILE, out _Waters);
         }
 
         private void ParseList(string fileName, out List<DataElement> list)
@@ -95,6 +122,27 @@ namespace FishingDiary.Models
                 throw new JsonException(fileName);
             }
 
+        }
+
+        private void UpdateFile(string fileName, List<DataElement> list)
+        {
+            try
+            {
+                //Write data to file
+                using (StreamWriter writer = new StreamWriter(fileName))
+                {
+                    string json = JsonSerializer.Serialize<List<DataElement>>(list);
+                    writer.Write(json);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                throw new FileNotFoundException(fileName);
+            }
+            catch (JsonException)
+            {
+                throw new JsonException(fileName);
+            }
         }
     }
 }
