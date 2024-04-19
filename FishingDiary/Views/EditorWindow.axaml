@@ -14,7 +14,7 @@
 		<vm:EditorWindowViewModel/>
 	</Design.DataContext>
 
-	<TabControl Items="{Binding EditTables}">
+	<TabControl ItemsSource="{Binding EditTables}">
 		<TabControl.ItemTemplate>
 			<DataTemplate>
 				<TextBlock Text="{Binding TableName}" FontSize="{Binding dFontSize}"/>
@@ -23,7 +23,7 @@
 		<TabControl.ContentTemplate>
 			<DataTemplate>
 				<StackPanel>
-				<ItemsControl Items ="{Binding ListColumns}">
+				<ItemsControl ItemsSource ="{Binding ListColumns}">
 					<ItemsControl.ItemsPanel>
 						<ItemsPanelTemplate>
 							<WrapPanel Orientation="Horizontal"/>
@@ -31,7 +31,7 @@
 					</ItemsControl.ItemsPanel>
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<DataGrid Margin="0" Items="{Binding DataList}"
+							<DataGrid Margin="0" MaxHeight="600" ItemsSource="{Binding DataList}"
 						  IsReadOnly="True"
 						  GridLinesVisibility="All"
 						  CanUserSortColumns="False"
@@ -39,7 +39,7 @@
 								<DataGrid.Columns>
 									<DataGridTextColumn Binding="{Binding Text}">
 										<DataGridTextColumn.Header>
-											<TextBlock Text="{Binding ColumnName}" FontSize="{Binding dFontSize}"/>
+											<TextBlock Text="{Binding ColumnName}" Width="150" FontSize="{Binding dFontSize}"/>
 										</DataGridTextColumn.Header>
 									</DataGridTextColumn>
 								</DataGrid.Columns>

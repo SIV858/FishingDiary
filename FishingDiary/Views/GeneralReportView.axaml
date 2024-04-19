@@ -13,19 +13,19 @@
 			<DockPanel DockPanel.Dock="Left">
 				<TextBlock DockPanel.Dock="Top" Text="{Binding txtGeneralInfo}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 				<DockPanel DockPanel.Dock="Top">
-					<TextBlock Text="{Binding txtDate}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-					<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding StartDateTime, Mode=TwoWay}"/>
-					<TextBox Text="{Binding StartHour}"/>
-					<TextBlock Text=":" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-					<TextBox Text="{Binding StartMinute}"/>
+					<TextBlock Text="{Binding txtWater}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+					<AutoCompleteBox ItemsSource="{Binding Waters}" Text="{Binding Water, Mode=TwoWay}" x:Name="animals" FilterMode="StartsWith"  FontSize="{Binding dFontSize}"/>
+				</DockPanel>
+				<DockPanel Margin="0 5" DockPanel.Dock="Top">
+					<TextBlock Text="{Binding txtDate}" VerticalAlignment="Center" DockPanel.Dock="Left" FontSize="{Binding dFontSize}"/>
+					<DatePicker FontSize="{Binding dFontSize}" DockPanel.Dock="Left" SelectedDate="{Binding StartDate, Mode=TwoWay}"/>
 					<TextBlock Text="-" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-					<DatePicker FontSize="{Binding dFontSize}" SelectedDate="{Binding EndDateTime, Mode=TwoWay}"/>
-					<TextBox Text="{Binding EndtHour}"/>
-					<TextBlock Text=":" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-					<TextBox Text="{Binding EndMinute}"/>
-					<TextBlock Margin="10 5" Text="{Binding txtWater}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-					<AutoCompleteBox Items="{Binding Waters}" Text="{Binding Water, Mode=TwoWay}" x:Name="animals" FilterMode="StartsWith"  FontSize="{Binding dFontSize}"/>
+					<DatePicker FontSize="{Binding dFontSize}" DockPanel.Dock="Right" SelectedDate="{Binding EndDate, Mode=TwoWay}"/>
 					<!--<TextBox Text="{Binding Water, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>-->
+				</DockPanel>
+				<DockPanel DockPanel.Dock="Top">
+					<TimePicker Margin="100 0" FontSize="{Binding dFontSize}" HorizontalAlignment="Center" SelectedTime="{Binding StartTime, Mode=TwoWay}"/>
+					<TimePicker Margin="-40 0" FontSize="{Binding dFontSize}" SelectedTime="{Binding EndTime, Mode=TwoWay}"/>
 				</DockPanel>
 				<TextBlock DockPanel.Dock="Top" Text="{Binding txtWeather}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 				<DockPanel DockPanel.Dock="Top">
@@ -154,25 +154,25 @@
 				<TextBlock DockPanel.Dock="Top" Text="{Binding txtInformation}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 				<DockPanel DockPanel.Dock="Top">
 					<TextBlock Text="{Binding txtMethod}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-					<ComboBox SelectedIndex="{Binding AddMethod}" Items="{Binding Methods}" FontSize="{Binding dFontSize}" Width="200"/>
+					<ComboBox SelectedIndex="{Binding AddMethod}" ItemsSource="{Binding Methods}" FontSize="{Binding dFontSize}" Width="200"/>
 					<Button Click="OnClearMethodsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
 					<TextBox Text="{Binding ListMethods, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
 				</DockPanel>
 				<DockPanel DockPanel.Dock="Top">
 					<TextBlock Text="{Binding txtTackle}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-					<ComboBox SelectedIndex="{Binding AddTackle}" Items="{Binding Tackles}" FontSize="{Binding dFontSize}" Width="200"/>
+					<ComboBox SelectedIndex="{Binding AddTackle}" ItemsSource="{Binding Tackles}" FontSize="{Binding dFontSize}" Width="200"/>
 					<Button Click="OnClearTacklesClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
 					<TextBox Text="{Binding ListTackle, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
 				</DockPanel>
 				<DockPanel DockPanel.Dock="Top">
 					<TextBlock Text="{Binding txtGroundbait}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-					<ComboBox SelectedIndex="{Binding AddGroundbait}" Items="{Binding Groundbaits}" FontSize="{Binding dFontSize}" Width="200"/>
+					<ComboBox SelectedIndex="{Binding AddGroundbait}" ItemsSource="{Binding Groundbaits}" FontSize="{Binding dFontSize}" Width="200"/>
 					<Button Click="OnClearGroundbaitsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
 					<TextBox Text="{Binding ListGroundbaits, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
 				</DockPanel>
 				<DockPanel DockPanel.Dock="Top">
 					<TextBlock Text="{Binding txtBaits}" MinWidth="120" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-					<ComboBox SelectedIndex="{Binding AddBait}" Items="{Binding Baits}" FontSize="{Binding dFontSize}" Width="200"/>
+					<ComboBox SelectedIndex="{Binding AddBait}" ItemsSource="{Binding Baits}" FontSize="{Binding dFontSize}" Width="200"/>
 					<Button Click="OnClearBaitsClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtClear}"/>
 					<TextBox Text="{Binding ListBaits, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
 				</DockPanel>
@@ -188,10 +188,11 @@
 		<TextBlock DockPanel.Dock="Top" Text="{Binding txtResult}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 		<TextBlock DockPanel.Dock="Top" Text="{Binding txtCaught}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 		<DockPanel DockPanel.Dock="Top">
-			<DataGrid Margin="0" Items="{Binding Fishes}"
+			<DataGrid Margin="0" ItemsSource="{Binding Fishes}"
 		  GridLinesVisibility="All"
 		  CanUserSortColumns="False"
 				 Height="170"
+					  SelectedItem="{Binding SelectItem}"
 		  BorderThickness="0" BorderBrush="Gray">
 				<i:Interaction.Behaviors>
 					<ia:EventTriggerBehavior EventName="SelectionChanged">
@@ -218,7 +219,7 @@
 						</DataGridTemplateColumn.Header>
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
-								<ComboBox SelectedIndex="{Binding FishId}" Items="{Binding Fishes}"
+								<ComboBox SelectedIndex="{Binding FishId}" ItemsSource="{Binding Fishes}"
 								  VerticalAlignment="Center" HorizontalAlignment="Center" />
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
@@ -242,7 +243,7 @@
 						</DataGridTemplateColumn.Header>
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
-								<ComboBox SelectedIndex="{Binding BaitId}" Items="{Binding Baits}"
+								<ComboBox SelectedIndex="{Binding BaitId}" ItemsSource="{Binding Baits}"
 								  VerticalAlignment="Center" HorizontalAlignment="Center" />
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
@@ -254,7 +255,7 @@
 						</DataGridTemplateColumn.Header>
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
-								<ComboBox SelectedIndex="{Binding MethodId}" Items="{Binding Methods}"
+								<ComboBox SelectedIndex="{Binding MethodId}" ItemsSource="{Binding Methods}"
 								  VerticalAlignment="Center" HorizontalAlignment="Center" />
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>

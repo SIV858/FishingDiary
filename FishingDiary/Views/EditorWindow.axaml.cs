@@ -15,9 +15,6 @@ namespace FishingDiary.Views
         public EditorWindow()
         {
             InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
 
             //DataGrid dataGrid = new DataGrid();
             //DataGridTextColumn dataGridColumn = new DataGridTextColumn();

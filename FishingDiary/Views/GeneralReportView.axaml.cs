@@ -81,10 +81,13 @@ namespace FishingDiary.Views
             });
 
 
-            openFileDialog.InitialDirectory = System.IO.Directory.GetCurrentDirectory();
+            openFileDialog.Directory = System.IO.Directory.GetCurrentDirectory();
             var result = await openFileDialog.ShowAsync(window);
 
-            model.SetPhoto(result[0]);
+            if (result.Length != 0)
+            {
+                model.SetPhoto(result[0]);
+            }
         }
     }
 }

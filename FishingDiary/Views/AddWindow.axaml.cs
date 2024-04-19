@@ -7,14 +7,11 @@ using FishingDiary.ViewModels;
 
 namespace FishingDiary.Views
 {
-    public class AddWindow : Window
+    public partial class AddWindow : Window
     {
         public AddWindow()
         {
-            this.InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
+            InitializeComponent();
         }
 
         private void InitializeComponent()

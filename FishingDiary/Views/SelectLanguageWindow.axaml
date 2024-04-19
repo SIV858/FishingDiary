@@ -17,7 +17,7 @@
 	<DockPanel Margin="5,5,5,5">
 		<StackPanel DockPanel.Dock="Top">
 			<TextBlock Margin="0 5" FontSize="{Binding dFontSize}" VerticalAlignment="Center" Text="{Binding txtLang}" />
-			<ListBox Items="{Binding Items}" SelectedItem="{Binding SelectedItem}" FontSize="{Binding dFontSize}" VerticalAlignment="Center">
+			<ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" FontSize="{Binding dFontSize}" VerticalAlignment="Center">
 				<ListBox.ItemTemplate>
 					<DataTemplate>
 						<TextBlock HorizontalAlignment="Center" Text="{Binding}"/>

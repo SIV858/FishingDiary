@@ -131,40 +131,28 @@ namespace FishingDiary.ViewModels
             set => this.RaiseAndSetIfChanged(ref CurrentReport.BodyOfWater, value);
         }
 
-        public DateTime StartDateTime
+        public DateTimeOffset StartDate
         {
-            get => CurrentReport.StartDate;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, value + CurrentReport.StartDate.TimeOfDay);
+            get => new DateTimeOffset(CurrentReport.StartDate);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, value.Date + CurrentReport.StartDate.TimeOfDay);
         }
 
-        public int StartHour
+        public TimeSpan StartTime
         {
-            get => CurrentReport.StartDate.Hour;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, CurrentReport.StartDate.AddHours(value - CurrentReport.StartDate.Hour));
+            get => new TimeSpan(CurrentReport.StartDate.Hour, CurrentReport.StartDate.Minute, CurrentReport.StartDate.Second);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, CurrentReport.StartDate.Date + value);
         }
 
-        public int StartMinute
+        public DateTimeOffset EndDate
         {
-            get => CurrentReport.StartDate.Minute;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, CurrentReport.StartDate.AddMinutes(value - CurrentReport.StartDate.Minute));
+            get => new DateTimeOffset(CurrentReport.EndDate);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, value.DateTime + CurrentReport.EndDate.TimeOfDay);
         }
 
-        public DateTime EndDateTime
+        public TimeSpan EndTime
         {
-            get => CurrentReport.EndDate;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, value + CurrentReport.EndDate.TimeOfDay);
-        }
-
-        public int EndtHour
-        {
-            get => CurrentReport.EndDate.Hour;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, CurrentReport.EndDate.AddHours(value - CurrentReport.EndDate.Hour));
-        }
-
-        public int EndMinute
-        {
-            get => CurrentReport.EndDate.Minute;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, CurrentReport.EndDate.AddMinutes(value - CurrentReport.EndDate.Minute));
+            get => new TimeSpan(CurrentReport.EndDate.Hour, CurrentReport.EndDate.Minute, CurrentReport.EndDate.Second);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, CurrentReport.EndDate.Date + value);
         }
 
 
@@ -310,6 +298,11 @@ namespace FishingDiary.ViewModels
             set => this.RaiseAndSetIfChanged(ref CurrentReport.CaughtFishes, value);
         }
 
+        public RecordFish SelectItem
+        {
+            get => _selectedFihsItem;
+            set => this.RaiseAndSetIfChanged(ref _selectedFihsItem, value);
+        }
 
         public ReactiveCommand<Unit, Unit> AddFish { get; set; }
         public ReactiveCommand<Unit, Unit> DeleteFish { get; set; }
@@ -378,7 +371,10 @@ namespace FishingDiary.ViewModels
 
         public void SelectionChanged(SelectionChangedEventArgs args) 
         {
-            _selectedFihsItem = (RecordFish)args.RemovedItems[0];
+            //if (args.RemovedItems.Count != 0)
+            //{
+            //    _selectedFihsItem = (RecordFish)args.RemovedItems[0];
+            //}
         }
     }
 }
