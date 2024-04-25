@@ -116,14 +116,27 @@ namespace FishingDiary.ViewModels
 
         public string txtOpenPhoto => CommonData.GenLanguages.GeneralReport.sOpenPhoto;
 
-        //public Bitmap? ImageFromBinding { get; } = Helpers.LoadFromResource(new Uri("F://programs for visual studio//FishingDiary//FishingDiary//Assets//Data//No_Photo.png"));
+        Bitmap? _photo = Helpers.LoadFromResource("Assets/Data/No_Photo.png");
 
-        //public string PhotoPath
-        //{
-        //    непонятно как привязать изображение
-        //    get => "F://programs for visual studio//FishingDiary//FishingDiary//Assets//Data//No_Photo.png";
-        //    set => this.RaiseAndSetIfChanged(ref CurrentReport.PhotoPath, value);
-        //}
+        public Bitmap? Photo 
+        {
+            get => _photo;
+            set => this.RaiseAndSetIfChanged(ref _photo, value);
+        }
+
+        public string PhotoPath
+        {
+            get => CurrentReport.PhotoPath;
+            set 
+            { 
+                this.RaiseAndSetIfChanged(ref CurrentReport.PhotoPath, value);
+                if (Photo != null)
+                {
+                    Photo.Dispose();
+                }
+                Photo = Helpers.LoadFromFile(CurrentReport.PhotoPath);
+            }
+        }
 
         public string Water
         {
@@ -342,7 +355,7 @@ namespace FishingDiary.ViewModels
 
         public void SetPhoto(string path)
         {
-            //PhotoPath = path;
+            PhotoPath = path;
         }
 
         /// <summary>
@@ -364,17 +377,7 @@ namespace FishingDiary.ViewModels
                 }
             });
 
-            SelectionChangedCommand = ReactiveCommand.Create<SelectionChangedEventArgs>(SelectionChanged);
-
             CurrentReport = new Report();
-        }
-
-        public void SelectionChanged(SelectionChangedEventArgs args) 
-        {
-            //if (args.RemovedItems.Count != 0)
-            //{
-            //    _selectedFihsItem = (RecordFish)args.RemovedItems[0];
-            //}
         }
     }
 }

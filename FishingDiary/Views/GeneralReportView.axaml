@@ -181,7 +181,7 @@
 			<StackPanel DockPanel.Dock="Right">
 				<TextBlock Margin="10 5"  HorizontalAlignment="Center" Text="{Binding txtPhoto}" FontSize="{Binding dFontSize}"/>
 				<Image Margin="20" Height="180" Width="320" 
-					Source="{Binding PhotoPath}"/>
+					Source="{Binding Photo}"/>
 			<Button Click="OnAddPhoto" DockPanel.Dock="Left" MinWidth="150" MaxWidth="150" FontSize="{Binding dFontSize}" Content="{Binding txtOpenPhoto}"/>
 			</StackPanel>
 		</StackPanel>
