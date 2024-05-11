@@ -1,129 +1,189 @@
 ﻿//17.09.20
+using Avalonia.Animation.Easings;
+using Avalonia.Controls.Shapes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
+using System.Text.Json;
 
 namespace FishingDiary.Models
 {
     /// <summary>
     /// One report
-    /// Один отчёт
     /// </summary>
     public class Report
     {
         /// <summary>
         /// Start date fishing
-        /// Начальная дата рыбалки
         /// </summary>
-        public DateTime StartDate = DateTime.Now;
+        public DateTime StartDate
+        {
+            get => _StartDate;
+            set => _StartDate = value;
+        }
+        internal DateTime _StartDate = DateTime.Now;
 
         /// <summary>
         /// End date fishing
-        /// Конечная дата рыбалки
         /// </summary>
-        public DateTime EndDate = DateTime.Now;
+        public DateTime EndDate
+        {
+            get => _EndDate;
+            set => _EndDate = value;
+        }
+        internal DateTime _EndDate = DateTime.Now;
 
         /// <summary>
         /// Body Of Water
-        /// Водоём
         /// </summary>
-        public string BodyOfWater = "";
+        public string BodyOfWater
+        {
+            get => _BodyOfWater;
+            set => _BodyOfWater = value;
+        }
+        internal string _BodyOfWater = String.Empty;
 
         /// <summary>
         /// The path to the photo of the pond
         /// </summary>
-        public string PhotoPath;
+        public string PhotoPath
+        {
+            get => _PhotoPath;
+            set => _PhotoPath = value;
+        }
+        internal string _PhotoPath = String.Empty;
 
         /// <summary>
         /// Air Temperature
-        /// Температура воздуха
         /// </summary>
-        public AirTemperature AirTemperature = AirTemperature.Plus15_Plus20;
+        public AirTemperature AirTemperature
+        {
+            get => _AirTemperature;
+            set => _AirTemperature = value;
+        }
+        internal AirTemperature _AirTemperature = AirTemperature.Plus15_Plus20;
 
         /// <summary>
         /// Precipitation
-        /// Осадки
         /// </summary>
-        public Precipitation Precipitation = Precipitation.Sun;
+        public Precipitation Precipitation
+        {
+            get => _Precipitation;
+            set => _Precipitation = value;
+        }
+        internal Precipitation _Precipitation = Precipitation.Sun;
 
         /// <summary>
         /// Wind Direction 
-        /// Направление ветра
         /// </summary>
-        public WindDirection WindDirection = WindDirection.NorthWest;
+        public WindDirection WindDirection
+        {
+            get => _WindDirection;
+            set => _WindDirection = value;
+        }
+        internal WindDirection _WindDirection = WindDirection.NorthWest;
 
         /// <summary>
         /// Wind Speed
-        /// Скорость ветра
         /// </summary>
-        public WindSpeed WindSpeed = WindSpeed.S2;
+        public WindSpeed WindSpeed
+        {
+            get => _WindSpeed;
+            set => _WindSpeed = value;
+        }
+        internal WindSpeed _WindSpeed = WindSpeed.S2;
 
         /// <summary>
         /// Pressure
-        /// Давление
         /// </summary>
-        public ushort Pressure = 745;
+        public ushort Pressure
+        {
+            get => _Pressure;
+            set => _Pressure = value;
+        }
+        internal ushort _Pressure = 745;
 
         /// <summary>
         /// Moon Phase
-        /// Фаза луны
         /// </summary>
-        public MoonPhase MoonPhase = MoonPhase.P50;
+        public MoonPhase MoonPhase
+        {
+            get => _MoonPhase;
+            set => _MoonPhase = value;
+        }
+        internal MoonPhase _MoonPhase = MoonPhase.P50;
 
         /// <summary>
         /// Waxing Moon
-        /// Луна растёт?
         /// </summary>
-        public bool WaxingMoon = true;
+        public bool WaxingMoon
+        {
+            get => _WaxingMoon;
+            set => _WaxingMoon = value;
+        }
+        internal bool _WaxingMoon = true;
 
         /// <summary>
         /// Fishing Method
-        /// Способ ловли
         /// </summary>
-        public List<DataElement> FishingMethods = new List<DataElement>(); //bobber, baiting, trolling, Feeder, Carpfishing, fly fishing, ice fishing
+        public List<DataElement> FishingMethods { get; set; } = new List<DataElement>(); //bobber, baiting, trolling, Feeder, Carpfishing, fly fishing, ice fishing
 
         /// <summary>
         /// Fishing Tackle
-        /// Рыболовные снасти
         /// </summary>
-        public List<DataElement> FishingTackles = new List<DataElement>(); //rod, spinning, feeder, winter fishing rod
+        public List<DataElement> FishingTackles { get; set; } = new List<DataElement>(); //rod, spinning, feeder, winter fishing rod
 
         /// <summary>
         /// Groundbait
-        /// Прикормка
         /// </summary>
-        public List<DataElement> Groundbaits = new List<DataElement>(); //pearl barley, corn, millet
+        public List<DataElement> Groundbaits { get; set; } = new List<DataElement>(); //pearl barley, corn, millet
 
         /// <summary>
         /// Baits
-        /// Насадки
         /// </summary>
-        public List<DataElement> Baits = new List<DataElement>(); //bread, maggot, worms 
+        public List<DataElement> Baits { get; set; } = new List<DataElement>(); //bread, maggot, worms 
 
         /// <summary>
         /// Biting
-        /// Клёв
         /// </summary>
-        public Biting Biting;
+        public Biting Biting
+        {
+            get => _Biting;
+            set => _Biting = value;
+        }
+        internal Biting _Biting = Biting.NoFishCaught;
 
         /// <summary>
         /// List of fish
-        /// Список рыб
         /// </summary>
-        public ObservableCollection<RecordFish> CaughtFishes = new ObservableCollection<RecordFish>();
+        public ObservableCollection<RecordFish> CaughtFishes
+        {
+            get => _CaughtFishes;
+            set => _CaughtFishes = value;
+        }
+        internal ObservableCollection<RecordFish> _CaughtFishes = new ObservableCollection<RecordFish>();
 
         /// <summary>
         /// Total Weight fishes
-        /// Общий вес всей рыбы
         /// </summary>
-        public float TotalWeight;
+        public float TotalWeight
+        {
+            get => _TotalWeight;
+            set => _TotalWeight = value;
+        }
+        internal float _TotalWeight = 0;
 
         /// <summary>
         /// Description fishing
-        /// Описание рыбалки
         /// </summary>
-        public string Description;
+        public string Description
+        {
+            get => _Description;
+            set => _Description = value;
+        }
+        internal string _Description = String.Empty;
 
 
         public Report()
@@ -268,9 +328,58 @@ namespace FishingDiary.Models
             RecordFish.DecrementId();
         }
 
-        public void SaveReport()
+        public string SaveReport(uint reportId)
         {
-            // to do
+            //Reports are broken down by year for easier searching
+            string ReportPath = String.Format("{0}\\{1}", PathsAndConstants.REPORTS_PATH, StartDate.Year.ToString());
+            if (!Directory.Exists(ReportPath))
+            {
+                Directory.CreateDirectory(ReportPath);
+            }
+
+            ReportPath += String.Format("\\{0}_{1}", reportId.ToString(), StartDate.ToShortDateString());
+            Directory.CreateDirectory(ReportPath);
+
+            string photoName = System.IO.Path.GetFileName(PhotoPath);
+
+            if (photoName != PathsAndConstants.NO_PHOTO_FILE_NAME)
+            {
+
+                //copying an image and saving a new path to it
+                string ImagePath = String.Format("{0}\\{1}", ReportPath, photoName);
+                try
+                {
+                    File.Copy(PhotoPath, ImagePath);
+                }
+                catch (IOException)
+                {
+
+                }
+
+                PhotoPath = ImagePath;
+            }
+
+            ReportPath += String.Format("\\{0}_report.json", reportId.ToString());
+
+            try
+            {
+                //Write data to file
+                using (StreamWriter writer = new StreamWriter(ReportPath))
+                {
+                    string json = JsonSerializer.Serialize<Report>(this);
+                    writer.Write(json);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                throw new FileNotFoundException(ReportPath);
+            }
+            catch (JsonException)
+            {
+                throw new JsonException(ReportPath);
+            }
+
+            return ReportPath;
         }
 
     }

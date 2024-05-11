@@ -3,7 +3,9 @@ using FishingDiary.Models;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Text.Json;
 
 namespace FishingDiary.ViewModels
 {
@@ -24,7 +26,7 @@ namespace FishingDiary.ViewModels
         private string mEditorButton = CommonData.GenLanguages.MainWindow.sEditorButton;
         private string mSettingsButton = CommonData.GenLanguages.MainWindow.sSettings;
 
-        public double dFontSize => Properties.FontSize;
+        public double dFontSize => Properties.GetInstance().FontSize;
 
         public string txtHead
         {
@@ -66,6 +68,9 @@ namespace FishingDiary.ViewModels
                 }
                 UpdateLang();
             }
+
+            // Parse ShortReportList
+            ShortReportsList.LoadReporstList(PathsAndConstants.SHORT_REPORT_PATH);
         }
 
         public void Redraw()

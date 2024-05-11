@@ -13,7 +13,7 @@ namespace FishingDiary.ViewModels
         private DataTables _dateTables;
 
 
-        public double dFontSize => Properties.FontSize;
+        public double dFontSize => Properties.GetInstance().FontSize;
         public string txtHead => CommonData.GenLanguages.EditorTexts.sHead;
         public ObservableCollection<EditTable> EditTables => _dateTables.Tables;
 

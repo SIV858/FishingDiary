@@ -22,7 +22,7 @@ namespace FishingDiary.ViewModels
         // current selected item in the fish table
         private RecordFish _selectedFihsItem;
 
-        public double dFontSize => Properties.FontSize;
+        public double dFontSize => Properties.GetInstance().FontSize;
 
         public string txtGeneralInfo => CommonData.GenLanguages.GeneralReport.sGeneral;
         public string txtDate => CommonData.GenLanguages.GeneralReport.sDate;
@@ -129,11 +129,12 @@ namespace FishingDiary.ViewModels
             get => CurrentReport.PhotoPath;
             set 
             { 
-                this.RaiseAndSetIfChanged(ref CurrentReport.PhotoPath, value);
+                this.RaiseAndSetIfChanged(ref CurrentReport._PhotoPath, value);
                 if (Photo != null)
                 {
                     Photo.Dispose();
                 }
+                // update photo on form
                 Photo = Helpers.LoadFromFile(CurrentReport.PhotoPath);
             }
         }
@@ -141,88 +142,88 @@ namespace FishingDiary.ViewModels
         public string Water
         {
             get => CurrentReport.BodyOfWater;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.BodyOfWater, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._BodyOfWater, value);
         }
 
         public DateTimeOffset StartDate
         {
             get => new DateTimeOffset(CurrentReport.StartDate);
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, value.Date + CurrentReport.StartDate.TimeOfDay);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._StartDate, value.Date + CurrentReport.StartDate.TimeOfDay);
         }
 
         public TimeSpan StartTime
         {
             get => new TimeSpan(CurrentReport.StartDate.Hour, CurrentReport.StartDate.Minute, CurrentReport.StartDate.Second);
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.StartDate, CurrentReport.StartDate.Date + value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._StartDate, CurrentReport.StartDate.Date + value);
         }
 
         public DateTimeOffset EndDate
         {
             get => new DateTimeOffset(CurrentReport.EndDate);
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, value.DateTime + CurrentReport.EndDate.TimeOfDay);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._EndDate, value.DateTime + CurrentReport.EndDate.TimeOfDay);
         }
 
         public TimeSpan EndTime
         {
             get => new TimeSpan(CurrentReport.EndDate.Hour, CurrentReport.EndDate.Minute, CurrentReport.EndDate.Second);
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.EndDate, CurrentReport.EndDate.Date + value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._EndDate, CurrentReport.EndDate.Date + value);
         }
 
 
         public AirTemperature Temperature
         {
             get => CurrentReport.AirTemperature;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.AirTemperature, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._AirTemperature, value);
         }
 
         public Precipitation Precipitation
         {
             get => CurrentReport.Precipitation;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.Precipitation, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._Precipitation, value);
         }
 
         public WindDirection WindDirection
         {
             get => CurrentReport.WindDirection;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.WindDirection, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._WindDirection, value);
         }
         public WindSpeed WindSpeed
         {
             get => CurrentReport.WindSpeed;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.WindSpeed, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._WindSpeed, value);
         }
         public ushort Pressure
         {
             get => CurrentReport.Pressure;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.Pressure, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._Pressure, value);
         }
         public MoonPhase MoonPhase
         {
             get => CurrentReport.MoonPhase;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.MoonPhase, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._MoonPhase, value);
         }
         public bool WaxingMoon
         {
             get => CurrentReport.WaxingMoon;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.WaxingMoon, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._WaxingMoon, value);
         }
 
         public Biting Biting
         {
             get => CurrentReport.Biting;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.Biting, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._Biting, value);
         }
 
         public float TotalWeight
         {
             get => CurrentReport.TotalWeight;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.TotalWeight, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._TotalWeight, value);
         }
 
         public string Description
         {
             get => CurrentReport.Description;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.Description, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._Description, value);
         }
 
         public int AddMethod
@@ -308,7 +309,7 @@ namespace FishingDiary.ViewModels
         public ObservableCollection<RecordFish> Fishes 
         {
             get => CurrentReport.CaughtFishes;
-            set => this.RaiseAndSetIfChanged(ref CurrentReport.CaughtFishes, value);
+            set => this.RaiseAndSetIfChanged(ref CurrentReport._CaughtFishes, value);
         }
 
         public RecordFish SelectItem

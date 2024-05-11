@@ -10,6 +10,7 @@ namespace FishingDiary.Models
         private static string _currentDirectory = System.IO.Directory.GetCurrentDirectory();
         private static string _commonDatapath = _currentDirectory + "\\Data";
         private static string _editTablesPath = _commonDatapath + "\\EditTables.json";
+        private static string _propertiesPath = _commonDatapath + "\\Properties.json";
         private static string _localePath = _currentDirectory + "\\locale\\";
         private static string _languagesPath = _localePath + "Languages.json";
         private static string _currentLanguagePath = _localePath + "CurrentLanguage.json";
@@ -20,7 +21,13 @@ namespace FishingDiary.Models
         private static string _groundbaitsFile = "Groundbaits" + _extJSON;
         private static string _methodsFile = "Methods" + _extJSON;
         private static string _watersFile = "Waters" + _extJSON;
-        private static string _noPhotoPath = _commonDatapath + "\\No_Photo.png";
+        private static string _noPhotoFileName = "No_Photo.png";
+        private static string _noPhotoFileNameMini = "No_Photo_mini.png";
+        private static string _noPhotoPath = _commonDatapath + "\\" + _noPhotoFileName;
+        private static string _noPhotoPathMini = _commonDatapath + "\\" + _noPhotoFileNameMini;
+        private static string _reportsPath = _commonDatapath + "\\Reports";
+        private static string _shortReportsFile = _reportsPath + "\\ShortReports.json";
+        private static string _shortReportsImagesPath = _reportsPath + "\\Mini\\";
 
         public const int UNDEFINED_ID = -1;
 
@@ -35,6 +42,10 @@ namespace FishingDiary.Models
         public static string EDIT_TABLES_PATH
         {
             get => _editTablesPath;
+        }
+        public static string PROPERTIES_PATH
+        {
+            get => _propertiesPath;
         }
         public static string LOCALE_DATA_PATH
         {
@@ -81,9 +92,39 @@ namespace FishingDiary.Models
             get => _watersFile;
         }
 
+        public static string NO_PHOTO_FILE_NAME
+        {
+            get => _noPhotoFileName;
+        }
+
+        public static string NO_PHOTO_FILE_NAME_MINI
+        {
+            get => _noPhotoFileNameMini;
+        }
+
         public static string NO_PHOTO_PATH
         {
             get => _noPhotoPath;
+        }
+
+        public static string NO_PHOTO_PATH_MINI
+        {
+            get => _noPhotoPathMini;
+        }
+
+        public static string REPORTS_PATH
+        {
+            get => _reportsPath;
+        }
+
+        public static string SHORT_REPORT_PATH
+        {
+            get => _shortReportsFile;
+        }
+
+        public static string SHORT_REPORT_IMAGES_PATH
+        {
+            get => _shortReportsImagesPath;
         }
 
     }

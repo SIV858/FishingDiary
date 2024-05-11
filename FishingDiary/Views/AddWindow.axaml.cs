@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Interactivity;
 using FishingDiary.ViewModels;
+using FishingDiary.Models;
 
 namespace FishingDiary.Views
 {
@@ -27,6 +28,7 @@ namespace FishingDiary.Views
         {
             AddWindowViewModel model = (AddWindowViewModel)this.DataContext;
             model.AddCurrentReport();
+            Properties.GetInstance().SaveProperties();
 
             this.Close();
         }

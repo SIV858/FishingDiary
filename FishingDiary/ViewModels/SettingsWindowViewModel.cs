@@ -21,7 +21,7 @@ namespace FishingDiary.ViewModels
         private string mApply = CommonData.GenLanguages.CommonTexts.sButtonApply;
         private string mLang = CommonData.GenLanguages.Settings.sLanguage;
 
-        public double dFontSize => Properties.FontSize;
+        public double dFontSize => Properties.GetInstance().FontSize;
 
         public string txtHead
         {
@@ -98,6 +98,7 @@ namespace FishingDiary.ViewModels
                 mIsLanguageChanged = true;
                 UpdateLang();
             }
+            Properties.GetInstance().SaveProperties();
             return true;
         }
 

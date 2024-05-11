@@ -17,7 +17,7 @@ namespace FishingDiary.ViewModels
 
         public string txtLang => CommonData.GenLanguages.SelectLanguage.sChooseLanguage;
 
-        public double dFontSize => Properties.FontSize;
+        public double dFontSize => Properties.GetInstance().FontSize;
 
         private ObservableCollection<string> mItems;
 

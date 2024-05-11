@@ -5,14 +5,15 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using Avalonia;
+using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using SkiaSharp;
 
 namespace FishingDiary.Models
 {
     public static class Helpers
     {
-
         public static Bitmap LoadFromFile(string resourcePath)
         {
             Bitmap image;

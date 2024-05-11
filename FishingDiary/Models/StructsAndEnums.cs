@@ -87,6 +87,6 @@ namespace FishingDiary.Models
         FishCaughtBad,
         FishCaughtNormal,
         FishCaughtGood,
-        FishCaughtexcellent
+        FishCaughtExcellent
     }
 }

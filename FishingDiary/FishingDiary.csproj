@@ -10,10 +10,11 @@
     <None Remove="Assets\Data\Baits.json" />
     <None Remove="Assets\Data\EditTables.json" />
     <None Remove="Assets\Data\En\Fishes.json" />
-    <None Remove="Assets\Data\En\Waters.txt" />
+    <None Remove="Assets\Data\En\Waters.json" />
     <None Remove="Assets\Data\Fishing_tackle.json" />
     <None Remove="Assets\Data\Groundbaits.json" />
     <None Remove="Assets\Data\Methods.json" />
+    <None Remove="assets\data\reports\ShortReports.json" />
     <None Remove="Assets\Data\Rus\Baits.json" />
     <None Remove="Assets\Data\Rus\Fishes.json" />
     <None Remove="Assets\Data\Rus\Fishing_tackle.json" />
@@ -30,14 +31,17 @@
     <PackageReference Include="Avalonia.Remote.Protocol" Version="11.0.10" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
     <PackageReference Include="Avalonia.Themes.Simple" Version="11.0.10" />
-    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.10.6" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.10.9" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\GeneralReportView.axaml.cs">
       <DependentUpon>GeneralReportView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Data\Reports\" />
+  </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="md &quot;$(TargetDir)locale&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\languages\*&quot; &quot;$(TargetDir)locale\&quot;&#xD;&#xA;md &quot;$(TargetDir)Data&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\*&quot; &quot;$(TargetDir)Data&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\Rus&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\En\*&quot; &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\Rus\*&quot; &quot;$(TargetDir)Data\Rus&quot;" />
+    <Exec Command="md &quot;$(TargetDir)locale&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\languages\*&quot; &quot;$(TargetDir)locale\&quot;&#xD;&#xA;md &quot;$(TargetDir)Data&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\*&quot; &quot;$(TargetDir)Data&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\Rus&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\En\*&quot; &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\Rus\*&quot; &quot;$(TargetDir)Data\Rus&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\Reports&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\Reports\*&quot; &quot;$(TargetDir)Data\Reports&quot;" />
   </Target>
 </Project>
