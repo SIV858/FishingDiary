@@ -31,13 +31,11 @@ namespace FishingDiary.Models
     {
         Sun,
         Cloudy,
-        Dull,
+        Overcast,
         Rain,
-        Shower,
         Thunderstorm,
         Snow,
-        Blizzard,
-        Fog
+        Blizzard
     }
 
     public enum WindDirection

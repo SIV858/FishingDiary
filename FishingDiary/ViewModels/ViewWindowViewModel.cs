@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using FishingDiary.Models;
+using ReactiveUI;
 
 namespace FishingDiary.ViewModels
 {
@@ -12,5 +13,9 @@ namespace FishingDiary.ViewModels
         public ViewWindowViewModel()
         {
         }
+
+        public string txtHead => CommonData.GenLanguages.ViewWindow.sHead;
+
+        public ObservableCollection<ShortReport> Reports => ShortReportsList.ListReports;
     }
 }

@@ -1,8 +1,84 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="clr-namespace:FishingDiary.ViewModels;assembly=FishingDiary"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FishingDiary.Views.ViewWindow"
-        Title="ViewWindow">
+		Height="820" 
+		Width="600"
+        Title="{Binding txtHead}">
+	<Design.DataContext>
+		<vm:ViewWindowViewModel/>
+	</Design.DataContext>
+	<ScrollViewer>
+		<ItemsControl ItemsSource="{Binding Reports}" >
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Border Margin="0,0,0,0"
+						CornerRadius="5"
+						BorderBrush="Gray" BorderThickness="1"
+						Padding="5">
+						<DockPanel DockPanel.Dock="Left">
+							<Image DockPanel.Dock="Left" Margin="0" Height="60" Width="80"
+								Source="{Binding PhotoMini}"/>
+							<StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding txtDate} "/>
+									<TextBlock Text="{Binding StartDate}"/>
+								</StackPanel>
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding txtWater} "/>
+									<TextBlock Text="{Binding BodyOfWater}"/>
+								</StackPanel>
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding txtMethod} "/>
+									<ItemsRepeater ItemsSource="{Binding FishingMethods}" Margin="0 0">
+										<ItemsRepeater.Layout>
+											<StackLayout Orientation="Horizontal" />
+										</ItemsRepeater.Layout>
+										<ItemsRepeater.ItemTemplate>
+											<DataTemplate>
+												<TextBlock Text="{Binding Text} "/>
+											</DataTemplate>
+										</ItemsRepeater.ItemTemplate>
+									</ItemsRepeater>
+								</StackPanel>
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding txtTotalWeight} "/>
+									<TextBlock Text="{Binding TotalWeight}"/>
+								</StackPanel>
+							</StackPanel>
+							<StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding txtTemperature} "/>
+									<TextBlock Text="{Binding AirTemperatureText}"/>
+								</StackPanel>
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding txtPrecipitation} "/>
+									<TextBlock Text="{Binding PrecipitationText}"/>
+								</StackPanel>
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding txtDirection} "/>
+									<TextBlock Text="{Binding WindDirectionText} "/>
+								</StackPanel>
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding txtSpeed} "/>
+									<TextBlock Text="{Binding WindSpeedText}"/>
+								</StackPanel>
+							</StackPanel>
+							<DockPanel DockPanel.Dock="Right">
+								<StackPanel Orientation="Vertical" DockPanel.Dock="Right">
+									<Button DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtView}"/>
+									<Button DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtEdit}"/>
+									<Button DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtDelete}"/>
+								</StackPanel>
+								<TextBlock Text=""/>
+							</DockPanel>
+						</DockPanel>
+					</Border>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</ScrollViewer>
 </Window>

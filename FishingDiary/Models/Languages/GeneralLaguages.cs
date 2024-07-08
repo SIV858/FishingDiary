@@ -1,4 +1,5 @@
 ﻿//19.10.23
+using FishingDiary.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +17,7 @@ namespace FishingDiary.Models
             Settings = new CSettings();
             GeneralReport = new CGeneralReport();
             AddReport = new CAddReport();
+            ViewWindow = new CViewWindow();
             EditorTexts = new CEditorTexts();
         }
 
@@ -27,6 +29,7 @@ namespace FishingDiary.Models
         public CSettings Settings { get; set; }
         public CGeneralReport GeneralReport { get; set; }
         public CAddReport AddReport { get; set; }
+        public CViewWindow ViewWindow { get; set; }
         public CEditorTexts EditorTexts { get; set; }
     }
 }

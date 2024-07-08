@@ -31,6 +31,14 @@ namespace FishingDiary.Models
 
         public const int UNDEFINED_ID = -1;
 
+        public const int HEIGHT_16x9_IMAGE = 180;
+        public const int WIDTH_16x9_IMAGE = 320;
+
+        public const int HEIGHT_4x3_IMAGE = 240;
+        public const int WIDTH_4x3_IMAGE = 320;
+
+        public const double AVERAGE_RATIO_COEF = 1.5;
+
         public static string CURRENT_DIRECTORY
         {
             get => _currentDirectory;

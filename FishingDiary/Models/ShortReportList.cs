@@ -5,13 +5,18 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Text.Json;
+using System.Collections.ObjectModel;
 
 namespace FishingDiary.Models
 {
     public static class ShortReportsList
     {
         // Reports list
-        private static List<ShortReport> mListReports = new List<ShortReport>();
+        private static ObservableCollection<ShortReport> mListReports = new ObservableCollection<ShortReport>();
+
+        // Public reports list
+        public static ObservableCollection<ShortReport> ListReports => mListReports;
+
 
         /// <summary>
         /// Add report
@@ -50,7 +55,7 @@ namespace FishingDiary.Models
                     string json = reader.ReadToEnd();
 
                     var readOnlySpan = new ReadOnlySpan<byte>(Encoding.UTF8.GetBytes(json));
-                    mListReports = JsonSerializer.Deserialize <List<ShortReport>> (readOnlySpan);
+                    mListReports = JsonSerializer.Deserialize <ObservableCollection<ShortReport>> (readOnlySpan);
                 }
             }
 
@@ -69,7 +74,7 @@ namespace FishingDiary.Models
                 //Write data to file
                 using (StreamWriter writer = new StreamWriter(sNameMainFile))
                 {
-                    string json = JsonSerializer.Serialize<List<ShortReport>>(mListReports);
+                    string json = JsonSerializer.Serialize<ObservableCollection<ShortReport>>(mListReports);
                     writer.Write(json);
                 }
             }

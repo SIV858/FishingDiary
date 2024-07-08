@@ -47,7 +47,7 @@
     "sTemperatureMoreThan": "More than +40",
     "sPrecipitation": "Precipitation:",
     "sSun": "Sun",
-    "sÑloudy": "Ñloudy",
+    "sï¿½loudy": "ï¿½loudy",
     "sOvercast": "Overcast",
     "sRain": "Rain",
     "sThunderstorm": "Thunderstorm",
@@ -85,7 +85,7 @@
     "sGood": "Good",
     "sExcellent": "Excellent",
     "sCaught": "Caught fish:",
-    "sId": "¹",
+    "sId": "ï¿½",
     "sNameFish": "Name fish",
     "sQuantity": "Quantity",
     "sBait": "Bait",
@@ -103,6 +103,12 @@
   },
   "AddReport": {
     "sHead": "Add report"
+  },
+  "ViewWindow": {
+    "sHead": "Viewing Reports",
+    "sView": "View",
+    "sEdit": "Edit",
+    "sDelete": "Delete"
   },
   "EditorTexts": {
     "sHead": "Editor",

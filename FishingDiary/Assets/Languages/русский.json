@@ -103,6 +103,12 @@
   "AddReport": {
     "sHead": "Добавить отчёт"
   },
+  "ViewWindow": {
+    "sHead": "Просмотр отчётов",
+    "sView": "Просмотр",
+    "sEdit": "Редактирование",
+    "sDelete": "Удаление"
+  },
   "EditorTexts": {
     "sHead": "Редактор параметров",
     "EditParamDict": {
