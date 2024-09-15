@@ -20,7 +20,7 @@ namespace FishingDiary.ViewModels
         public string txtAdd => CommonData.GenLanguages.CommonTexts.sButtonAdd;
         public string txtCancel => CommonData.GenLanguages.CommonTexts.sButtonCancel;
 
-        public GeneralReportViewModel generalReport { get; }
+        private GeneralReportViewModel generalReport { get; }
 
         /// <summary>
         /// Constructor
@@ -31,8 +31,6 @@ namespace FishingDiary.ViewModels
         }
 
         /// <summary>
-        /// Add current report
-        /// Добавление текущего отчёта
         /// </summary>
         public void AddCurrentReport()
         {

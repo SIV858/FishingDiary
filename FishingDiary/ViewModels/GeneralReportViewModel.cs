@@ -362,7 +362,7 @@ namespace FishingDiary.ViewModels
         /// <summary>
         /// Constructor
         /// </summary>
-        public GeneralReportViewModel()
+        public GeneralReportViewModel(string Path = null)
         {
             AddFish = ReactiveCommand.Create(() =>
             {
@@ -378,7 +378,15 @@ namespace FishingDiary.ViewModels
                 }
             });
 
-            CurrentReport = new Report();
+            if (String.IsNullOrEmpty(Path))
+            {
+                CurrentReport = new Report();
+            }
+            else
+            {
+                CurrentReport = ReportsList.LoadReport(Path);
+            }
+
         }
     }
 }

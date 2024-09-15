@@ -8,6 +8,7 @@
     "sButtonExit": "Выйти",
     "sButtonApply": "Применить",
     "sButtonAdd": "Добавить",
+    "sButtonChange": "Изменить",
     "sButtonYes": "Да",
     "sButtonNo": "Нет",
     "sButtonClear": "Очистить"
@@ -102,6 +103,9 @@
   },
   "AddReport": {
     "sHead": "Добавить отчёт"
+  },
+  "EditReport": {
+    "sHead": "Редактировать отчёт"
   },
   "ViewWindow": {
     "sHead": "Просмотр отчётов",

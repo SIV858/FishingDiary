@@ -1,16 +1,16 @@
-﻿//19.09.20
-using Avalonia;
+//15.09.24
+
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 using Avalonia.Interactivity;
-using FishingDiary.ViewModels;
+using Avalonia.Markup.Xaml;
 using FishingDiary.Models;
+using FishingDiary.ViewModels;
 
 namespace FishingDiary.Views
 {
-    public partial class AddWindow : Window
+    public partial class EditWindow : Window
     {
-        public AddWindow()
+        public EditWindow()
         {
             InitializeComponent();
         }
@@ -21,13 +21,17 @@ namespace FishingDiary.Views
         }
 
         /// <summary>
-        /// Handling the event of clicking the "Add" button
+        /// Handling the event of clicking the "Change" button
         /// </summary>
-        private void OnAddClick(object sender, RoutedEventArgs e)
+        private void OnChangeClick(object sender, RoutedEventArgs e)
         {
-            AddWindowViewModel model = (AddWindowViewModel)this.DataContext;
-            model.AddCurrentReport();
+            EditWindowViewModel model = (EditWindowViewModel)this.DataContext;
+            model.EditCurrentReport();
             Properties.GetInstance().SaveProperties();
+
+            // Updating the owner window
+            ViewWindow view = (ViewWindow)this.Owner;
+            view.UpdateWindow();
 
             this.Close();
         }

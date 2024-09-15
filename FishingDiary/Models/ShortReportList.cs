@@ -20,7 +20,6 @@ namespace FishingDiary.Models
 
         /// <summary>
         /// Add report
-        /// Добавить отчёт
         /// </summary>
         /// <param name="report">Reports</param>
         public static void AddReport(ShortReport report)
@@ -29,8 +28,22 @@ namespace FishingDiary.Models
         }
 
         /// <summary>
+        /// Find report by ID
+        /// </summary>
+        /// <param name="Id">ID</param>
+        /// <returns>Report</returns>
+        public static ShortReport FindReport(uint Id)
+        {
+            foreach (var report in mListReports)
+            {
+                if (report.ReportId == Id) 
+                    return report;
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Remove report
-        /// Удалить отчёт
         /// </summary>
         /// <param name="report">Report</param>
         /// <returns>Removal result</returns>

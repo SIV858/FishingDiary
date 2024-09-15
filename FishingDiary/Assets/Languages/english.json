@@ -9,6 +9,7 @@
     "sButtonExit": "Exit",
     "sButtonApply": "Apply",
     "sButtonAdd": "Add",
+    "sButtonChange": "Change",
     "sButtonYes": "Yes",
     "sButtonNo": "No",
     "sButtonClear": "Clear"
@@ -103,6 +104,9 @@
   },
   "AddReport": {
     "sHead": "Add report"
+  },
+  "EditReport": {
+    "sHead": "Edit report"
   },
   "ViewWindow": {
     "sHead": "Viewing Reports",

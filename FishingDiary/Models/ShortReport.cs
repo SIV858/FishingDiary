@@ -1,5 +1,7 @@
 ﻿//30.04.24
+using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
+using FishingDiary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -112,14 +114,28 @@ namespace FishingDiary.Models
         public string WindSpeedText => Helpers.ConvertWindSpeedToString(WindSpeed);
 
 
+
+
         public ShortReport()
         {
 
         }
 
+        /// <summary>
+        /// Constructor from report
+        /// </summary>
+        /// <param name="report">Report</param>
         public ShortReport(Report report)
         {
             ReportId = Properties.GetInstance().CurrentReportId;
+
+            CopyData(report);
+
+            Properties.GetInstance().CurrentReportId++;
+        }
+
+        private void CopyData(Report report)
+        {
             StartDate = report.StartDate;
             EndDate = report.EndDate;
             BodyOfWater = report.BodyOfWater;
@@ -130,8 +146,43 @@ namespace FishingDiary.Models
             WindSpeed = report.WindSpeed;
             FishingMethods = report.FishingMethods;
             TotalWeight = report.TotalWeight;
+        }
 
-            Properties.GetInstance().CurrentReportId++;
+
+        public void EditAndSaveReport(Report report)
+        {
+            CopyData(report);
+
+            string photoName = Path.GetFileName(PhotoPath);
+
+            if (photoName != PathsAndConstants.NO_PHOTO_FILE_NAME)
+            {
+                string ImagePath = PathsAndConstants.SHORT_REPORT_IMAGES_PATH + photoName;
+
+                //reduce and save the original image
+                using (Bitmap image = new Bitmap(PhotoPath))
+                {
+                    if (image.Size.Width / image.Size.Height > PathsAndConstants.AVERAGE_RATIO_COEF)
+                    {
+                        PhotoMini = image.CreateScaledBitmap(new Avalonia.PixelSize(PathsAndConstants.WIDTH_16x9_IMAGE,
+                            PathsAndConstants.HEIGHT_16x9_IMAGE));
+                    }
+                    else
+                    {
+                        PhotoMini = image.CreateScaledBitmap(new Avalonia.PixelSize(PathsAndConstants.WIDTH_4x3_IMAGE,
+                            PathsAndConstants.WIDTH_4x3_IMAGE));
+                    }
+                    PhotoMini.Save(ImagePath);
+                }
+
+                PhotoPath = ImagePath;
+            }
+            else
+            {
+                PhotoPath = Path.GetDirectoryName(PhotoPath) + "\\" + PathsAndConstants.NO_PHOTO_FILE_NAME_MINI;
+            }
+
+            ShortReportsList.SaveReportsList(PathsAndConstants.SHORT_REPORT_PATH);
         }
 
         public void SaveReport()

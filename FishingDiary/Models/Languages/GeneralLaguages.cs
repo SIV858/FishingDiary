@@ -29,6 +29,7 @@ namespace FishingDiary.Models
         public CSettings Settings { get; set; }
         public CGeneralReport GeneralReport { get; set; }
         public CAddReport AddReport { get; set; }
+        public CEditReport EditReport { get; set; }
         public CViewWindow ViewWindow { get; set; }
         public CEditorTexts EditorTexts { get; set; }
     }

@@ -4,18 +4,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml;
+using System.Text.Json;
 
 namespace FishingDiary.Models
 {
     public static class ReportsList
     {
         // Reports list
-        // Список отчётов
         private static List<Report> mListReports = new List<Report>();
 
         /// <summary>
         /// Add report
-        /// Добавить отчёт
         /// </summary>
         /// <param name="report">Reports</param>
         public static void AddReport(Report report)
@@ -24,8 +23,37 @@ namespace FishingDiary.Models
         }
 
         /// <summary>
+        /// Load report from file
+        /// </summary>
+        /// <param name="ReportPath">Path to report</param>
+        public static Report LoadReport(string ReportPath)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(ReportPath))
+                {
+                    string json = reader.ReadToEnd();
+
+                    var readOnlySpan = new ReadOnlySpan<byte>(Encoding.UTF8.GetBytes(json));
+                    Report report = JsonSerializer.Deserialize<Report>(readOnlySpan);
+                    mListReports.Add(report);
+                    return report;
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                throw new FileNotFoundException(ReportPath);
+            }
+            catch (JsonException)
+            {
+                throw new JsonException(ReportPath);
+            }
+
+        }
+
+
+        /// <summary>
         /// Remove report
-        /// Удалить отчёт
         /// </summary>
         /// <param name="report">Report</param>
         /// <returns>Removal result</returns>
@@ -59,7 +87,7 @@ namespace FishingDiary.Models
         {
             FileStream file = new FileStream(sNameMainFile, FileMode.Create);
 
-            foreach(Report report in mListReports)
+            foreach (Report report in mListReports)
             {
                 // to do
             }
