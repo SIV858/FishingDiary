@@ -3,6 +3,7 @@
     "sDataPath": "Rus"
   },
   "CommonTexts": {
+    "sProgramName": "Рыболовные отчёты",
     "sButtonOk": "ОК",
     "sButtonCancel": "Отмена",
     "sButtonExit": "Выйти",
@@ -111,7 +112,8 @@
     "sHead": "Просмотр отчётов",
     "sView": "Просмотр",
     "sEdit": "Редактирование",
-    "sDelete": "Удаление"
+    "sDelete": "Удаление",
+    "sWarnDeletion": "Вы уверены, что хотите удалить отчёт?"
   },
   "EditorTexts": {
     "sHead": "Редактор параметров",

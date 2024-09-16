@@ -71,7 +71,7 @@
 								<StackPanel Orientation="Vertical" DockPanel.Dock="Right">
 									<Button DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtView}"/>
 									<Button Click="OnEditClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtEdit}"/>
-									<Button DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtDelete}"/>
+									<Button Click="OnDeleteClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtDelete}"/>
 								</StackPanel>
 								<TextBlock Text=""/>
 							</DockPanel>

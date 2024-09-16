@@ -4,6 +4,7 @@
   },
 
   "CommonTexts": {
+    "sProgramName": "Fishing reports",
     "sButtonOk": "OK",
     "sButtonCancel": "Cancel",
     "sButtonExit": "Exit",
@@ -112,7 +113,8 @@
     "sHead": "Viewing Reports",
     "sView": "View",
     "sEdit": "Edit",
-    "sDelete": "Delete"
+    "sDelete": "Delete",
+    "sWarnDeletion": "Are you sure you want to delete the report?"
   },
   "EditorTexts": {
     "sHead": "Editor",

@@ -49,6 +49,16 @@ namespace FishingDiary.Models
         /// <returns>Removal result</returns>
         public static bool DeleteReport(ShortReport report)
         {
+            // delete mini photo
+            if (Path.GetFileName(report.PhotoPath) != PathsAndConstants.NO_PHOTO_FILE_NAME_MINI)
+                File.Delete(report.PhotoPath);
+            // delete report directory photo
+            Directory.Delete(Path.GetDirectoryName(report.ReportPath), true);
+
+            // delete the full report from the list
+            ReportsList.DeleteReport(report.ReportId);
+
+
             return mListReports.Remove(report);
         }
 

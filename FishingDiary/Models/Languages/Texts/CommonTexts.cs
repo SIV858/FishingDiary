@@ -7,6 +7,9 @@ namespace FishingDiary.Models
 {
     public class CCommonTexts
     {
+
+        public string sProgramName { get; set; } = "Fishing reports";
+
         public string sButtonOk { get; set; } = "OK";
         public string sButtonCancel { get; set; } = "Cancel";
         public string sButtonExit { get; set; } = "Exit";

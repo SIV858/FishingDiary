@@ -46,7 +46,7 @@ namespace FishingDiary
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(null, ex.Message, "Error", MessageBox.MessageBoxButtons.Ok);
+                    MessageBox.Show(null, ex.Message, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
                 }
             }
 

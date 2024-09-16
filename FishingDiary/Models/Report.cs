@@ -16,6 +16,12 @@ namespace FishingDiary.Models
     public class Report
     {
         /// <summary>
+        /// Id report beginning with 1
+        /// 0 - error
+        /// </summary>
+        public uint ReportId { get; set; } = 0;
+
+        /// <summary>
         /// Start date fishing
         /// </summary>
         public DateTime StartDate
@@ -330,6 +336,9 @@ namespace FishingDiary.Models
 
         public string SaveReport(uint reportId)
         {
+            // The ID is assigned only during the saving process.
+            ReportId = reportId;
+
             //Reports are broken down by year for easier searching
             string ReportPath = String.Format("{0}\\{1}", PathsAndConstants.REPORTS_PATH, StartDate.Year.ToString());
             if (!Directory.Exists(ReportPath))

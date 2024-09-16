@@ -53,13 +53,30 @@ namespace FishingDiary.Models
 
 
         /// <summary>
-        /// Remove report
+        /// Delete report
         /// </summary>
         /// <param name="report">Report</param>
         /// <returns>Removal result</returns>
         public static bool DeleteReport(Report report)
         {
             return mListReports.Remove(report);
+        }
+
+
+        /// <summary>
+        /// Delete report by Id. If the report is not in the list, then we do nothing.
+        /// </summary>
+        /// <param name="report">Report ID</param>
+        public static void DeleteReport(uint ID)
+        {
+            foreach (Report report in mListReports)
+            {
+                if (report.ReportId == ID)
+                {
+                    mListReports.Remove(report);
+                    break;
+                }
+            }
         }
 
         /// <summary>
