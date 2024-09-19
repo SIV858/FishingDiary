@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace FishingDiary.Models
 {
@@ -25,9 +26,10 @@ namespace FishingDiary.Models
         public uint MaxWeight { get; set; }        // in grams, 0 if weight was not measured
         public DateTime Time { get; set; }         // Time of catching fish, null if Quantity > 1
 
-        public List<string> Fishes => CommonData.EditableTexts.FishesText;
-        public List<string> Baits => CommonData.EditableTexts.BaitsText;
-        public List<string> Methods => CommonData.EditableTexts.MethodsText ;
+
+        [JsonIgnore] public List<string> Fishes => CommonData.EditableTexts.FishesText;
+        [JsonIgnore] public List<string> Baits => CommonData.EditableTexts.BaitsText;
+        [JsonIgnore] public List<string> Methods => CommonData.EditableTexts.MethodsText ;
 
         public RecordFish()
         {

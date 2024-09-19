@@ -17,7 +17,10 @@ namespace FishingDiary.ViewModels
         public Report CurrentReport { get; }
 
         int _addId = PathsAndConstants.UNDEFINED_ID;
-        string _paramString = String.Empty;
+        string _methodsString = String.Empty;
+        string _tacklesString = String.Empty;
+        string _groundBaitsString = String.Empty;
+        string _baitsString = String.Empty;
 
         // current selected item in the fish table
         private RecordFish _selectedFihsItem;
@@ -82,6 +85,7 @@ namespace FishingDiary.ViewModels
         public string txtResult => CommonData.GenLanguages.GeneralReport.sResult;
 
         public string txtBiting => CommonData.GenLanguages.GeneralReport.sBiting;
+        public string txtUnknown => CommonData.GenLanguages.GeneralReport.sUnknown;
         public string txtNoFish => CommonData.GenLanguages.GeneralReport.sNoFish;
         public string txtWeak => CommonData.GenLanguages.GeneralReport.sWeak;
         public string txtAverage => CommonData.GenLanguages.GeneralReport.sAverage;
@@ -242,8 +246,8 @@ namespace FishingDiary.ViewModels
 
         public string ListMethods
         {
-            get => _paramString;
-            set => this.RaiseAndSetIfChanged(ref _paramString, value);
+            get => _methodsString;
+            set => this.RaiseAndSetIfChanged(ref _methodsString, value);
         }
 
         public int AddTackle
@@ -262,8 +266,8 @@ namespace FishingDiary.ViewModels
 
         public string ListTackle
         {
-            get => _paramString;
-            set => this.RaiseAndSetIfChanged(ref _paramString, value);
+            get => _tacklesString;
+            set => this.RaiseAndSetIfChanged(ref _tacklesString, value);
         }
 
         public int AddGroundbait
@@ -282,8 +286,8 @@ namespace FishingDiary.ViewModels
 
         public string ListGroundbaits
         {
-            get => _paramString;
-            set => this.RaiseAndSetIfChanged(ref _paramString, value);
+            get => _groundBaitsString;
+            set => this.RaiseAndSetIfChanged(ref _groundBaitsString, value);
         }
 
         public int AddBait
@@ -302,8 +306,8 @@ namespace FishingDiary.ViewModels
 
         public string ListBaits
         {
-            get => _paramString;
-            set => this.RaiseAndSetIfChanged(ref _paramString, value);
+            get => _baitsString;
+            set => this.RaiseAndSetIfChanged(ref _baitsString, value);
         }
 
         public ObservableCollection<RecordFish> Fishes 
@@ -385,6 +389,10 @@ namespace FishingDiary.ViewModels
             else
             {
                 CurrentReport = ReportsList.LoadReport(Path);
+                ListMethods = CurrentReport.GetMethodsText();
+                ListTackle = CurrentReport.GetFishingTacklesText();
+                ListGroundbaits = CurrentReport.GetGroundbaitsText();
+                ListBaits = CurrentReport.GetBaitsText();
             }
 
         }

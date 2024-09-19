@@ -67,6 +67,7 @@ namespace FishingDiary.Models
 
         // Fish activity
         public string sBiting { get; set; } = "Fish activity:";
+        public string sUnknown {  get; set; } = "Unknown";
         public string sNoFish { get; set; } = "No fish";
         public string sWeak { get; set; } = "Weak";
         public string sAverage { get; set; } = "Average";

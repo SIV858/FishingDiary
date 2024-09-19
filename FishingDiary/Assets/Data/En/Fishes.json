@@ -1,7 +1,7 @@
 ﻿[
   {
     "Id": 0,
-    "Text": " "
+    "Text": "Unknown"
   },
   {
     "Id": 1,
@@ -25,11 +25,11 @@
   },
   {
     "Id": 6,
-    "Text": "Ruff"
+    "Text": " "
   },
   {
     "Id": 7,
-    "Text": " "
+    "Text": "Ruff"
   },
   {
     "Id": 8,
@@ -37,35 +37,35 @@
   },
   {
     "Id": 9,
-    "Text": "Carp"
+    "Text": " "
   },
   {
     "Id": 10,
-    "Text": "Mirror carp"
+    "Text": "Carp"
   },
   {
     "Id": 11,
-    "Text": " "
+    "Text": "Mirror carp"
   },
   {
     "Id": 12,
-    "Text": "Perch"
+    "Text": " "
   },
   {
     "Id": 13,
-    "Text": " "
+    "Text": "Perch"
   },
   {
     "Id": 14,
-    "Text": "Roach"
+    "Text": " "
   },
   {
     "Id": 15,
-    "Text": "Bream"
+    "Text": "Roach"
   },
   {
     "Id": 16,
-    "Text": " "
+    "Text": "Bream"
   },
   {
     "Id": 17,
@@ -73,22 +73,26 @@
   },
   {
     "Id": 18,
-    "Text": "Catfish"
-  },
-  {
-    "Id": 19,
-    "Text": "Zander"
-  },
-  {
-    "Id": 20,
     "Text": " "
   },
   {
+    "Id": 19,
+    "Text": "Catfish"
+  },
+  {
+    "Id": 20,
+    "Text": "Zander"
+  },
+  {
     "Id": 21,
-    "Text": "Pike"
+    "Text": " "
   },
   {
     "Id": 22,
+    "Text": "Pike"
+  },
+  {
+    "Id": 23,
     "Text": "Ide"
   }
 ]

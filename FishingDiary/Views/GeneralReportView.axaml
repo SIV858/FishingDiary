@@ -317,6 +317,9 @@
 			<TextBlock Margin="0 5" Text="{Binding txtBiting}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
 			<ComboBox  Padding="5" SelectedIndex="{Binding Biting}" FontSize="{Binding dFontSize}">
 				<ComboBoxItem>
+					<TextBlock Text="{Binding txtUnknown}" />
+				</ComboBoxItem>
+				<ComboBoxItem>
 					<TextBlock Text="{Binding txtNoFish}" />
 				</ComboBoxItem>
 				<ComboBoxItem>

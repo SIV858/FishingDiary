@@ -1,26 +1,30 @@
 ﻿[
   {
     "Id": 0,
-    "Text": "Float fishing"
+    "Text": "Unknown"
   },
   {
     "Id": 1,
-    "Text": "Fider fishing"
+    "Text": "Float fishing"
   },
   {
     "Id": 2,
-    "Text": "Spinning"
+    "Text": "Fider fishing"
   },
   {
     "Id": 3,
-    "Text": "Fly fishing"
+    "Text": "Spinning"
   },
   {
     "Id": 4,
-    "Text": " "
+    "Text": "Fly fishing"
   },
   {
     "Id": 5,
+    "Text": " "
+  },
+  {
+    "Id": 6,
     "Text": " "
   }
 ]

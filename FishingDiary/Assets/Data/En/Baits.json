@@ -1,15 +1,15 @@
 ﻿[
   {
     "Id": 0,
-    "Text": " "
+    "Text": "Unknown"
   },
   {
     "Id": 1,
-    "Text": "Corn"
+    "Text": " "
   },
   {
     "Id": 2,
-    "Text": " "
+    "Text": "Corn"
   },
   {
     "Id": 3,
@@ -17,18 +17,22 @@
   },
   {
     "Id": 4,
-    "Text": "Maggot"
-  },
-  {
-    "Id": 5,
     "Text": " "
   },
   {
+    "Id": 5,
+    "Text": "Maggot"
+  },
+  {
     "Id": 6,
-    "Text": "Bread"
+    "Text": " "
   },
   {
     "Id": 7,
+    "Text": "Bread"
+  },
+  {
+    "Id": 8,
     "Text": "Worm"
   }
 ]
