@@ -386,6 +386,8 @@ namespace FishingDiary.ViewModels
             {
                 CurrentReport = new Report();
                 _photo = Helpers.LoadFromResource("Assets/Data/No_Photo.png");
+                // New report - reset ID
+                RecordFish.ResetId();
             }
             else
             {
@@ -395,6 +397,7 @@ namespace FishingDiary.ViewModels
                 ListGroundbaits = CurrentReport.GetGroundbaitsText();
                 ListBaits = CurrentReport.GetBaitsText();
                 _photo = Helpers.LoadFromFile(CurrentReport.PhotoPath);
+                RecordFish.SetId((ushort)(CurrentReport.CaughtFishes.Count + 1));
             }
         }
     }

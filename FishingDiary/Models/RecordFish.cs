@@ -8,7 +8,10 @@ namespace FishingDiary.Models
 {
     public class RecordFish
     {
-        private static ushort _currentId = 1;
+        private const ushort START_ID = 1;
+
+
+        private static ushort _currentId = START_ID;
 
         private ushort _id = 0;
 
@@ -47,6 +50,16 @@ namespace FishingDiary.Models
         public static void DecrementId()
         {
             _currentId--;
+        }
+
+        public static void ResetId()
+        {
+            SetId(START_ID);
+        }
+
+        public static void SetId(ushort Id)
+        {
+            _currentId = Id;
         }
     }
 }
