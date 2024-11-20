@@ -6,10 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FishingDiary.Views.EditWindow"
-		Height="820" 
-		Width="1270"
+		Height="840" 
+		Width="1350"
 		MinHeight="730"
-		MinWidth="1000"
+		MinWidth="1350"
         Title="{Binding txtHead}">
 	<Design.DataContext>
 		<vm:EditWindowViewModel/>

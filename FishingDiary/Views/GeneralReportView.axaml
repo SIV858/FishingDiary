@@ -336,7 +336,7 @@
 				</ComboBoxItem>
 			</ComboBox>
 			<TextBlock Margin="10 5" Text="{Binding txtTotalWeight}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-			<NumericUpDown Value="{Binding TotalWeight, Mode=TwoWay}" Increment="0.01" FormatString="0.00"
+			<NumericUpDown Value="{Binding TotalWeight, Mode=TwoWay}" FontSize="{Binding dFontSize}" Increment="0.01" FormatString="0.00"
 								  VerticalAlignment="Center" HorizontalAlignment="Center" />
 			<TextBlock Text=""/>
 		</DockPanel>

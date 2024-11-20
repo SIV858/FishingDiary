@@ -53,13 +53,25 @@ namespace FishingDiary.Models
             if (Path.GetFileName(report.PhotoPath) != PathsAndConstants.NO_PHOTO_FILE_NAME_MINI)
                 File.Delete(report.PhotoPath);
             // delete report directory photo
-            Directory.Delete(Path.GetDirectoryName(report.ReportPath), true);
+            try
+            {
+                Directory.Delete(Path.GetDirectoryName(report.ReportPath), true);
+            }
+            catch(DirectoryNotFoundException)
+            {
+
+            }
 
             // delete the full report from the list
             ReportsList.DeleteReport(report.ReportId);
 
+            if (!mListReports.Remove(report))
+            {
+                return false;
+            }
 
-            return mListReports.Remove(report);
+            return SaveReportsList(PathsAndConstants.SHORT_REPORT_PATH);
+        
         }
 
         /// <summary>
