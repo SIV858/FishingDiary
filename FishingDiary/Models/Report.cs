@@ -365,7 +365,7 @@ namespace FishingDiary.Models
 
                 }
 
-                PhotoPath = ImagePath;
+                PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(), ImagePath);
             }
 
             ReportPath += String.Format("\\{0}_report.json", reportId.ToString());

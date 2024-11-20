@@ -214,11 +214,12 @@ namespace FishingDiary.Models
                     PhotoMini.Save(ImagePath);  
                 }
 
-                PhotoPath = ImagePath;
+                PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(), ImagePath);
             }
             else
             {
-                PhotoPath = Path.GetDirectoryName(PhotoPath) + "\\" + PathsAndConstants.NO_PHOTO_FILE_NAME_MINI;
+                PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(), 
+                    Path.GetDirectoryName(PhotoPath) + "\\" + PathsAndConstants.NO_PHOTO_FILE_NAME_MINI);
             }
 
 

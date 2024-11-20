@@ -120,7 +120,7 @@ namespace FishingDiary.ViewModels
 
         public string txtOpenPhoto => CommonData.GenLanguages.GeneralReport.sOpenPhoto;
 
-        Bitmap? _photo = Helpers.LoadFromResource("Assets/Data/No_Photo.png");
+        Bitmap? _photo;
 
         public Bitmap? Photo 
         {
@@ -385,6 +385,7 @@ namespace FishingDiary.ViewModels
             if (String.IsNullOrEmpty(Path))
             {
                 CurrentReport = new Report();
+                _photo = Helpers.LoadFromResource("Assets/Data/No_Photo.png");
             }
             else
             {
@@ -393,8 +394,8 @@ namespace FishingDiary.ViewModels
                 ListTackle = CurrentReport.GetFishingTacklesText();
                 ListGroundbaits = CurrentReport.GetGroundbaitsText();
                 ListBaits = CurrentReport.GetBaitsText();
+                _photo = Helpers.LoadFromFile(CurrentReport.PhotoPath);
             }
-
         }
     }
 }

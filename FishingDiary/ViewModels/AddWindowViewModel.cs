@@ -8,6 +8,7 @@ using ReactiveUI;
 using FishingDiary.Models;
 using Avalonia.Animation.Easings;
 using System.Xml.Linq;
+using Avalonia.Controls.Shapes;
 
 namespace FishingDiary.ViewModels
 {
@@ -44,7 +45,8 @@ namespace FishingDiary.ViewModels
             // adding a report to the list
             ReportsList.AddReport(generalReport.CurrentReport);
             // saving the report and getting the path to it
-            shortReport.ReportPath = generalReport.CurrentReport.SaveReport(shortReport.ReportId);
+            shortReport.ReportPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(),
+                generalReport.CurrentReport.SaveReport(shortReport.ReportId));
 
             //adding a short report to the list and saving the list
             shortReport.SaveReport();

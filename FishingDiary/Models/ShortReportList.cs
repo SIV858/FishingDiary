@@ -92,6 +92,11 @@ namespace FishingDiary.Models
                     var readOnlySpan = new ReadOnlySpan<byte>(Encoding.UTF8.GetBytes(json));
                     mListReports = JsonSerializer.Deserialize <ObservableCollection<ShortReport>> (readOnlySpan);
                 }
+
+                foreach (var report in mListReports)
+                {
+                    report.PhotoMini = Helpers.LoadFromFile(report.PhotoPath);
+                }
             }
 
             return true;
