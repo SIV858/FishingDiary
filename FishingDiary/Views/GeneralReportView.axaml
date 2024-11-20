@@ -191,7 +191,7 @@
 			<DataGrid Margin="0" ItemsSource="{Binding Fishes}"
 		  GridLinesVisibility="All"
 		  CanUserSortColumns="False"
-				 Height="170"
+				 Height="190"
 					  SelectedItem="{Binding SelectItem}"
 		  BorderThickness="0" BorderBrush="Gray">
 				<i:Interaction.Behaviors>
