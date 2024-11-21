@@ -13,5 +13,6 @@ namespace FishingDiary.Models
         public string sErrorFileNotFound { get; set; } = "The following file was not found: ";
         public string sErrorCorruptedFile { get; set; } = "The following file is corrupted: ";
         public string sParamNotFound { get; set; } = "Parameter with given ID not found (Parameter:ID): ";
+        public string sNullNameWater { get; set; } = "It is necessary to specify the name of the reservoir";
     }
 }

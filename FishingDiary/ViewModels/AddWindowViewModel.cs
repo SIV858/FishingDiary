@@ -33,11 +33,11 @@ namespace FishingDiary.ViewModels
 
         /// <summary>
         /// </summary>
-        public void AddCurrentReport()
+        public bool AddCurrentReport()
         {
             if (String.IsNullOrEmpty(generalReport.CurrentReport.BodyOfWater))
             {
-                return;
+                return false;
             }
 
             ShortReport shortReport = new ShortReport(generalReport.CurrentReport);
@@ -56,6 +56,8 @@ namespace FishingDiary.ViewModels
             {
                 CommonData.EditableTexts.AddWater(generalReport.CurrentReport.BodyOfWater);
             }
+
+            return true;
         }
     }
 }

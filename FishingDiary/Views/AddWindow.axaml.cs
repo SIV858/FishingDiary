@@ -26,7 +26,11 @@ namespace FishingDiary.Views
         private void OnAddClick(object sender, RoutedEventArgs e)
         {
             AddWindowViewModel model = (AddWindowViewModel)this.DataContext;
-            model.AddCurrentReport();
+            if (!model.AddCurrentReport())
+            {
+                MessageBox.Show(this, CommonData.GenLanguages.ErrorTexts.sNullNameWater, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                return;
+            }
             Properties.GetInstance().SaveProperties();
 
             this.Close();

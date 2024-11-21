@@ -20,7 +20,8 @@
     "sErrorCorruptedLanguageFile": "The current language file not found or is corrupted",
     "sErrorFileNotFound": "The following file was not found: ",
     "sErrorCorruptedFile": "The following file is corrupted: ",
-    "sParamNotFound": "Parameter with given ID not found (Parameter:ID): "
+    "sParamNotFound": "Parameter with given ID not found (Parameter:ID): ",
+    "sNullNameWater": "It is necessary to specify the name of the reservoir"
   },
   "SelectLanguage": {
     "sHead": "Languages",

@@ -19,7 +19,8 @@
     "sErrorCorruptedLanguageFile": "Текущий файл языка не найден или повреждён",
     "sErrorFileNotFound": "Следующий файл не найден: ",
     "sErrorCorruptedFile": "Следующий файл повреждён: ",
-    "sParamNotFound": "Параметр с данным ID не найден (Параметр:ID): "
+    "sParamNotFound": "Параметр с данным ID не найден (Параметр:ID): ",
+    "sNullNameWater": "Необходимо задать название водоёма"
   },
   "SelectLanguage": {
     "sHead": "Выбор языка",
