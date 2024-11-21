@@ -132,6 +132,7 @@ namespace FishingDiary.Models
             CopyData(report);
 
             Properties.GetInstance().CurrentReportId++;
+            Properties.GetInstance().PreviousDataTime = report.StartDate;
         }
 
         private void CopyData(Report report)

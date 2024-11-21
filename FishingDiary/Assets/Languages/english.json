@@ -35,7 +35,12 @@
   },
   "Settings": {
     "sHead": "Settings",
-    "sLanguage": "Language: "
+    "sLanguage": "Language: ",
+    "sDateMode": "Initial date setting mode: ",
+    "sTimeMode": "Initial time setting mode: ",
+    "sNew": "Сurrent",
+    "sPrevious": "Previous",
+    "sNull": "Zero"
   },
   "GeneralReport": {
     "sGeneral": "General information",

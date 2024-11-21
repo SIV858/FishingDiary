@@ -16,12 +16,35 @@
 	</Design.DataContext>
     <DockPanel Margin="5,5,5,5">
 		<DockPanel DockPanel.Dock="Top">
-			<TextBlock Width="100" FontSize="{Binding dFontSize}" VerticalAlignment="Center" Text="{Binding txtLang}" />
-			<ComboBox  ItemsSource="{Binding LangItems}"  FontSize="{Binding dFontSize}"  SelectedItem="{Binding txtSelectionItem}" >
-				
+			<TextBlock Width="300" FontSize="{Binding dFontSize}" VerticalAlignment="Center" Text="{Binding txtLang}" />
+			<ComboBox  ItemsSource="{Binding LangItems}"  FontSize="{Binding dFontSize}"  SelectedItem="{Binding txtSelectionItem}" >			
+			</ComboBox>	
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Width="300" Text="{Binding txtDateMode}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<ComboBox SelectedIndex="{Binding DateMode}" HorizontalContentAlignment="Left" FontSize="{Binding dFontSize}">
+				<ComboBoxItem>
+					<TextBlock Text="{Binding txtNew}" />
+				</ComboBoxItem>
+				<ComboBoxItem>
+					<TextBlock Text="{Binding txtPrevious}" />
+				</ComboBoxItem>
 			</ComboBox>
 		</DockPanel>
-
+		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Width="300" Text="{Binding txtTimeMode}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<ComboBox SelectedIndex="{Binding TimeMode}" HorizontalContentAlignment="Left" FontSize="{Binding dFontSize}">
+				<ComboBoxItem>
+					<TextBlock Text="{Binding txtNew}" />
+				</ComboBoxItem>
+				<ComboBoxItem>
+					<TextBlock Text="{Binding txtPrevious}" />
+				</ComboBoxItem>
+				<ComboBoxItem>
+					<TextBlock Text="{Binding txtNull}" />
+				</ComboBoxItem>
+			</ComboBox>
+		</DockPanel>
 		<DockPanel DockPanel.Dock="Bottom" Height="30">
 			<Button Click="OnApplyClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtApply}"/>
 			<Button Click="OnCancelClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtCancel}"/>

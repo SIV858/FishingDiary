@@ -20,6 +20,11 @@ namespace FishingDiary.ViewModels
         private string mCancel = CommonData.GenLanguages.CommonTexts.sButtonCancel;
         private string mApply = CommonData.GenLanguages.CommonTexts.sButtonApply;
         private string mLang = CommonData.GenLanguages.Settings.sLanguage;
+        private string mDateMode = CommonData.GenLanguages.Settings.sDateMode;
+        private string mTimeMode = CommonData.GenLanguages.Settings.sTimeMode;
+        private string mNew = CommonData.GenLanguages.Settings.sNew;
+        private string mPrevious = CommonData.GenLanguages.Settings.sPrevious;
+        private string mNull = CommonData.GenLanguages.Settings.sNull;
 
         public double dFontSize => Properties.GetInstance().FontSize;
 
@@ -55,6 +60,51 @@ namespace FishingDiary.ViewModels
             get => mSelectionItem;
             set => this.RaiseAndSetIfChanged(ref mSelectionItem, value);
         }
+
+        public string txtDateMode
+        {
+            get => mDateMode;
+            set => this.RaiseAndSetIfChanged(ref mDateMode, value);
+        }
+
+        public string txtTimeMode
+        {
+            get => mTimeMode;
+            set => this.RaiseAndSetIfChanged(ref mTimeMode, value);
+        }
+
+        public string txtNew
+        {
+            get => mNew;
+            set => this.RaiseAndSetIfChanged(ref mNew, value);
+        }
+
+        public string txtPrevious
+        {
+            get => mPrevious;
+            set => this.RaiseAndSetIfChanged(ref mPrevious, value);
+        }
+
+        public string txtNull
+        {
+            get => mNull;
+            set => this.RaiseAndSetIfChanged(ref mNull, value);
+        }
+
+        public DateTimeMode DateMode
+        {
+            get => Properties.GetInstance().DateMode;
+            set => this.RaiseAndSetIfChanged(ref Properties.GetInstance()._DateMode, value);
+        }
+
+        public DateTimeMode TimeMode
+        {
+            get => Properties.GetInstance().TimeMode;
+            set => this.RaiseAndSetIfChanged(ref Properties.GetInstance()._TimeMode, value);
+        }
+
+
+
 
         public SettingsWindowViewModel()
         {
@@ -109,7 +159,12 @@ namespace FishingDiary.ViewModels
             txtCancel = CommonData.GenLanguages.CommonTexts.sButtonCancel;
             txtApply = CommonData.GenLanguages.CommonTexts.sButtonApply;
             txtLang = CommonData.GenLanguages.Settings.sLanguage;
-        }
+            txtDateMode = CommonData.GenLanguages.Settings.sDateMode;
+            txtTimeMode = CommonData.GenLanguages.Settings.sTimeMode;
+            txtNew = CommonData.GenLanguages.Settings.sNew;
+            txtPrevious = CommonData.GenLanguages.Settings.sPrevious;
+            txtNull = CommonData.GenLanguages.Settings.sNull;
+    }
 
 
     }

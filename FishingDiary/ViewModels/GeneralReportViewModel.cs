@@ -388,6 +388,33 @@ namespace FishingDiary.ViewModels
                 _photo = Helpers.LoadFromResource("Assets/Data/No_Photo.png");
                 // New report - reset ID
                 RecordFish.ResetId();
+
+                // Settings DataTime
+                CurrentReport.StartDate = DateTime.MinValue;
+                CurrentReport.EndDate = DateTime.MinValue;
+                if (Properties.GetInstance().DateMode == DateTimeMode.Previous)
+                {
+                    CurrentReport.StartDate = Properties.GetInstance().PreviousDataTime.Date;
+                    CurrentReport.EndDate = Properties.GetInstance().PreviousDataTime.Date;
+                }
+                else
+                {
+                    CurrentReport.StartDate = DateTime.Now.Date;
+                    CurrentReport.EndDate = DateTime.Now.Date;
+                }
+
+
+                if (Properties.GetInstance().TimeMode == DateTimeMode.Previous)
+                {
+                    CurrentReport.StartDate = CurrentReport.StartDate.AddTicks(Properties.GetInstance().PreviousDataTime.TimeOfDay.Ticks);
+                    CurrentReport.EndDate = CurrentReport.EndDate.AddTicks(Properties.GetInstance().PreviousDataTime.TimeOfDay.Ticks);
+                }
+                else if (Properties.GetInstance().TimeMode == DateTimeMode.Now)
+                {
+                    CurrentReport.StartDate = CurrentReport.StartDate.AddTicks(DateTime.Now.TimeOfDay.Ticks);
+                    CurrentReport.EndDate = CurrentReport.EndDate.AddTicks(DateTime.Now.TimeOfDay.Ticks);
+                }
+
             }
             else
             {

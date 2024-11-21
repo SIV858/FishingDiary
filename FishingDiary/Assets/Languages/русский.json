@@ -34,7 +34,12 @@
   },
   "Settings": {
     "sHead": "Настройки",
-    "sLanguage": "Язык: "
+    "sLanguage": "Язык: ",
+    "sDateMode": "Режим начальной установки даты: ",
+    "sTimeMode": "Режим начальной установки времени: ",
+    "sNew": "Текущий",
+    "sPrevious": "Предыдущий",
+    "sNull": "Нулевой"
   },
   "GeneralReport": {
     "sGeneral": "Общая информация",

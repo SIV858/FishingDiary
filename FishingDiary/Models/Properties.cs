@@ -9,30 +9,61 @@ using System.Text.Json;
 
 namespace FishingDiary.Models
 {
+
+    public enum DateTimeMode
+    {
+        Now,
+        Previous,
+        Null
+    }
+
     public class Properties
     {
         private static Properties instance;
 
-
-        //private static Languages mCurrentLanguage = Languages.English;
         private double mFontSize = 15.0;
-
-        //public static Languages CurrentLanguage
-        //{
-        //    get => mCurrentLanguage;
-        //    set => mCurrentLanguage = value;
-        //}
 
         /// <summary>
         /// Current free report Id
         /// </summary>
-        public uint CurrentReportId { get; set; } = 1;
+        private uint _CurrentReportId = 1;
+
+        /// <summary>
+        /// Previous DataTime
+        /// </summary>
+        private DateTime _PreviousDataTime = DateTime.Now;
+
+        public uint CurrentReportId
+        {
+            get => _CurrentReportId;
+            set => _CurrentReportId = value;
+        }
 
         public double FontSize
         {
             get => mFontSize;
             set => mFontSize = value;
         }
+
+        public DateTime PreviousDataTime
+        {
+            get => _PreviousDataTime;
+            set => _PreviousDataTime = value;
+        }
+
+        public DateTimeMode DateMode
+        {
+            get => _DateMode;
+            set => _DateMode = value;
+        }
+        internal DateTimeMode _DateMode = DateTimeMode.Now;
+
+        public DateTimeMode TimeMode
+        {
+            get => _TimeMode;
+            set => _TimeMode = value;
+        }
+        internal DateTimeMode _TimeMode = DateTimeMode.Now;
 
         public static Properties GetInstance()
         {
@@ -60,7 +91,6 @@ namespace FishingDiary.Models
 
         public void SaveProperties()
         {
-
             try
             {
                 //Write data to file
