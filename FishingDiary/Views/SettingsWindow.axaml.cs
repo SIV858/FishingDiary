@@ -21,7 +21,6 @@ namespace FishingDiary.Views
 
         /// <summary>
         /// Handling the event of clicking the "Ok" button
-        /// Обработка события нажатия на кнопку ОК
         /// </summary>
         private void OnOkClick(object sender, RoutedEventArgs e)
         {
@@ -36,7 +35,6 @@ namespace FishingDiary.Views
 
         /// <summary>
         /// Handling the event of clicking the "Cancel" button
-        /// Обработка события нажатия на кнопку отмены
         /// </summary>
         private void OnCancelClick(object sender, RoutedEventArgs e)
         {
@@ -46,7 +44,6 @@ namespace FishingDiary.Views
 
         /// <summary>
         /// Handling the event of clicking the "Apply" button
-        /// Обработка события нажатия на кнопку применить
         /// </summary>
         private void OnApplyClick(object sender, RoutedEventArgs e)
         {
@@ -58,7 +55,6 @@ namespace FishingDiary.Views
             }
 
             //If the language has changed, then redraw the window, location and size unchanged
-            //Если изменился язык, то перерисовываем окно на том же месте и с теми же размерам 
             //if (model.IsLanguageChanged)
             //{
             //    this.InitializeComponent();

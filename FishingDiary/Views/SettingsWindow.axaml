@@ -45,6 +45,18 @@
 				</ComboBoxItem>
 			</ComboBox>
 		</DockPanel>
+		<DockPanel DockPanel.Dock="Top">
+			<TextBlock Width="300" Text="{Binding txtViewReportCount}" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			<ComboBox SelectedIndex="{Binding ViewReportMode}" HorizontalContentAlignment="Left" FontSize="{Binding dFontSize}">
+				<ComboBoxItem>
+					<TextBlock Text="{Binding txtAll}" />
+				</ComboBoxItem>
+				<ComboBoxItem>8</ComboBoxItem>
+				<ComboBoxItem>10</ComboBoxItem>
+				<ComboBoxItem>20</ComboBoxItem>
+				<ComboBoxItem>50</ComboBoxItem>
+			</ComboBox>
+		</DockPanel>
 		<DockPanel DockPanel.Dock="Bottom" Height="30">
 			<Button Click="OnApplyClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtApply}"/>
 			<Button Click="OnCancelClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtCancel}"/>

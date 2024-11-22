@@ -14,5 +14,7 @@ namespace FishingDiary.Models
         public string sNew { get; set; } = "Сurrent";
         public string sPrevious { get; set; } = "Previous";
         public string sNull { get; set; } = "Zero";
+        public string sViewReportCount { get; set; } = "Number of reports displayed: ";
+        public string sAll { get; set; } = "All";
     }
 }

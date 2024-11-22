@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FishingDiary.Views.ViewWindow"
-		Height="820" 
+		Height="820"
 		Width="800"
 		MinHeight="400"
 		MinWidth="700"
@@ -13,74 +13,86 @@
 	<Design.DataContext>
 		<vm:ViewWindowViewModel/>
 	</Design.DataContext>
-	<ScrollViewer>
-		<ItemsControl ItemsSource="{Binding Reports, Mode=TwoWay}" >
-			<ItemsControl.ItemTemplate>
-				<DataTemplate>
-					<Border Margin="0,0,0,0"
-						CornerRadius="5"
-						BorderBrush="Gray" BorderThickness="1"
-						Padding="5">
-						<DockPanel DockPanel.Dock="Left">
-							<Image DockPanel.Dock="Left" Margin="0" Height="60" Width="80"
-								Source="{Binding PhotoMini}"/>
-							<StackPanel Orientation="Vertical" DockPanel.Dock="Left">
-								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="{Binding txtDate} "/>
-									<TextBlock Text="{Binding StartDate}"/>
+	<DockPanel>
+		<DockPanel DockPanel.Dock="Bottom">
+			<DockPanel DockPanel.Dock="Top">
+				<TextBlock Text="{Binding txtPageInfo}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			</DockPanel>
+			<DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+				<Button Click="OnDecrementPage"   IsEnabled="{Binding IsEnabledPrev}" DockPanel.Dock="Left" FontSize="{Binding dFontSize}" Content="&lt;" />
+				<TextBox KeyUp="OnPageChanged" Text="{Binding CurrentPage, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+				<Button Click="OnIncrementPage" IsEnabled="{Binding IsEnabledNext}"  DockPanel.Dock="Right" FontSize="{Binding dFontSize}" Content="&gt;" />
+			</DockPanel>
+		</DockPanel>
+		<ScrollViewer DockPanel.Dock="Top">
+			<ItemsControl ItemsSource="{Binding Reports, Mode=TwoWay}" >
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Border Margin="0,0,0,0"
+							CornerRadius="5"
+							BorderBrush="Gray" BorderThickness="1"
+							Padding="5">
+							<DockPanel DockPanel.Dock="Left">
+								<Image DockPanel.Dock="Left" Margin="0" Height="60" Width="80"
+									Source="{Binding PhotoMini}"/>
+								<StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding txtDate} "/>
+										<TextBlock Text="{Binding StartDate}"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding txtWater} "/>
+										<TextBlock Text="{Binding BodyOfWater}"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding txtMethod} "/>
+										<ItemsRepeater ItemsSource="{Binding FishingMethods}" Margin="0 0">
+											<ItemsRepeater.Layout>
+												<StackLayout Orientation="Horizontal" />
+											</ItemsRepeater.Layout>
+											<ItemsRepeater.ItemTemplate>
+												<DataTemplate>
+													<TextBlock Text="{Binding Text} "/>
+												</DataTemplate>
+											</ItemsRepeater.ItemTemplate>
+										</ItemsRepeater>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding txtTotalWeight} "/>
+										<TextBlock Text="{Binding TotalWeight}"/>
+									</StackPanel>
 								</StackPanel>
-								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="{Binding txtWater} "/>
-									<TextBlock Text="{Binding BodyOfWater}"/>
+								<StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding txtTemperature} "/>
+										<TextBlock Text="{Binding AirTemperatureText}"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding txtPrecipitation} "/>
+										<TextBlock Text="{Binding PrecipitationText}"/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding txtDirection} "/>
+										<TextBlock Text="{Binding WindDirectionText} "/>
+									</StackPanel>
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding txtSpeed} "/>
+										<TextBlock Text="{Binding WindSpeedText}"/>
+									</StackPanel>
 								</StackPanel>
-								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="{Binding txtMethod} "/>
-									<ItemsRepeater ItemsSource="{Binding FishingMethods}" Margin="0 0">
-										<ItemsRepeater.Layout>
-											<StackLayout Orientation="Horizontal" />
-										</ItemsRepeater.Layout>
-										<ItemsRepeater.ItemTemplate>
-											<DataTemplate>
-												<TextBlock Text="{Binding Text} "/>
-											</DataTemplate>
-										</ItemsRepeater.ItemTemplate>
-									</ItemsRepeater>
-								</StackPanel>
-								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="{Binding txtTotalWeight} "/>
-									<TextBlock Text="{Binding TotalWeight}"/>
-								</StackPanel>
-							</StackPanel>
-							<StackPanel Orientation="Vertical" DockPanel.Dock="Left">
-								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="{Binding txtTemperature} "/>
-									<TextBlock Text="{Binding AirTemperatureText}"/>
-								</StackPanel>
-								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="{Binding txtPrecipitation} "/>
-									<TextBlock Text="{Binding PrecipitationText}"/>
-								</StackPanel>
-								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="{Binding txtDirection} "/>
-									<TextBlock Text="{Binding WindDirectionText} "/>
-								</StackPanel>
-								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="{Binding txtSpeed} "/>
-									<TextBlock Text="{Binding WindSpeedText}"/>
-								</StackPanel>
-							</StackPanel>
-							<DockPanel DockPanel.Dock="Right">
-								<StackPanel Orientation="Vertical" DockPanel.Dock="Right">
-									<Button DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtView}"/>
-									<Button Click="OnEditClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtEdit}"/>
-									<Button Click="OnDeleteClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtDelete}"/>
-								</StackPanel>
-								<TextBlock Text=""/>
+								<DockPanel DockPanel.Dock="Right">
+									<StackPanel Orientation="Vertical" DockPanel.Dock="Right">
+										<Button DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtView}"/>
+										<Button Click="OnEditClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtEdit}"/>
+										<Button Click="OnDeleteClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtDelete}"/>
+									</StackPanel>
+									<TextBlock Text=""/>
+								</DockPanel>
 							</DockPanel>
-						</DockPanel>
-					</Border>
-				</DataTemplate>
-			</ItemsControl.ItemTemplate>
-		</ItemsControl>
-	</ScrollViewer>
+						</Border>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+	</DockPanel>
 </Window>

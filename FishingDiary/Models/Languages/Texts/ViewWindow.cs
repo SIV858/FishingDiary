@@ -12,5 +12,6 @@ namespace FishingDiary.Models
         public string sEdit { get; set; } = "Edit";
         public string sDelete { get; set; } = "Delete";
         public string sWarnDeletion { get; set; } = "Are you sure you want to delete the report?";
+        public string sFrom { get; set; } = "from";
     }
 }

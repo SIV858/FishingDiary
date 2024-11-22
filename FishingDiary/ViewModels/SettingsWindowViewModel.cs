@@ -25,6 +25,8 @@ namespace FishingDiary.ViewModels
         private string mNew = CommonData.GenLanguages.Settings.sNew;
         private string mPrevious = CommonData.GenLanguages.Settings.sPrevious;
         private string mNull = CommonData.GenLanguages.Settings.sNull;
+        private string mViewReportCount = CommonData.GenLanguages.Settings.sViewReportCount;
+        private string mAll = CommonData.GenLanguages.Settings.sAll;
 
         public double dFontSize => Properties.GetInstance().FontSize;
 
@@ -91,6 +93,18 @@ namespace FishingDiary.ViewModels
             set => this.RaiseAndSetIfChanged(ref mNull, value);
         }
 
+        public string txtViewReportCount
+        {
+            get => mViewReportCount;
+            set => this.RaiseAndSetIfChanged(ref mViewReportCount, value);
+        }
+
+        public string txtAll
+        {
+            get => mAll;
+            set => this.RaiseAndSetIfChanged(ref mAll, value);
+        }
+
         public DateTimeMode DateMode
         {
             get => Properties.GetInstance().DateMode;
@@ -103,6 +117,12 @@ namespace FishingDiary.ViewModels
             set => this.RaiseAndSetIfChanged(ref Properties.GetInstance()._TimeMode, value);
         }
 
+
+        public ViewReportMode ViewReportMode
+        {
+            get => Properties.GetInstance().ViewReportMode;
+            set => this.RaiseAndSetIfChanged(ref Properties.GetInstance()._ViewReportMode, value);
+        }
 
 
 
@@ -164,6 +184,8 @@ namespace FishingDiary.ViewModels
             txtNew = CommonData.GenLanguages.Settings.sNew;
             txtPrevious = CommonData.GenLanguages.Settings.sPrevious;
             txtNull = CommonData.GenLanguages.Settings.sNull;
+            txtViewReportCount = CommonData.GenLanguages.Settings.sViewReportCount;
+            txtAll = CommonData.GenLanguages.Settings.sAll;
     }
 
 

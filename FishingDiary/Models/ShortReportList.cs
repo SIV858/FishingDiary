@@ -6,6 +6,8 @@ using System.IO;
 using System.Xml;
 using System.Text.Json;
 using System.Collections.ObjectModel;
+using System.Linq;
+using DynamicData.Binding;
 
 namespace FishingDiary.Models
 {
@@ -14,8 +16,39 @@ namespace FishingDiary.Models
         // Reports list
         private static ObservableCollection<ShortReport> mListReports = new ObservableCollection<ShortReport>();
 
-        // Public reports list
-        public static ObservableCollection<ShortReport> ListReports => mListReports;
+        // Reports list on current page
+        public static ObservableCollection<ShortReport> ListReports
+        {
+            get
+            {
+                if (_PageCounter.PerPageElements != Helpers.ConvertViewReportModeToUint(Properties.GetInstance().ViewReportMode))
+                {
+                    _PageCounter = new PageCounter((uint)mListReports.Count,
+                        Helpers.ConvertViewReportModeToUint(Properties.GetInstance().ViewReportMode));
+                }
+
+                ObservableCollection<ShortReport> CurrentListReports = new ObservableCollection<ShortReport> ();
+                foreach (var report in mListReports.Skip((int)_PageCounter.StartElement - 1).Take((int)_PageCounter.CurrentElements))
+                {
+                    CurrentListReports.Add(report);
+                }
+                return CurrentListReports;
+            }
+        }
+
+        // Page counter to display information about the current page
+        private static PageCounter _PageCounter = null;
+
+        private static ObservableCollection<ShortReport> mListReports2;
+
+
+        public static bool FirstPage => _PageCounter.FirstPage;
+        public static bool EndPage => _PageCounter.EndPage;
+        public static uint StartElement => _PageCounter.StartElement;
+        public static uint EndElement => _PageCounter.EndElement;
+        public static uint CurrentPage => _PageCounter.CurrentPage;
+
+        public static int Count => mListReports.Count;
 
 
         /// <summary>
@@ -25,6 +58,16 @@ namespace FishingDiary.Models
         public static void AddReport(ShortReport report)
         {
             mListReports.Add(report);
+
+            if (_PageCounter == null)
+            {
+                _PageCounter = new PageCounter((uint)mListReports.Count, 
+                    Helpers.ConvertViewReportModeToUint(Properties.GetInstance().ViewReportMode));
+            }
+            else
+            {
+                _PageCounter.AddElement();
+            }
         }
 
         /// <summary>
@@ -70,6 +113,11 @@ namespace FishingDiary.Models
                 return false;
             }
 
+            if (_PageCounter != null)
+            {
+                _PageCounter.DeleteElement();
+            }
+
             return SaveReportsList(PathsAndConstants.SHORT_REPORT_PATH);
         
         }
@@ -98,6 +146,9 @@ namespace FishingDiary.Models
                     report.PhotoMini = Helpers.LoadFromFile(report.PhotoPath);
                 }
             }
+
+            _PageCounter = new PageCounter((uint)mListReports.Count,
+                Helpers.ConvertViewReportModeToUint(Properties.GetInstance().ViewReportMode));
 
             return true;
         }
@@ -129,5 +180,21 @@ namespace FishingDiary.Models
 
             return true;
         }
+
+        public static void IncrementPage()
+        {
+            _PageCounter.IncrementPage();
+        }
+
+        public static void DecrementPage()
+        {
+            _PageCounter.DecrementPage();
+        }
+
+        public static void SetPage(uint NumberPage) 
+        { 
+            _PageCounter.SetPage(NumberPage);
+        }
+
     }
 }

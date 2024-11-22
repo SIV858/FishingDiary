@@ -162,5 +162,29 @@ namespace FishingDiary.Models
                     return CommonData.GenLanguages.ErrorTexts.sTextError;
             }
         }
+
+        public static uint ConvertViewReportModeToUint(ViewReportMode viewReportMode)
+        {
+            switch (viewReportMode)
+            {
+                case ViewReportMode.All:
+                    return 0;
+                case ViewReportMode.M8:
+                    return 8;
+                case ViewReportMode.M10:
+                    return 10;
+                case ViewReportMode.M20:
+                    return 20;
+                case ViewReportMode.M50:
+                    return 50;
+                default:
+                    return 0;
+            }
+        }
+
+        public static string ConvertBoolToString(bool value)
+        {
+            return value ? "True" : "False";
+        }
     }
 }

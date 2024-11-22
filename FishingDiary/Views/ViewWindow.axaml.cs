@@ -9,6 +9,7 @@ using FishingDiary.ViewModels;
 using FishingDiary.Models;
 using static FishingDiary.MessageBox;
 using System.Threading.Tasks;
+using Avalonia.Input;
 
 namespace FishingDiary.Views
 {
@@ -71,6 +72,34 @@ namespace FishingDiary.Views
 
             this.UpdateWindow();
 
+        }
+
+        /// <summary>
+        /// Handling the event of clicking the previous page button
+        /// </summary>
+        private void OnDecrementPage(object sender, RoutedEventArgs e)
+        {
+            ViewWindowViewModel model = (ViewWindowViewModel)this.DataContext;
+            model.DecrementPage();
+            this.UpdateWindow();
+        }
+
+        /// <summary>
+        /// Handling the event of page changes
+        /// </summary>
+        private void OnPageChanged(object sender, KeyEventArgs e)
+        {
+            this.UpdateWindow();
+        }
+
+        /// <summary>
+        /// Handling the event of clicking the next page button
+        /// </summary>
+        private void OnIncrementPage(object sender, RoutedEventArgs e)
+        {
+            ViewWindowViewModel model = (ViewWindowViewModel)this.DataContext;
+            model.IncrementPage();
+            this.UpdateWindow();
         }
     }
 }

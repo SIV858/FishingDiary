@@ -17,6 +17,18 @@ namespace FishingDiary.Models
         Null
     }
 
+    /// <summary>
+    /// How many reports to display
+    /// </summary>
+    public enum ViewReportMode
+    {
+        All,
+        M8, //Display eight reports
+        M10,
+        M20,
+        M50
+    }
+
     public class Properties
     {
         private static Properties instance;
@@ -32,6 +44,8 @@ namespace FishingDiary.Models
         /// Previous DataTime
         /// </summary>
         private DateTime _PreviousDataTime = DateTime.Now;
+
+        private DateTime _NextDataTime = DateTime.Now;
 
         public uint CurrentReportId
         {
@@ -64,6 +78,14 @@ namespace FishingDiary.Models
             set => _TimeMode = value;
         }
         internal DateTimeMode _TimeMode = DateTimeMode.Now;
+
+        public ViewReportMode ViewReportMode
+        {
+            get => _ViewReportMode;
+            set => _ViewReportMode = value;
+        }
+        internal ViewReportMode _ViewReportMode = ViewReportMode.M8;
+
 
         public static Properties GetInstance()
         {
