@@ -24,6 +24,7 @@ namespace FishingDiary.Models
         public ushort Quantity { get; set; }      // needed for compatibility
         public int BaitId { get; set; }
         public int MethodId { get; set; }
+        public int OptionId { get; set; }           // Option for Method
         public float AverageLength { get; set; }    // in centimeters
         public float MaxLength { get; set; }       // in centimeters
         public uint MaxWeight { get; set; }        // in grams, 0 if weight was not measured
@@ -42,6 +43,7 @@ namespace FishingDiary.Models
             Quantity = 1;
             BaitId = 0;
             MethodId = 0;
+            OptionId = 0;
             AverageLength = 16;
             MaxLength = 18;
             MaxWeight = 0;

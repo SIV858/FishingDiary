@@ -13,7 +13,7 @@ namespace FishingDiary.ViewModels
     {
 
         private double mWidth = 800;
-        private double mHeight = 450;
+        private double mHeight = 480;
 
         private double mButtonsHeight = 30;
 
@@ -23,6 +23,7 @@ namespace FishingDiary.ViewModels
         private string mHead = CommonData.GenLanguages.MainWindow.sHead;
         private string mAddButton = CommonData.GenLanguages.MainWindow.sAddButton;
         private string mViewButton = CommonData.GenLanguages.MainWindow.sViewButton;
+        private string mStatButton = CommonData.GenLanguages.MainWindow.sStatButton;
         private string mEditorButton = CommonData.GenLanguages.MainWindow.sEditorButton;
         private string mSettingsButton = CommonData.GenLanguages.MainWindow.sSettings;
 
@@ -48,6 +49,12 @@ namespace FishingDiary.ViewModels
         {
             get => mViewButton;
             set => this.RaiseAndSetIfChanged(ref mViewButton, value);
+        }
+
+        public string txtStatButton
+        {
+            get => mStatButton;
+            set => this.RaiseAndSetIfChanged(ref mStatButton, value);
         }
 
         public string txtEditorButton
@@ -144,7 +151,7 @@ namespace FishingDiary.ViewModels
         private void UpdateViews()
         {
             ButtonsHeight = mHeight / 15;
-            PicsHeight = mHeight / (mHeight / ((mHeight - ButtonsHeight * 4) / 2));
+            PicsHeight = mHeight / (mHeight / ((mHeight - ButtonsHeight * 5) / 2));
         }
 
         private void UpdateLang()
@@ -152,6 +159,7 @@ namespace FishingDiary.ViewModels
             txtHead = CommonData.GenLanguages.MainWindow.sHead;
             txtAddButton = CommonData.GenLanguages.MainWindow.sAddButton;
             txtViewButton = CommonData.GenLanguages.MainWindow.sViewButton;
+            txtStatButton = CommonData.GenLanguages.MainWindow.sStatButton;
             mEditorButton = CommonData.GenLanguages.MainWindow.sEditorButton;
             txtSettingsButton = CommonData.GenLanguages.MainWindow.sSettings;
         }

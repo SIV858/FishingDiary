@@ -31,6 +31,7 @@
     "sHead": "Fishing reports",
     "sAddButton": "Add a new report",
     "sViewButton": "View reports",
+    "sStatButton": "Statistics",
     "sEditorButton": "Edit info",
     "sSettings": "Settings"
   },
@@ -125,6 +126,9 @@
     "sDelete": "Delete",
     "sWarnDeletion": "Are you sure you want to delete the report?",
     "sFrom": "from"
+  },
+  "StatWindow": {
+    "sHead": "Statistics"
   },
   "EditorTexts": {
     "sHead": "Editor",

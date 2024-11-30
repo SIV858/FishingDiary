@@ -9,7 +9,7 @@
         Title="{Binding txtHead}"
 		Height="{Binding Height, Mode=TwoWay}" 
 		Width="{Binding Width, Mode=TwoWay}"
-		MinHeight="450"
+		MinHeight="480"
 		MinWidth="500">
     <Design.DataContext>
         <vm:MainWindowViewModel/>
@@ -22,6 +22,7 @@
 		<DockPanel DockPanel.Dock="Top">
 			<Button Click="OnAddClick" Name="buttonAdd" DockPanel.Dock="Top" FontSize="{Binding dFontSize}" Height="{Binding ButtonsHeight, Mode=TwoWay}" Content="{Binding txtAddButton}"/>
 			<Button Click="OnViewClick" Name="buttonView" DockPanel.Dock="Top" FontSize="{Binding dFontSize}" Height="{Binding ButtonsHeight, Mode=TwoWay}" Content="{Binding txtViewButton}"/>
+			<Button Click="OnStatClick" Name="buttonStat" DockPanel.Dock="Top" FontSize="{Binding dFontSize}" Height="{Binding ButtonsHeight, Mode=TwoWay}" Content="{Binding txtStatButton}"/>
 			<Button Click="OnEditorClick" Name="buttonEditor" DockPanel.Dock="Top" FontSize="{Binding dFontSize}" Height="{Binding ButtonsHeight, Mode=TwoWay}" Content="{Binding txtEditorButton}"/>
 			<Button Click="OnSettingsClick" Name="buttonSettings" DockPanel.Dock="Top" FontSize="{Binding dFontSize}" Height="{Binding ButtonsHeight, Mode=TwoWay}" Content="{Binding txtSettingsButton}"/>
 		</DockPanel>

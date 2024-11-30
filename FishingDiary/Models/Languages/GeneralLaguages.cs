@@ -18,6 +18,7 @@ namespace FishingDiary.Models
             GeneralReport = new CGeneralReport();
             AddReport = new CAddReport();
             ViewWindow = new CViewWindow();
+            StatWindow = new CStatWindow();
             EditorTexts = new CEditorTexts();
         }
 
@@ -31,6 +32,7 @@ namespace FishingDiary.Models
         public CAddReport AddReport { get; set; }
         public CEditReport EditReport { get; set; }
         public CViewWindow ViewWindow { get; set; }
+        public CStatWindow StatWindow { get; set; }
         public CEditorTexts EditorTexts { get; set; }
     }
 }

@@ -51,6 +51,18 @@ namespace FishingDiary.Views
         }
 
         /// <summary>
+        /// Handling the event of clicking the "Statistic" button
+        /// </summary>
+        private void OnStatClick(object sender, RoutedEventArgs e)
+        {
+            StatisticsWindow viewWindow = new StatisticsWindow()
+            {
+                DataContext = new StatisticsWindowViewModel(),
+            };
+            viewWindow.ShowDialog(this);
+        }
+
+        /// <summary>
         /// Handling the event of clicking the "Editor" button
         /// </summary>
         private void OnEditorClick(object sender, RoutedEventArgs e)
