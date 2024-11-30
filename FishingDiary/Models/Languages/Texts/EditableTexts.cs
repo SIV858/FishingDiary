@@ -18,6 +18,7 @@ namespace FishingDiary.Models
         private List<DataElement> _FishingTackles;
         private List<DataElement> _Groundbaits;
         private List<DataElement> _Methods;
+        private List<DataElement> _Options;
         private List<DataElement> _Waters;
 
         public List<DataElement> Baits => _Baits;
@@ -32,6 +33,13 @@ namespace FishingDiary.Models
             get
             {
                return _Methods.ConvertAll<string>(x => x.Text);
+            }
+        }
+        public List<string> OptionsText
+        {
+            get
+            {
+                return _Options.ConvertAll<string>(x => x.Text);
             }
         }
         public List<string> TacklesText
@@ -97,6 +105,7 @@ namespace FishingDiary.Models
             ParseList(_DataPath + PathsAndConstants.FISHING_TACKLE_FILE, out _FishingTackles);
             ParseList(_DataPath + PathsAndConstants.GROUNDBAITS_FILE, out _Groundbaits);
             ParseList(_DataPath + PathsAndConstants.METHODS_FILE, out _Methods);
+            ParseList(_DataPath + PathsAndConstants.OPTIONS_FILE, out _Options);
             ParseList(_DataPath + PathsAndConstants.WATERS_FILE, out _Waters);
         }
 

@@ -20,6 +20,7 @@ namespace FishingDiary.Models
         private static string _fishingTackleFile = "Fishing_tackle" + _extJSON;
         private static string _groundbaitsFile = "Groundbaits" + _extJSON;
         private static string _methodsFile = "Methods" + _extJSON;
+        private static string _optionsFile = "Options" + _extJSON;
         private static string _watersFile = "Waters" + _extJSON;
         private static string _noPhotoFileName = "No_Photo.png";
         private static string _noPhotoFileNameMini = "No_Photo_mini.png";
@@ -94,6 +95,10 @@ namespace FishingDiary.Models
         public static string METHODS_FILE
         {
             get => _methodsFile;
+        }
+        public static string OPTIONS_FILE
+        {
+            get => _optionsFile;
         }
         public static string WATERS_FILE
         {

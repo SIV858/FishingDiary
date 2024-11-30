@@ -81,6 +81,7 @@ namespace FishingDiary.Models
         public string sQuantity { get; set; } = "Quantity";
         public string sBait { get; set; } = "Bait";
         public string sMethodFish { get; set; } = "Method";
+        public string sOption { get; set; } = "Options";
         public string sAverageLength { get; set; } = "Average length";
         public string sMaxLength { get; set; } = "Max length";
         public string sMaxWeight { get; set; } = "Max Weight";

@@ -33,7 +33,8 @@ namespace FishingDiary.Models
 
         [JsonIgnore] public List<string> Fishes => CommonData.EditableTexts.FishesText;
         [JsonIgnore] public List<string> Baits => CommonData.EditableTexts.BaitsText;
-        [JsonIgnore] public List<string> Methods => CommonData.EditableTexts.MethodsText ;
+        [JsonIgnore] public List<string> Methods => CommonData.EditableTexts.MethodsText;
+        [JsonIgnore] public List<string> Options => CommonData.EditableTexts.OptionsText;
 
         public RecordFish()
         {

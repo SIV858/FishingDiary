@@ -260,6 +260,18 @@
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
 					</DataGridTemplateColumn>
+					<!--Option-->
+					<DataGridTemplateColumn>
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding txtOption}" FontSize="{Binding dFontSize}"/>
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<ComboBox SelectedIndex="{Binding OptionId}" ItemsSource="{Binding Options}"
+								  VerticalAlignment="Center" HorizontalAlignment="Center" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
 					<!--AverageLength-->
 					<DataGridTemplateColumn>
 						<DataGridTemplateColumn.Header>

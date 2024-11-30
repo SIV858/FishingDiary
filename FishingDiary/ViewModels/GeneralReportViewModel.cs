@@ -110,6 +110,7 @@ namespace FishingDiary.ViewModels
         public string txtQuantity => CommonData.GenLanguages.GeneralReport.sQuantity;
         public string txtBait => CommonData.GenLanguages.GeneralReport.sBait;
         public string txtMethodFish => CommonData.GenLanguages.GeneralReport.sMethodFish;
+        public string txtOption => CommonData.GenLanguages.GeneralReport.sOption;
         public string txtAverageLength => CommonData.GenLanguages.GeneralReport.sAverageLength;
         public string txtMaxLength => CommonData.GenLanguages.GeneralReport.sMaxLength;
         public string txtMaxWeight => CommonData.GenLanguages.GeneralReport.sMaxWeight;
