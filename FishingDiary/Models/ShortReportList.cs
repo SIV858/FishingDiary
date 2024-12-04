@@ -16,6 +16,7 @@ namespace FishingDiary.Models
         // Reports list
         private static ObservableCollection<ShortReport> mListReports = new ObservableCollection<ShortReport>();
 
+        public static ObservableCollection<ShortReport> AllListReports => mListReports;
         // Reports list on current page
         public static ObservableCollection<ShortReport> ListReports
         {

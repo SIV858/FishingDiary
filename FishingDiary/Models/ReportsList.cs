@@ -14,6 +14,11 @@ namespace FishingDiary.Models
         private static List<Report> mListReports = new List<Report>();
 
         /// <summary>
+        /// Reports list
+        /// </summary>
+        public static List<Report> Reports => mListReports;
+
+        /// <summary>
         /// Add report
         /// </summary>
         /// <param name="report">Reports</param>
@@ -23,22 +28,29 @@ namespace FishingDiary.Models
         }
 
         /// <summary>
-        /// Load report from file
+        /// Get report returned from a list or loaded from a file
         /// </summary>
         /// <param name="ReportPath">Path to report</param>
-        public static Report LoadReport(string ReportPath)
+        /// <param name="ReportId">Report ID</param>
+        /// <returns>Report</returns>
+        public static Report GetReport(string ReportPath, uint ReportId)
         {
             try
             {
-                using (StreamReader reader = new StreamReader(ReportPath))
+                Report report = mListReports.Find(x => x.ReportId == ReportId);
+                // If you couldn't find it in the list, load it from a file
+                if (report == null)
                 {
-                    string json = reader.ReadToEnd();
+                    using (StreamReader reader = new StreamReader(ReportPath))
+                    {
+                        string json = reader.ReadToEnd();
 
-                    var readOnlySpan = new ReadOnlySpan<byte>(Encoding.UTF8.GetBytes(json));
-                    Report report = JsonSerializer.Deserialize<Report>(readOnlySpan);
-                    mListReports.Add(report);
-                    return report;
+                        var readOnlySpan = new ReadOnlySpan<byte>(Encoding.UTF8.GetBytes(json));
+                        report = JsonSerializer.Deserialize<Report>(readOnlySpan);
+                        mListReports.Add(report);
+                    }
                 }
+                return report;
             }
             catch (FileNotFoundException)
             {
@@ -51,6 +63,16 @@ namespace FishingDiary.Models
 
         }
 
+        /// <summary>
+        /// Load all reports
+        /// </summary>
+        public static void LoadReports()
+        {
+            foreach(ShortReport shortReport in ShortReportsList.AllListReports)
+            {
+                GetReport(shortReport.ReportPath, shortReport.ReportId);
+            }
+        }
 
         /// <summary>
         /// Delete report
@@ -77,41 +99,6 @@ namespace FishingDiary.Models
                     break;
                 }
             }
-        }
-
-        /// <summary>
-        /// Loading report from file
-        /// </summary>
-        /// <param name="sNameFile">Name file</param>
-        /// <returns></returns>
-        public static bool LoadReportList(string sNameMainFile)
-        {
-            FileStream file = new FileStream(sNameMainFile, FileMode.Open);
-
-            // to do
-
-            file.Close();
-
-            return true;
-        }
-
-        /// <summary>
-        /// Save the report to a file
-        /// </summary>
-        /// <param name="sNameFile">Name file</param>
-        /// <returns></returns>
-        public static bool SaveReportList(string sNameMainFile)
-        {
-            FileStream file = new FileStream(sNameMainFile, FileMode.Create);
-
-            foreach (Report report in mListReports)
-            {
-                // to do
-            }
-
-            file.Close();
-
-            return true;
         }
     }
 }

@@ -67,11 +67,19 @@ namespace FishingDiary.Views
         /// </summary>
         private void OnEditorClick(object sender, RoutedEventArgs e)
         {
-            EditorWindow editorWindow = new EditorWindow()
+            try
             {
-                DataContext = new EditorWindowViewModel(),
-            };
-            editorWindow.ShowDialog(this);
+                EditorWindow editorWindow = new EditorWindow()
+                {
+                    DataContext = new EditorWindowViewModel(),
+                };
+                editorWindow.ShowDialog(this);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(null, ex.Message, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                return;
+            }
         }
 
         /// <summary>

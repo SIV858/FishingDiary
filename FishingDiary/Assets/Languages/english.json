@@ -129,12 +129,23 @@
     "sFrom": "from"
   },
   "StatWindow": {
-    "sHead": "Statistics"
+    "sHead": "Statistics",
+    "sPaintButton": "Paint statistics",
+    "sHeader": "All time statistics",
+    "sNumber": "№",
+    "sFishName": "Name of fish",
+    "sQuantity": "Quantity",
+    "sBaits": "Baits",
+    "sPercent": "Percent",
+    "sSave": "Save",
+    "sAllReport": "Total fishing:",
+    "sAllFishes": "Total fish caught:"
   },
   "EditorTexts": {
     "sHead": "Editor",
     "EditParamDict": {
       "Methods": "Methods",
+      "Options": "Options",
       "Fishing_tackle": "Fishing tackle",
       "Baits": "Baits",
       "Groundbaits": "Groundbaits",

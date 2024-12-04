@@ -9,5 +9,11 @@
 		MinHeight="400"
 		MinWidth="700"
         Title="{Binding txtHead}">
-  Welcome to Avalonia!
+	<DockPanel>
+		<Button Click="OnSaveClick" Name="buttonSave" DockPanel.Dock="Bottom" FontSize="{Binding dFontSize}" Content="{Binding txtSave}"/>
+		<Button Click="OnPaintClick" Name="buttonPaint" DockPanel.Dock="Top" FontSize="{Binding dFontSize}" Content="{Binding txtPaintButton}"/>
+		<ScrollViewer DockPanel.Dock="Top">
+			<Image Source="{Binding ImageStat}"/>
+		</ScrollViewer>
+	</DockPanel>
 </Window>

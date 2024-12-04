@@ -128,12 +128,23 @@
     "sFrom": "из"
   },
   "StatWindow": {
-    "sHead": "Статистика"
+    "sHead": "Статистика",
+    "sPaintButton": "Вывести статистику",
+    "sHeader": "Статистика за всё время",
+    "sNumber": "№",
+    "sFishName": "Название",
+    "sQuantity": "Количество",
+    "sBaits": "Насадки",
+    "sPercent": "Процент",
+    "sSave": "Сохранить",
+    "sAllReport": "Всего рыбалок:",
+    "sAllFishes": "Рыбы поймано:"
   },
   "EditorTexts": {
     "sHead": "Редактор параметров",
     "EditParamDict": {
       "Methods": "Способы ловли",
+      "Options": "Опции",
       "Fishing_tackle": "Рыболовные снасти",
       "Baits": "Насадки",
       "Groundbaits": "Прикормки",

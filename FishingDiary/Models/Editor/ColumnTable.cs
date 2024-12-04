@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.Json;
+using HarfBuzzSharp;
 
 namespace FishingDiary.Models
 {
@@ -32,15 +33,25 @@ namespace FishingDiary.Models
 
         public void ReadTable(string DataPath)
         {
-            //Read data from file
-            using (StreamReader reader = new StreamReader(DataPath))
+            try
             {
-                string json = reader.ReadToEnd();
+                //Read data from file
+                using (StreamReader reader = new StreamReader(DataPath))
+                {
+                    string json = reader.ReadToEnd();
 
-                var readOnlySpan = new ReadOnlySpan<byte>(Encoding.UTF8.GetBytes(json));
-                _DataList = JsonSerializer.Deserialize<List<DataElement>>(readOnlySpan);
+                    var readOnlySpan = new ReadOnlySpan<byte>(Encoding.UTF8.GetBytes(json));
+                    _DataList = JsonSerializer.Deserialize<List<DataElement>>(readOnlySpan);
+                }
             }
-
+            catch (FileNotFoundException)
+            {
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sErrorFileNotFound + DataPath);
+            }
+            catch (JsonException)
+            {
+                throw new Exception(CommonData.GenLanguages.ErrorTexts.sErrorCorruptedFile + DataPath);
+            }
         }
     }
 }

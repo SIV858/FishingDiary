@@ -35,6 +35,9 @@
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
     <PackageReference Include="Avalonia.Themes.Simple" Version="11.0.10" />
     <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.10.9" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.4" />
+    <PackageReference Include="PDFium.WindowsV2" Version="1.1.4" />
+    <PackageReference Include="PDFiumSharpV2" Version="1.1.4" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\GeneralReportView.axaml.cs">

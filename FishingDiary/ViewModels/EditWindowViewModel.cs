@@ -23,7 +23,7 @@ namespace FishingDiary.ViewModels
         public EditWindowViewModel(uint CurrentReportID)
         {
             shortReport = ShortReportsList.FindReport(CurrentReportID);
-            generalReport = new GeneralReportViewModel(shortReport.ReportPath);
+            generalReport = new GeneralReportViewModel(shortReport.ReportPath, shortReport.ReportId);
         }
 
         /// <summary>
