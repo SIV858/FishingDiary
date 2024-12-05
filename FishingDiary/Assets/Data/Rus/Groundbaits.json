@@ -1,34 +1,38 @@
 ﻿[
   {
     "Id": 0,
-    "Text": "Неизвестная прикормка"
+    "Text": "Неизвестно"
   },
   {
     "Id": 1,
-    "Text": "Перловка"
+    "Text": "Нет"
   },
   {
     "Id": 2,
-    "Text": "Кукуруза"
+    "Text": "Перловка"
   },
   {
     "Id": 3,
-    "Text": "Каша"
+    "Text": "Кукуруза"
   },
   {
     "Id": 4,
-    "Text": "Пшено"
+    "Text": "Каша"
   },
   {
     "Id": 5,
-    "Text": "Fishgrain"
+    "Text": "Пшено"
   },
   {
     "Id": 6,
-    "Text": "GoldFish"
+    "Text": "Fishgrain"
   },
   {
     "Id": 7,
+    "Text": "GoldFish"
+  },
+  {
+    "Id": 8,
     "Text": "Happy fish"
   }
 ]
