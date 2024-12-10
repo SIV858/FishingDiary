@@ -43,6 +43,14 @@ namespace FishingDiary.Models
             }
 
         }
+
+        public void WriteTables()
+        {
+            foreach(var table in _listTables)
+            {
+                table.WriteTable();
+            }
+        }
     }
 
 }

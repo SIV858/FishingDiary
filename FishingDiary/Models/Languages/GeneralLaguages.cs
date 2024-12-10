@@ -20,6 +20,7 @@ namespace FishingDiary.Models
             ViewWindow = new CViewWindow();
             StatWindow = new CStatWindow();
             EditorTexts = new CEditorTexts();
+            AddParamTexts = new CAddParamTexts();
         }
 
         public CLanguagePaths LanguagePaths { get; set; }
@@ -34,5 +35,6 @@ namespace FishingDiary.Models
         public CViewWindow ViewWindow { get; set; }
         public CStatWindow StatWindow { get; set; }
         public CEditorTexts EditorTexts { get; set; }
+        public CAddParamTexts AddParamTexts {  get; set; }
     }
 }

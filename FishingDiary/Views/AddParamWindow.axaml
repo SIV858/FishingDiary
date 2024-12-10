@@ -1,0 +1,64 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="clr-namespace:FishingDiary.ViewModels;assembly=FishingDiary"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="FishingDiary.Views.AddParamWindow"
+		Width="500"
+		Height="100"
+		MinHeight="100"
+		MinWidth="500"
+		CanResize="False"
+        Title="{Binding txtHead}">
+	<Design.DataContext>
+		<vm:AddParamWindowViewModel/>
+	</Design.DataContext>
+	<DockPanel>
+		<DockPanel>
+			<StackPanel Orientation="Vertical">
+				<TextBlock Text="ID" DockPanel.Dock="Left"/>
+				<TextBox Text="{Binding AddedId, Mode=TwoWay}"/>
+			</StackPanel>
+		<ItemsControl DockPanel.Dock="Right" ItemsSource ="{Binding ListColumns}" FontSize="{Binding dFontSize}">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel  Orientation="Horizontal"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Vertical">
+						<TextBlock Text="{Binding ColumnName}"  FontSize="{Binding dFontSize}"/>
+						<TextBox Text="{Binding AddedText, Mode=TwoWay}"  FontSize="{Binding dFontSize}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+		</DockPanel>
+		<DockPanel DockPanel.Dock="Bottom">
+		<StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+		<TextBlock Text=""/>
+			<Button Click="OnOKClick" DockPanel.Dock="Right" Name="buttonOK" FontSize="{Binding dFontSize}" Content="{Binding txtOKButton}"/>
+			<Button Click="OnCancelClick" DockPanel.Dock="Right" Name="buttonCancel" FontSize="{Binding dFontSize}" Content="{Binding txtCancelButton}"/>
+		</StackPanel>
+			<TextBlock Text=""/>
+		</DockPanel>
+		<TextBlock Text=""/>
+	</DockPanel>
+	<!--
+	<TextBox Text="{Binding Description, Mode=TwoWay}"   FontSize="{Binding dFontSize}"/>
+	<ItemsControl ItemsSource ="{Binding ListColumns}">
+		<ItemsControl.ItemsPanel>
+			<ItemsPanelTemplate>
+				<WrapPanel Orientation="Vertical"/>
+			</ItemsPanelTemplate>
+		</ItemsControl.ItemsPanel>
+		<ItemsControl.ItemTemplate>
+			<DataTemplate>
+				<TextBox Text="{Binding Text, Mode=TwoWay}"  FontSize="{Binding dFontSize}"/>
+			</DataTemplate>
+		</ItemsControl.ItemTemplate>
+	</ItemsControl>
+	-->
+</Window>

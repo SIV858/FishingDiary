@@ -13,8 +13,8 @@
 	<Design.DataContext>
 		<vm:EditorWindowViewModel/>
 	</Design.DataContext>
-
-	<TabControl ItemsSource="{Binding EditTables}">
+	<DockPanel>
+	<TabControl ItemsSource="{Binding EditTables}" SelectedItem="{Binding SelectedItem}">
 		<TabControl.ItemTemplate>
 			<DataTemplate>
 				<TextBlock Text="{Binding TableName}" FontSize="{Binding dFontSize}"/>
@@ -37,6 +37,11 @@
 						  CanUserSortColumns="False"
 						  BorderThickness="0" BorderBrush="Gray">
 								<DataGrid.Columns>
+									<DataGridTextColumn Binding="{Binding Id}">
+										<DataGridTextColumn.Header>
+											<TextBlock Text="ID" Width="150" FontSize="{Binding dFontSize}"/>
+										</DataGridTextColumn.Header>
+									</DataGridTextColumn>
 									<DataGridTextColumn Binding="{Binding Text}">
 										<DataGridTextColumn.Header>
 											<TextBlock Text="{Binding ColumnName}" Width="150" FontSize="{Binding dFontSize}"/>
@@ -51,4 +56,14 @@
 			</DataTemplate>
 		</TabControl.ContentTemplate>
 	</TabControl>
+	<DockPanel DockPanel.Dock="Right">
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+			<Button Click="OnAddClick" Name="buttonAdd" FontSize="{Binding dFontSize}" Content="{Binding txtAddButton}"/>
+			<Button Click="OnApplyClick" Name="buttonSave" FontSize="{Binding dFontSize}" Content="{Binding txtApplyButton}"/>
+			<Button Click="OnCancelClick" Name="buttonCancel" FontSize="{Binding dFontSize}" Content="{Binding txtCancelButton}"/>
+		</StackPanel>
+		<TextBlock Text=""/>
+	</DockPanel>
+		<TextBlock Text=""/>
+	</DockPanel>
 </Window>

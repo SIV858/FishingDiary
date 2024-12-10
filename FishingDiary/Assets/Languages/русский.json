@@ -20,7 +20,8 @@
     "sErrorFileNotFound": "Следующий файл не найден: ",
     "sErrorCorruptedFile": "Следующий файл повреждён: ",
     "sParamNotFound": "Параметр с данным ID не найден (Параметр:ID): ",
-    "sNullNameWater": "Необходимо задать название водоёма"
+    "sNullNameWater": "Необходимо задать название водоёма",
+    "sIdAlreadyExists": "Такой Id уже есть"
   },
   "SelectLanguage": {
     "sHead": "Выбор языка",
@@ -150,5 +151,8 @@
       "Groundbaits": "Прикормки",
       "Fishes": "Рыбы"
     }
+  },
+  "AddParamTexts": {
+    "sHead": "Добавить элемент в таблицу: "
   }
 }

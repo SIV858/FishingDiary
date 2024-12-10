@@ -10,7 +10,7 @@ namespace FishingDiary.Models
     public class EditTable
     {
         private string _ParamName;
-        private List<ColumnTable> _listColumns;
+        internal ObservableCollection<ColumnTable> _listColumns;
 
         public string TableName
         {
@@ -19,16 +19,14 @@ namespace FishingDiary.Models
 
         public ObservableCollection<ColumnTable> ListColumns
         {
-            get
-            {
-                return new ObservableCollection<ColumnTable>(_listColumns);
-            }
+            get => _listColumns;
+            set => _listColumns = value;
         }
 
         public EditTable(string ParamName)
         {
             _ParamName = ParamName;
-            _listColumns = new List<ColumnTable>();
+            _listColumns = new ObservableCollection<ColumnTable>();
         }
 
         public void ReadTable()
@@ -46,6 +44,14 @@ namespace FishingDiary.Models
                 ColumnTable columnTable = new ColumnTable(lang);
                 columnTable.ReadTable(DataPath);
                 _listColumns.Add(columnTable);
+            }
+        }
+
+        public void WriteTable()
+        {
+            foreach(var columns in _listColumns) 
+            {
+                columns.WriteTable();
             }
         }
     }

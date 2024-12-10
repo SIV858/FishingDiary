@@ -21,7 +21,8 @@
     "sErrorFileNotFound": "The following file was not found: ",
     "sErrorCorruptedFile": "The following file is corrupted: ",
     "sParamNotFound": "Parameter with given ID not found (Parameter:ID): ",
-    "sNullNameWater": "It is necessary to specify the name of the reservoir"
+    "sNullNameWater": "It is necessary to specify the name of the reservoir",
+    "sIdAlreadyExists": "Such an Id already exists"
   },
   "SelectLanguage": {
     "sHead": "Languages",
@@ -151,5 +152,8 @@
       "Groundbaits": "Groundbaits",
       "Fishes": "Fishes"
     }
+  },
+  "AddParamTexts": {
+    "sHead": "Add parameter to table: "
   }
 }
