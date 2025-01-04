@@ -11,6 +11,9 @@ namespace FishingDiary.Models
         private int _ReportCount = 0;
         private uint _TotalFishCount = 0;
 
+        StatisticsTimeMode _TimeMode = StatisticsTimeMode.AllTime;
+        int _Param = 0;
+
         private List<StatFish> _Fishes;
         public List<StatFish> Fishes => _Fishes;
 
@@ -18,9 +21,11 @@ namespace FishingDiary.Models
 
         public uint TotalFishCount => _TotalFishCount;
 
-        public CalcStat() 
+        public CalcStat(StatisticsTimeMode timeMode, int Param) 
         {
             _Fishes = new List<StatFish>();
+            _TimeMode = timeMode;
+            _Param = Param;
         }
 
         public void Calc() 
@@ -28,6 +33,16 @@ namespace FishingDiary.Models
             _ReportCount = ReportsList.Reports.Count;
             foreach (Report report in ReportsList.Reports)
             {
+                // If the statistics are for the year
+                if (_TimeMode == StatisticsTimeMode.Year)
+                {
+                    if (report.StartDate.Year != _Param)
+                    {
+                        //If the year does not match, skip it.
+                        continue;
+                    }
+                }
+
                 foreach(RecordFish fish in report.CaughtFishes)
                 {
                     StatFish statFish = _Fishes.Find(x => x.Id == fish.FishId);

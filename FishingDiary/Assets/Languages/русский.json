@@ -138,6 +138,11 @@
     "sBaits": "Насадки",
     "sPercent": "Процент",
     "sSave": "Сохранить",
+    "sPeriod": "Режим времени статистики:",
+    "sAllTimeMode": "За всё время",
+    "sYearMode": "За год",
+    "sPeriodMode": "За период",
+    "sYear": "Год:",
     "sAllReport": "Всего рыбалок:",
     "sAllFishes": "Рыбы поймано:"
   },

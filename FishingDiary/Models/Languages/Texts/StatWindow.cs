@@ -16,6 +16,11 @@ namespace FishingDiary.Models
         public string sBaits { get; set; } = "Baits";
         public string sPercent { get; set; } = "Percent";
         public string sSave { get; set; } = "Save";
+        public string sPeriod { get; set; } = "Statistic time mode:";
+        public string sAllTimeMode { get; set; } = "All time";
+        public string sYearMode { get; set; } = "Year";
+        public string sPeriodMode { get; set; } = "Period";
+        public string sYear { get; set; } = "Year:";
         public string sAllReport { get; set; } = "Total fishing:";
         public string sAllFishes { get; set; } = "Total fish caught:";
     }

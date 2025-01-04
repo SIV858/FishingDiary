@@ -25,7 +25,7 @@
   },
   {
     "Id": 6,
-    "Text": " "
+    "Text": "Pearl barley"
   },
   {
     "Id": 7,
@@ -52,11 +52,27 @@
     "Text": "Salo"
   },
   {
+    "Id": 13,
+    "Text": "Peas"
+  },
+  {
     "Id": 100,
     "Text": "Maggot + Worm"
   },
   {
+    "Id": 101,
+    "Text": "Maggot + Pearl barley"
+  },
+  {
     "Id": 110,
     "Text": "Worm + Corn"
+  },
+  {
+    "Id": 111,
+    "Text": "Worm + Peas"
+  },
+  {
+    "Id": 112,
+    "Text": "Worm + Maggot"
   }
 ]

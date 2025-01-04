@@ -87,4 +87,11 @@ namespace FishingDiary.Models
         FishCaughtGood,
         FishCaughtExcellent
     }
+
+    public enum StatisticsTimeMode
+    {
+        AllTime,
+        Year,
+        Period
+    }
 }

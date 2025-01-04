@@ -5,6 +5,8 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Text.Json;
+using System.Linq;
+using DynamicData;
 
 namespace FishingDiary.Models
 {
@@ -13,10 +15,18 @@ namespace FishingDiary.Models
         // Reports list
         private static List<Report> mListReports = new List<Report>();
 
+        private static List<int> _Years = new List<int>();
+
         /// <summary>
         /// Reports list
         /// </summary>
         public static List<Report> Reports => mListReports;
+
+
+        /// <summary>
+        /// Years List
+        /// </summary>
+        public static List<int> Years => _Years;
 
         /// <summary>
         /// Add report
@@ -71,6 +81,11 @@ namespace FishingDiary.Models
             foreach(ShortReport shortReport in ShortReportsList.AllListReports)
             {
                 GetReport(shortReport.ReportPath, shortReport.ReportId);
+                // Add year in list if it not found
+                if (!_Years.Contains(shortReport.StartDate.Year))
+                {
+                    _Years.Add(shortReport.StartDate.Year);
+                }
             }
         }
 

@@ -47,7 +47,7 @@ namespace FishingDiary.Models
             _Font = new Font(baseFont, _FontSize, Font.NORMAL);
         }
 
-        public void PaintStat()
+        public void PaintStat(StatisticsTimeMode timeMode, int Param)
         {
             _StatStream = new MemoryStream();
 
@@ -97,7 +97,7 @@ namespace FishingDiary.Models
             AddCell(table, CommonData.GenLanguages.StatWindow.sBaits);
             AddCell(table, CommonData.GenLanguages.StatWindow.sPercent);
 
-            CalcStat calcStat = new CalcStat();
+            CalcStat calcStat = new CalcStat(timeMode, Param);
             calcStat.Calc();
 
 

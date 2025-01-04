@@ -139,6 +139,11 @@
     "sBaits": "Baits",
     "sPercent": "Percent",
     "sSave": "Save",
+    "sPeriod": "Statistic time mode:",
+    "sAllTimeMode": "All time",
+    "sYearMode": "Year:",
+    "sPeriodMode": "Period",
+    "sYear": "Year",
     "sAllReport": "Total fishing:",
     "sAllFishes": "Total fish caught:"
   },

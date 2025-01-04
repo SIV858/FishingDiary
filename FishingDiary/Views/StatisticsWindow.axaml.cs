@@ -30,5 +30,17 @@ namespace FishingDiary.Views
             StatisticsWindowViewModel model = (StatisticsWindowViewModel)this.DataContext;
             model.SaveStat();
         }
+
+        /// <summary>
+        /// Handling the event of changed selection period
+        /// </summary>
+        private void OnPeriodChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //StatisticsWindowViewModel model = (StatisticsWindowViewModel)this.DataContext;
+            //if (model.PeriodMode == Models.StatisticsTimeMode.Year)
+            //{
+            //    this.
+            //}
+        }
     }
 }
