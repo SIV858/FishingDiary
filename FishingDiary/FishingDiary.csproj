@@ -46,8 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Data\Reports\" />
+    <Folder Include="ViewModels\Elements\" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="md &quot;$(TargetDir)locale&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\languages\*&quot; &quot;$(TargetDir)locale\&quot;&#xD;&#xA;md &quot;$(TargetDir)Data&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\*&quot; &quot;$(TargetDir)Data&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\Rus&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\En\*&quot; &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\Rus\*&quot; &quot;$(TargetDir)Data\Rus&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\Reports&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\Reports\*&quot; &quot;$(TargetDir)Data\Reports&quot;" />
+    <Exec Command="md &quot;$(TargetDir)locale&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\languages\*&quot; &quot;$(TargetDir)locale\&quot;&#xD;&#xA;md &quot;$(TargetDir)Data&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\*&quot; &quot;$(TargetDir)Data&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\Rus&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\En\*&quot; &quot;$(TargetDir)Data\En&quot;&#xD;&#xA;xcopy /Y &quot;$(ProjectDir)assets\Data\Rus\*&quot; &quot;$(TargetDir)Data\Rus&quot;&#xD;&#xA;md &quot;$(TargetDir)Data\Reports&quot;&#xD;&#xA;xcopy /d &quot;$(ProjectDir)assets\Data\Reports\*&quot; &quot;$(TargetDir)Data\Reports&quot;" />
   </Target>
 </Project>

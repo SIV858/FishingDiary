@@ -1,21 +1,20 @@
-﻿//04.12.24
+﻿//05.01.25
+using iTextSharp.text.pdf.codec.wmf;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace FishingDiary.Models.Statistics
 {
-    internal class StatFish : IComparable<StatFish>
+    internal class StatBait : IComparable<StatBait>
     {
         private int _Id;
         private string _Name;
         private ushort _Quantity;
         private ushort _NotNullCount;
-        private float _Percent;
         private double _TotalLenght;
 
-
-        private List<StatBait> _Baits;
+        private List<StatMethod> _Methods;
 
         public int Id => _Id;
 
@@ -23,19 +22,17 @@ namespace FishingDiary.Models.Statistics
 
         public ushort Quantity => _Quantity;
 
-        public float Percent => _Percent;
-
         // Condition to not divide by zero
-        public float AverageLength => _NotNullCount == 0 ? 0f : (float)_TotalLenght / _NotNullCount;
+        public float AverageLength => _NotNullCount == 0 ? 0f: (float)_TotalLenght / _NotNullCount;
 
-        public List<StatBait> StatBaits => _Baits;
+        public List<StatMethod> StatMethods => _Methods;
 
-        public StatFish(RecordFish fish)
+        public StatBait(RecordFish fish)
         {
-            _Id = fish.FishId;
-            _Name = fish.Fishes[fish.FishId];
-            _Baits = new List<StatBait>();
-            _Baits.Add(new StatBait(fish));
+            _Id = fish.BaitId;
+            _Name = fish.Baits[fish.BaitId];
+            _Methods = new List<StatMethod>();
+            _Methods.Add(new StatMethod(fish));
             _Quantity = fish.Quantity;
             if (fish.AverageLength != 0)
             {
@@ -46,14 +43,14 @@ namespace FishingDiary.Models.Statistics
 
         public void AddQuantity(RecordFish fish)
         {
-            StatBait statBait = _Baits.Find(x => x.Id == fish.BaitId);
-            if (statBait == null)
+            StatMethod statMethod = _Methods.Find(x => x.Id == fish.MethodId);
+            if (statMethod == null)
             {
-                _Baits.Add(new StatBait(fish));
+                _Methods.Add(new StatMethod(fish));
             }
             else
             {
-                statBait.AddQuantity(fish);
+                statMethod.AddQuantity(fish);
             }
             _Quantity += fish.Quantity;
             if (fish.AverageLength != 0)
@@ -63,13 +60,8 @@ namespace FishingDiary.Models.Statistics
             }
         }
 
-        public void CalcPercent(uint TotalQuantity)
-        {
-            _Percent = ((float)_Quantity / TotalQuantity) * 100f;
-        }
-
         // Comparer.
-        public int CompareTo(StatFish comparePart)
+        public int CompareTo(StatBait comparePart)
         {
             if (comparePart.Quantity > this.Quantity)
             {
@@ -88,13 +80,9 @@ namespace FishingDiary.Models.Statistics
             }
         }
 
-        public void SortAll()
+        public void Sort()
         {
-            _Baits.Sort();
-            foreach (StatBait sortBait in _Baits)
-            {
-                sortBait.Sort();
-            }
+            _Methods.Sort();
         }
     }
 }

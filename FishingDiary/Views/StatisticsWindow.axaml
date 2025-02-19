@@ -11,6 +11,16 @@
         Title="{Binding txtHead}">
 	<DockPanel>
 		<Button Click="OnSaveClick" Name="buttonSave" DockPanel.Dock="Bottom" FontSize="{Binding dFontSize}" Content="{Binding txtSave}"/>
+		<DockPanel DockPanel.Dock="Bottom">
+			<DockPanel DockPanel.Dock="Top">
+				<TextBlock Text="{Binding txtPageInfo}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+			</DockPanel>
+			<DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+				<Button Click="OnDecrementPage"   IsEnabled="{Binding IsEnabledPrev}" DockPanel.Dock="Left" FontSize="{Binding dFontSize}" Content="&lt;" />
+				<TextBox KeyUp="OnPageChanged" Text="{Binding CurrentPage, Mode=TwoWay}" FontSize="{Binding dFontSize}"/>
+				<Button Click="OnIncrementPage" IsEnabled="{Binding IsEnabledNext}"  DockPanel.Dock="Right" FontSize="{Binding dFontSize}" Content="&gt;" />
+			</DockPanel>
+		</DockPanel>
 		<DockPanel DockPanel.Dock="Top">
 			<DockPanel DockPanel.Dock="Top">
 				<TextBlock Text="{Binding txtPeriod}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>

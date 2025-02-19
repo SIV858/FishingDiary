@@ -22,5 +22,7 @@ namespace FishingDiary.Models
         public string sButtonNo { get; set; } = "No";
 
         public string sButtonClear { get; set; } = "Clear";
+
+        public string sFrom { get; set; } = "from";
     }
 }

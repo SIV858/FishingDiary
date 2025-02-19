@@ -15,22 +15,28 @@ namespace FishingDiary.Models
         int _Param = 0;
 
         private List<StatFish> _Fishes;
+
+        private Records _Records;
+
         public List<StatFish> Fishes => _Fishes;
 
         public int ReportCount => _ReportCount;
 
         public uint TotalFishCount => _TotalFishCount;
 
+        public Records Records => _Records;
+
         public CalcStat(StatisticsTimeMode timeMode, int Param) 
         {
             _Fishes = new List<StatFish>();
             _TimeMode = timeMode;
             _Param = Param;
+            _Records = new Records();
         }
 
         public void Calc() 
         {
-            _ReportCount = ReportsList.Reports.Count;
+            _ReportCount = 0;
             foreach (Report report in ReportsList.Reports)
             {
                 // If the statistics are for the year
@@ -41,24 +47,37 @@ namespace FishingDiary.Models
                         //If the year does not match, skip it.
                         continue;
                     }
+                    _ReportCount++;
                 }
+
+                _Records.NewReport(report.ReportId, report.StartDate, report.EndDate);
 
                 foreach(RecordFish fish in report.CaughtFishes)
                 {
                     StatFish statFish = _Fishes.Find(x => x.Id == fish.FishId);
                     if (statFish == null)
                     {
-                        _Fishes.Add(new StatFish(fish.FishId, fish.Fishes[fish.FishId], fish.Quantity));
+                        _Fishes.Add(new StatFish(fish));
                     }
                     else
                     {
-                        statFish.AddQuantity(fish.Quantity);
+                        statFish.AddQuantity(fish);
                     }
                     _TotalFishCount += fish.Quantity;
+
+                    _Records.CheckAndAdd(fish, report.BodyOfWater);
                 }
+
+                _Records.EndReport();
             }
 
+            // sort by quantity descending for all
             _Fishes.Sort();
+            _Records.Sort();
+            foreach (StatFish sortFish in _Fishes)
+            {
+                sortFish.SortAll();
+            }
 
             foreach(StatFish statFish1 in _Fishes)
             {

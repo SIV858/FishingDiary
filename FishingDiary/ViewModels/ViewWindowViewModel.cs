@@ -33,7 +33,7 @@ namespace FishingDiary.ViewModels
         {
             get => ShortReportsList.StartElement.ToString() + "-" 
                 + ShortReportsList.EndElement.ToString() + " " 
-                + CommonData.GenLanguages.ViewWindow.sFrom + " " 
+                + CommonData.GenLanguages.CommonTexts.sFrom + " " 
                 + ShortReportsList.Count;
         }
 

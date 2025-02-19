@@ -5,6 +5,7 @@ using FishingDiary.Models;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -70,6 +71,29 @@ namespace FishingDiary.ViewModels
             set => this.RaiseAndSetIfChanged(ref _ImageStat, value);
         }
 
+        public event EventHandler UpdateWindow = null;
+
+        public bool IsEnabledPrev => !_StatPainter.FirstPage;
+        public bool IsEnabledNext => !_StatPainter.EndPage;
+
+        public string txtPageInfo
+        {
+            get => _StatPainter.CurrentPage.ToString() + " "
+                + CommonData.GenLanguages.CommonTexts.sFrom + " "
+                + _StatPainter.CountPages;
+        }
+
+        public uint CurrentPage
+        {
+            get => _StatPainter.CurrentPage;
+            set
+            {
+                uint Value = 0;
+                this.RaiseAndSetIfChanged(ref Value, value);
+                _StatPainter.SetPage(Value);
+            }
+        }
+
         public StatisticsWindowViewModel()
         {
             ReportsList.LoadReports();
@@ -78,15 +102,25 @@ namespace FishingDiary.ViewModels
 
         public void PaintStat()
         {
-
             _StatPainter.PaintStat(PeriodMode, Years[CurrentYear]);
             ImageStat = _StatPainter.GetImage();
+
+            UpdateWindow?.Invoke(this, null);
         }
 
-        public void SaveStat()
+        public void IncrementPage()
         {
-            _StatPainter.Save();
+            ImageStat = _StatPainter.IncrementPage();
         }
 
+        public void DecrementPage()
+        {
+            ImageStat = _StatPainter.DecrementPage();
+        }
+
+        public MemoryStream GetStatStream()
+        {
+            return _StatPainter.GetStream();
+        }
     }
 }
