@@ -55,5 +55,13 @@ namespace FishingDiary.Models
         public string sStatisticVariety { get; set; } = "Variety:";
         public string sStatisticQuantity { get; set; } = "Quantity:";
         public string sStatisticNibble { get; set; } = "Nibble:";
+
+        public string sBestDaysHeader { get; set; } = "Best days of all time";
+        public string sBestDaysHeaderYear { get; set; } = "Best days of the year: ";
+        public string sBestDaysHeaderPeriod { get; set; } = "Best days of the period: ";
+        public string sBestDaysFirst { get; set; } = "first place";
+        public string sBestDaysSecond { get; set; } = "second";
+        public string sBestDaysThird { get; set; } = "third";
+        public string sBestDaysAll { get; set; } = "all";
     }
 }

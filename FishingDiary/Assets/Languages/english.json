@@ -169,7 +169,14 @@
     "sStatisticFish": "Fish:",
     "sStatisticVariety": "Variety:",
     "sStatisticQuantity": "Quantity:",
-    "sStatisticNibble": "Nibble:"
+    "sStatisticNibble": "Nibble:",
+    "sBestDaysHeader": "Best days of all time",
+    "sBestDaysHeaderYear": "Best days of the year: ",
+    "sBestDaysHeaderPeriod": "Best days of the period: ",
+    "sBestDaysFirst": "first place",
+    "sBestDaysSecond": "second",
+    "sBestDaysThird": "third",
+    "sBestDaysAll": "all"
   },
   "EditorTexts": {
     "sHead": "Editor",

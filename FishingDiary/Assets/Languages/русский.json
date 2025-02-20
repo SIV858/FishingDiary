@@ -168,7 +168,14 @@
     "sStatisticFish": "По рыбе:",
     "sStatisticVariety": "По разновидности:",
     "sStatisticQuantity": "По количеству:",
-    "sStatisticNibble": "По клёву:"
+    "sStatisticNibble": "По клёву:",
+    "sBestDaysHeader": "Лучшие дни за всё время",
+    "sBestDaysHeaderYear": "Лучшие дни за год: ",
+    "sBestDaysHeaderPeriod": "Лучшие дни за период: ",
+    "sBestDaysFirst": "первое место",
+    "sBestDaysSecond": "второе",
+    "sBestDaysThird": "третье",
+    "sBestDaysAll": "всего"
   },
   "EditorTexts": {
     "sHead": "Редактор параметров",

@@ -9,6 +9,7 @@ namespace FishingDiary.Models
 {
     public class DataFish : IComparable<DataFish>
     {
+        public uint RecordId { get; set; }
         public int FishId { get; set; }
         public int BaitId { get; set; }
         public int MethodId { get; set; }

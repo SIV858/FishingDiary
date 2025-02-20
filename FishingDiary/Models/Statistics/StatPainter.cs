@@ -380,7 +380,46 @@ namespace FishingDiary.Models
                 index++;
             }
 
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///Best days
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            if (timeMode == StatisticsTimeMode.AllTime)
+            {
+                Inscription = CommonData.GenLanguages.StatWindow.sBestDaysHeader;
+            }
+            else
+            {
+                Inscription = CommonData.GenLanguages.StatWindow.sBestDaysHeaderYear + Param.ToString();
+            }
+            p = new Paragraph(new Phrase(Inscription, _Font));
+            p.Alignment = 1;
+            doc.Add(p);
 
+
+            index = 1;
+
+            foreach (var day in calcStat.Records.BestDays)
+            {
+                Inscription = String.Format("{0}) {1} {2}:{3} {4}:{5} {6}:{7} {8}:{9})",
+                    index,
+                    day.Date.ToString("dd-MM-yyyy"),
+                    CommonData.GenLanguages.StatWindow.sBestDaysFirst,
+                    day.Record.FirstPlace,
+                    CommonData.GenLanguages.StatWindow.sBestDaysSecond,
+                    day.Record.SecondPlace,
+                    CommonData.GenLanguages.StatWindow.sBestDaysThird,
+                    day.Record.ThirdPlace,
+                    CommonData.GenLanguages.StatWindow.sBestDaysAll,
+                    day.Record.FirstPlace + day.Record.SecondPlace + day.Record.ThirdPlace);
+                p = new Paragraph(new Phrase(Inscription, _Font));
+                doc.Add(p);
+
+                if (index >= 10)
+                {
+                    break;
+                }
+                index++;
+            }
 
 
             doc.Close();

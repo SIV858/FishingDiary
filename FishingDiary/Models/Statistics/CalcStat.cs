@@ -71,6 +71,8 @@ namespace FishingDiary.Models
                 _Records.EndReport();
             }
 
+            _Records.CalcBestDays(_Fishes);
+
             // sort by quantity descending for all
             _Fishes.Sort();
             _Records.Sort();

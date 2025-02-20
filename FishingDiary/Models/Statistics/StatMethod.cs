@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FishingDiary.Models.Statistics
 {
-    internal class StatMethod : IComparable<StatMethod>
+    public class StatMethod : IComparable<StatMethod>
     {
         private int _Id;
         private string _Name;

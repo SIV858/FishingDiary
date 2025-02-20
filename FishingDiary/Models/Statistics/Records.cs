@@ -1,6 +1,7 @@
 ﻿//12.02.25
 
 using DynamicData;
+using FishingDiary.Models.Statistics;
 using PDFiumSharp.Types;
 using System;
 using System.Collections;
@@ -20,6 +21,8 @@ namespace FishingDiary.Models
         private List<Tuple<int, RecordList<RecordData<ushort>>>> _FishCountRecords;
         private RecordList<RecordData<ushort>> _VarietyRecords;
 
+        private List<RecordData<BestDay>> _BestDays;
+
         private ushort _CurrentVariety;
         private List <Tuple<int, RecordData<ushort>>> _CurrentFishCount;
 
@@ -34,7 +37,7 @@ namespace FishingDiary.Models
         public List<Tuple<int, RecordList<RecordData<ushort>>>> FishCountRecords => _FishCountRecords;
         public RecordList<RecordData<ushort>> VarietyRecords => _VarietyRecords;
 
-
+        public List<RecordData<BestDay>> BestDays => _BestDays;
 
         public Records() 
         {
@@ -46,6 +49,8 @@ namespace FishingDiary.Models
 
 
             _CurrentFishCount = new List<Tuple<int, RecordData<ushort>>>();
+
+            _BestDays = new List<RecordData<BestDay>>();
         }
 
         /// <summary>
@@ -158,6 +163,7 @@ namespace FishingDiary.Models
             if (dataFishList.Count == 0)
             {
                 DataFish dataFish = new DataFish();
+                dataFish.RecordId = _CurrentRecordId;
                 dataFish.FishId = fish.FishId;
                 dataFish.BaitId = fish.BaitId;
                 dataFish.MethodId = fish.MethodId;
@@ -187,6 +193,7 @@ namespace FishingDiary.Models
                     {
                         if (IsFirst)
                         {
+                            f.RecordId = _CurrentRecordId;
                             f.BaitId = fish.BaitId;
                             f.MethodId = fish.MethodId;
                             f.OptionId = fish.OptionId;
@@ -218,6 +225,156 @@ namespace FishingDiary.Models
         {
             _FishRecords.Sort();
             _FishCountRecords.Sort();
+        }
+
+
+        private void CalcBestDaysForRecord(RecordList<RecordData<ushort>> recordList)
+        {
+
+            if (recordList.Items.Count < 1)
+                return;
+
+            List<RecordData<ushort>> records = recordList.Items[0];
+
+            foreach (RecordData<ushort> record in records)
+            {
+                var Day = _BestDays.Find(x => x.RecordId == record.RecordId);
+                if (Day == null)
+                {
+                    _BestDays.Add(new RecordData<BestDay>(record.RecordId, record.Date, new BestDay(record.RecordId, BestDayPlaceIndex.FirstPlace)));
+                }
+                else
+                {
+                    Day.Record.IncrementFirst();
+                }
+            }
+
+            if (recordList.Items.Count > 1)
+            {
+                records = recordList.Items[1];
+
+                foreach (RecordData<ushort> record in records)
+                {
+                    var Day = _BestDays.Find(x => x.RecordId == record.RecordId);
+                    if (Day == null)
+                    {
+                        _BestDays.Add(new RecordData<BestDay>(record.RecordId, record.Date, new BestDay(record.RecordId, BestDayPlaceIndex.SecondPlace)));
+                    }
+                    else
+                    {
+                        Day.Record.IncrementSecond();
+                    }
+                }
+
+                if (recordList.Items.Count > 2)
+                {
+                    records = recordList.Items[2];
+
+                    foreach (RecordData<ushort> record in records)
+                    {
+                        var Day = _BestDays.Find(x => x.RecordId == record.RecordId);
+                        if (Day == null)
+                        {
+                            _BestDays.Add(new RecordData<BestDay>(record.RecordId, record.Date, new BestDay(record.RecordId, BestDayPlaceIndex.ThirdPlace)));
+                        }
+                        else
+                        {
+                            Day.Record.IncrementThird();
+                        }
+                    }
+                }
+            }
+        }
+
+        public void CalcBestDays(List<StatFish> statFishes)
+        {
+            CalcBestDaysForRecord(QuantityRecords);
+            CalcBestDaysForRecord(VarietyRecords);
+
+            // Fish count records
+            foreach(var countRecodrs in _FishCountRecords)
+            {
+                CalcBestDaysForRecord(countRecodrs.Item2);
+            }
+
+            // Nibble records
+            if (_NibbleRecords.Items.Count > 0)
+            {
+                List<RecordData<float>> records = _NibbleRecords.Items[0];
+
+                foreach (RecordData<float> record in records)
+                {
+                    var Day = _BestDays.Find(x => x.RecordId == record.RecordId);
+                    if (Day == null)
+                    {
+                        _BestDays.Add(new RecordData<BestDay>(record.RecordId, record.Date, new BestDay(record.RecordId, BestDayPlaceIndex.FirstPlace)));
+                    }
+                    else
+                    {
+                        Day.Record.IncrementFirst();
+                    }
+                }
+
+                if (_NibbleRecords.Items.Count > 1)
+                {
+                    records = _NibbleRecords.Items[1];
+
+                    foreach (RecordData<float> record in records)
+                    {
+                        var Day = _BestDays.Find(x => x.RecordId == record.RecordId);
+                        if (Day == null)
+                        {
+                            _BestDays.Add(new RecordData<BestDay>(record.RecordId, record.Date, new BestDay(record.RecordId, BestDayPlaceIndex.SecondPlace)));
+                        }
+                        else
+                        {
+                            Day.Record.IncrementSecond();
+                        }
+                    }
+
+                    if (_NibbleRecords.Items.Count > 2)
+                    {
+                        records = _NibbleRecords.Items[2];
+
+                        foreach (RecordData<float> record in records)
+                        {
+                            var Day = _BestDays.Find(x => x.RecordId == record.RecordId);
+                            if (Day == null)
+                            {
+                                _BestDays.Add(new RecordData<BestDay>(record.RecordId, record.Date, new BestDay(record.RecordId, BestDayPlaceIndex.ThirdPlace)));
+                            }
+                            else
+                            {
+                                Day.Record.IncrementThird();
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Records
+            foreach(var statFish in statFishes)
+            {
+                if (statFish.Quantity > 10)
+                {
+                    var fishRecord = _FishRecords.Find(x=> x.FishId == statFish.Id);
+
+                    if (fishRecord != null)
+                    {
+                        var Day = _BestDays.Find(x => x.RecordId == fishRecord.RecordId);
+                        if (Day == null)
+                        {
+                            _BestDays.Add(new RecordData<BestDay>(fishRecord.RecordId, fishRecord.Time, new BestDay(fishRecord.RecordId, BestDayPlaceIndex.FirstPlace)));
+                        }
+                        else
+                        {
+                            Day.Record.IncrementFirst();
+                        }
+                    }
+                }
+            }
+
+            _BestDays.Sort();
         }
     }
 }
