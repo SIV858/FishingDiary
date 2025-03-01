@@ -8,6 +8,7 @@ namespace FishingDiary.Models
     public class CStatWindow
     {
         public string sHead { get; set; } = "Statistics";
+        public string sHeadSaveWindow { get; set; } = "Save statistics";
         public string sPaintButton { get; set; } = "Paint statistics";
         public string sHeader { get; set; } = "All time statistics";
         public string sHeaderYear { get; set; } = "Statistics for the year: ";

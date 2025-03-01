@@ -10,6 +10,8 @@
     "sButtonApply": "Применить",
     "sButtonAdd": "Добавить",
     "sButtonChange": "Изменить",
+    "sButtonLoad": "Загрузить",
+    "sButtonImport": "Импортировать",
     "sButtonYes": "Да",
     "sButtonNo": "Нет",
     "sButtonClear": "Очистить",
@@ -116,7 +118,8 @@
     "sDescription": "Описание"
   },
   "AddReport": {
-    "sHead": "Добавить отчёт"
+    "sHead": "Добавить отчёт",
+    "sHeadLoadWindow": "Импортировать отчёт"
   },
   "EditReport": {
     "sHead": "Редактировать отчёт"
@@ -130,6 +133,7 @@
   },
   "StatWindow": {
     "sHead": "Статистика",
+    "sHeadSaveWindow": "Сохранение статистики",
     "sPaintButton": "Вывести статистику",
     "sHeader": "Статистика за всё время",
     "sHeaderYear": "Статистика за следующий год: ",

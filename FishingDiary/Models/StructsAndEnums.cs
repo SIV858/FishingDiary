@@ -81,6 +81,7 @@ namespace FishingDiary.Models
 
     public enum Biting
     {
+        Unknown,
         NoFishCaught,
         FishCaughtBad,
         FishCaughtNormal,

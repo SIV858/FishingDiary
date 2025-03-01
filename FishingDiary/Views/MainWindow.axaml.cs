@@ -7,6 +7,7 @@ using System;
 using System.Runtime.CompilerServices;
 using FishingDiary.ViewModels;
 using FishingDiary.Models;
+using System.Text;
 
 namespace FishingDiary.Views
 {
@@ -15,6 +16,7 @@ namespace FishingDiary.Views
 
         public MainWindow()
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             InitializeComponent();
         }
 

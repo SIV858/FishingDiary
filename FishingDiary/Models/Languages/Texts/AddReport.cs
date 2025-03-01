@@ -8,5 +8,6 @@ namespace FishingDiary.Models
     public class CAddReport
     {
         public string sHead { get; set; } = "Add report";
+        public string sHeadLoadWindow { get; set; } = "Load report";
     }
 }

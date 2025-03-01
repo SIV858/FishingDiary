@@ -16,6 +16,8 @@ namespace FishingDiary.Models
         public string sButtonApply { get; set; } = "Apply";
         public string sButtonAdd { get; set; } = "Add";
         public string sButtonChange { get; set; } = "Change";
+        public string sButtonLoad { get; set; } = "Load";  
+        public string sButtonImport { get; set; } = "Import";
 
 
         public string sButtonYes { get; set; } = "Yes";

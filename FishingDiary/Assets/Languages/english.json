@@ -11,6 +11,8 @@
     "sButtonApply": "Apply",
     "sButtonAdd": "Add",
     "sButtonChange": "Change",
+    "sButtonLoad": "Load",
+    "sButtonImport": "Import",
     "sButtonYes": "Yes",
     "sButtonNo": "No",
     "sButtonClear": "Clear",
@@ -117,7 +119,8 @@
     "sDescription": "Description"
   },
   "AddReport": {
-    "sHead": "Add report"
+    "sHead": "Add report",
+    "sHeadLoadWindow": "Import report"
   },
   "EditReport": {
     "sHead": "Edit report"
@@ -131,6 +134,7 @@
   },
   "StatWindow": {
     "sHead": "Statistics",
+    "sHeadSaveWindow": "Save statistics",
     "sPaintButton": "Paint statistics",
     "sHeader": "All time statistics",
     "sHeaderYear": "Statistics for the year: ",

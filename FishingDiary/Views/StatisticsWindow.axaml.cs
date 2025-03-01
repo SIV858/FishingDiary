@@ -51,7 +51,7 @@ namespace FishingDiary.Views
 
             if (StatStream != null)
             {
-                SaveFileDialog fileDialog = new SaveFileDialog() { Title = "Сохранение статистики" };
+                SaveFileDialog fileDialog = new SaveFileDialog() { Title = CommonData.GenLanguages.StatWindow.sHeadSaveWindow };
                 fileDialog.Filters.Add(new FileDialogFilter() { Name = "PDF files", Extensions = { "pdf" } });
                 var result = await fileDialog.ShowAsync(this);
 

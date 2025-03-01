@@ -16,6 +16,7 @@
 	</Design.DataContext>
 	<DockPanel Margin="5,5,5,5">
 			<DockPanel DockPanel.Dock="Bottom">
+				<Button Click="OnLoadClick" DockPanel.Dock="Left" MinWidth="120" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtLoad}"/>
 				<Button Click="OnCancelClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtCancel}"/>
 				<Button Click="OnAddClick" DockPanel.Dock="Right" MinWidth="100" MaxWidth="100" FontSize="{Binding dFontSize}" Content="{Binding txtAdd}"/>
 				<TextBlock Text=""/>
