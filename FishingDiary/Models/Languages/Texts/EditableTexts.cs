@@ -26,6 +26,7 @@ namespace FishingDiary.Models
         public List<DataElement> FishingTackle => _FishingTackles;
         public List<DataElement> Groundbaits => _Groundbaits;
         public List<DataElement> Methods => _Methods;
+        public List<DataElement> Options => _Options;
         public List<DataElement> Waters => _Waters;
 
         public List<string> MethodsText 

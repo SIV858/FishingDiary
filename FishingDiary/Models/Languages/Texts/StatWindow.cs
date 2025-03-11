@@ -49,6 +49,7 @@ namespace FishingDiary.Models
         public string sStatisticWeight { get; set; } = "weigh";
         public string sStatisticYear { get; set; } = "";
         public string sStatisticPcs { get; set; } = "pcs";
+        public string sStatisticPcsInHour { get; set; } = "pcs/h";
         public string sCentimeter { get; set; } = "cm";
         public string sGram { get; set; } = "g";
 

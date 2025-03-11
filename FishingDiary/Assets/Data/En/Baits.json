@@ -56,12 +56,56 @@
     "Text": "Peas"
   },
   {
+    "Id": 14,
+    "Text": "Live bait"
+  },
+  {
+    "Id": 15,
+    "Text": "Twister"
+  },
+  {
+    "Id": 16,
+    "Text": "Vibrotail"
+  },
+  {
+    "Id": 17,
+    "Text": "Artificial Worm"
+  },
+  {
+    "Id": 18,
+    "Text": "Artificial shrimp"
+  },
+  {
+    "Id": 19,
+    "Text": "Spoon spinner"
+  },
+  {
+    "Id": 20,
+    "Text": "Spinning spoon"
+  },
+  {
+    "Id": 21,
+    "Text": "Wobbler"
+  },
+  {
+    "Id": 22,
+    "Text": "Popper"
+  },
+  {
+    "Id": 23,
+    "Text": "Volker"
+  },
+  {
     "Id": 100,
     "Text": "Maggot + Worm"
   },
   {
     "Id": 101,
     "Text": "Maggot + Pearl barley"
+  },
+  {
+    "Id": 102,
+    "Text": "Maggot + "
   },
   {
     "Id": 110,
@@ -74,5 +118,21 @@
   {
     "Id": 112,
     "Text": "Worm + Maggot"
+  },
+  {
+    "Id": 120,
+    "Text": " "
+  },
+  {
+    "Id": 1000,
+    "Text": "The first twister"
+  },
+  {
+    "Id": 1001,
+    "Text": "Сatchy twister"
+  },
+  {
+    "Id": 1501,
+    "Text": "Mosca Longet 1"
   }
 ]

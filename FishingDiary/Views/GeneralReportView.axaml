@@ -219,7 +219,7 @@
 						</DataGridTemplateColumn.Header>
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
-								<ComboBox SelectedIndex="{Binding FishId}" ItemsSource="{Binding Fishes}"
+								<ComboBox SelectedIndex="{Binding FishIdView}" ItemsSource="{Binding Fishes}"
 								  VerticalAlignment="Center" HorizontalAlignment="Center" />
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
@@ -243,7 +243,7 @@
 						</DataGridTemplateColumn.Header>
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
-								<ComboBox SelectedIndex="{Binding BaitId}" ItemsSource="{Binding Baits}"
+								<ComboBox SelectedIndex="{Binding BaitIdView}" ItemsSource="{Binding Baits}"
 								  VerticalAlignment="Center" HorizontalAlignment="Center" />
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
@@ -255,7 +255,7 @@
 						</DataGridTemplateColumn.Header>
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
-								<ComboBox SelectedIndex="{Binding MethodId}" ItemsSource="{Binding Methods}"
+								<ComboBox SelectedIndex="{Binding MethodIdView}" ItemsSource="{Binding Methods}"
 								  VerticalAlignment="Center" HorizontalAlignment="Center" />
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>
@@ -267,7 +267,7 @@
 						</DataGridTemplateColumn.Header>
 						<DataGridTemplateColumn.CellTemplate>
 							<DataTemplate>
-								<ComboBox SelectedIndex="{Binding OptionId}" ItemsSource="{Binding Options}"
+								<ComboBox SelectedIndex="{Binding OptionIdView}" ItemsSource="{Binding Options}"
 								  VerticalAlignment="Center" HorizontalAlignment="Center" />
 							</DataTemplate>
 						</DataGridTemplateColumn.CellTemplate>

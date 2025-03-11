@@ -17,9 +17,15 @@ namespace FishingDiary.Models
         public static Bitmap LoadFromFile(string resourcePath)
         {
             Bitmap image;
-            using (Stream imageStream = new FileStream(resourcePath, FileMode.Open))
+            try
             {
-                image = new Bitmap(imageStream);
+                using (Stream imageStream = new FileStream(resourcePath, FileMode.Open))
+                {
+                    image = new Bitmap(imageStream);
+                }
+            }catch(FileNotFoundException)
+            {
+                return null;
             }
 
             return image;
@@ -39,7 +45,13 @@ namespace FishingDiary.Models
                 resourceUri = new Uri(resourcePath);
             }
 
-            return new Bitmap(AssetLoader.Open(resourceUri));
+            try
+            {
+                return new Bitmap(AssetLoader.Open(resourceUri));
+            }catch(FileNotFoundException)
+            {
+                return null;
+            }
         }
 
         public static string ConvertAirTemperatureToString(AirTemperature temperature)

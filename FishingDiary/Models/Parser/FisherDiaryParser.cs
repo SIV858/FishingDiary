@@ -189,9 +189,9 @@ namespace FishingDiary.Models
                 case "западный":
                     return WindDirection.West;
                 case "северо-восточный":
-                    return WindDirection.NorthWest;
-                case "северо-западный":
                     return WindDirection.NorthEast;
+                case "северо-западный":
+                    return WindDirection.NorthWest;
                 case "юго-восточный":
                     return WindDirection.SouthEast;
                 case "юго-западный":
@@ -264,7 +264,7 @@ namespace FishingDiary.Models
         {
             switch (biting)
             {
-                case "клёва не было":
+                case "клёва небыло":
                     return Biting.NoFishCaught;
                 case "плохой клёв":
                     return Biting.FishCaughtBad;
@@ -300,7 +300,7 @@ namespace FishingDiary.Models
                     phase = Data.Substring(positionOfNewLine, 3);
                 }
                 moonPhase = ConvertStringToPhase(phase);
-                if (positionOfNewLine == 20)
+                if (positionOfNewLine == 16)
                 {
                     return false;
                 }
@@ -412,10 +412,10 @@ namespace FishingDiary.Models
             int index = 0;
             do
             {
-                index = elementsString.IndexOf(",", oldIndex);
+                index = Elements.IndexOf(",", oldIndex);
                 if (index == -1)
                 {
-                    elementsString.Add(Elements.ToLower());
+                    elementsString.Add(Elements.Substring(oldIndex, Elements.Length - oldIndex).ToLower());
                 }
                 else
                 {

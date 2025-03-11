@@ -22,6 +22,7 @@
     "sErrorCorruptedLanguageFile": "Текущий файл языка не найден или повреждён",
     "sErrorFileNotFound": "Следующий файл не найден: ",
     "sErrorCorruptedFile": "Следующий файл повреждён: ",
+    "sErrorOpenFile": "Не удалось открыть файл",
     "sParamNotFound": "Параметр с данным ID не найден (Параметр:ID): ",
     "sNullNameWater": "Необходимо задать название водоёма",
     "sIdAlreadyExists": "Такой Id уже есть"
@@ -167,6 +168,7 @@
     "sStatisticWeight": "вес",
     "sStatisticYear": "г",
     "sStatisticPcs": "шт",
+    "sStatisticPcsInHour": "рыб/ч",
     "sCentimeter": "см",
     "sGram": "г",
     "sStatisticFish": "По рыбе:",

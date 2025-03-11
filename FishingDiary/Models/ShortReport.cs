@@ -171,16 +171,18 @@ namespace FishingDiary.Models
                     else
                     {
                         PhotoMini = image.CreateScaledBitmap(new Avalonia.PixelSize(PathsAndConstants.WIDTH_4x3_IMAGE,
-                            PathsAndConstants.WIDTH_4x3_IMAGE));
+                            PathsAndConstants.HEIGHT_4x3_IMAGE));
                     }
                     PhotoMini.Save(ImagePath);
                 }
 
-                PhotoPath = ImagePath;
+                PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(),
+                    ImagePath);
             }
             else
             {
-                PhotoPath = Path.GetDirectoryName(PhotoPath) + "\\" + PathsAndConstants.NO_PHOTO_FILE_NAME_MINI;
+                PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(),
+                    Path.GetDirectoryName(PhotoPath) + "\\" + PathsAndConstants.NO_PHOTO_FILE_NAME_MINI);
             }
 
             ShortReportsList.SaveReportsList(PathsAndConstants.SHORT_REPORT_PATH);
@@ -199,23 +201,31 @@ namespace FishingDiary.Models
             {
                 string ImagePath = PathsAndConstants.SHORT_REPORT_IMAGES_PATH + photoName;
 
-                //reduce and save the original image
-                using (Bitmap image = new Bitmap(PhotoPath))
+                try
                 {
-                    if (image.Size.Width / image.Size.Height > PathsAndConstants.AVERAGE_RATIO_COEF)
+                    //reduce and save the original image
+                    using (Bitmap image = new Bitmap(PhotoPath))
                     {
-                        PhotoMini = image.CreateScaledBitmap(new Avalonia.PixelSize(PathsAndConstants.WIDTH_16x9_IMAGE,
-                            PathsAndConstants.HEIGHT_16x9_IMAGE));
+                        if (image.Size.Width / image.Size.Height > PathsAndConstants.AVERAGE_RATIO_COEF)
+                        {
+                            PhotoMini = image.CreateScaledBitmap(new Avalonia.PixelSize(PathsAndConstants.WIDTH_16x9_IMAGE,
+                                PathsAndConstants.HEIGHT_16x9_IMAGE));
+                        }
+                        else
+                        {
+                            PhotoMini = image.CreateScaledBitmap(new Avalonia.PixelSize(PathsAndConstants.WIDTH_4x3_IMAGE,
+                                PathsAndConstants.HEIGHT_4x3_IMAGE));
+                        }
+                        PhotoMini.Save(ImagePath);
                     }
-                    else
-                    {
-                        PhotoMini = image.CreateScaledBitmap(new Avalonia.PixelSize(PathsAndConstants.WIDTH_4x3_IMAGE,
-                            PathsAndConstants.WIDTH_4x3_IMAGE));
-                    }
-                    PhotoMini.Save(ImagePath);  
-                }
 
-                PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(), ImagePath);
+                    PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(), ImagePath);
+                }
+                catch(FileNotFoundException)
+                {
+                    PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(),
+                        Path.GetDirectoryName(PhotoPath) + "\\" + PathsAndConstants.NO_PHOTO_FILE_NAME_MINI);
+                }
             }
             else
             {

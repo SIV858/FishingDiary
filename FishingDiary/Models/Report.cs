@@ -1,6 +1,7 @@
 ﻿//17.09.20
 using Avalonia.Animation.Easings;
 using Avalonia.Controls.Shapes;
+using DynamicData;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -283,19 +284,13 @@ namespace FishingDiary.Models
         /// <returns>Sign of an DataElement being in the source list</returns>
         private bool AddElemById(int id, List<DataElement> source, List<DataElement> destination)
         {
-            foreach (var method in source)
+            // If such an element already exists, then do not add it
+            if (!destination.Exists(x => x.Id == source[id].Id))
             {
-                if (method.Id == id)
-                {
-                    // If such an element already exists, then do not add it
-                    if (!destination.Exists(x => x.Id == method.Id))
-                    {
-                        destination.Add(method);
-                    }
-                    return true;
-                }
+                destination.Add(source[id]);
             }
-            return false;
+
+            return true;
         }
 
 
@@ -366,6 +361,10 @@ namespace FishingDiary.Models
                 }
 
                 PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(), ImagePath);
+            }
+            else
+            {
+                PhotoPath = System.IO.Path.GetRelativePath(System.IO.Directory.GetCurrentDirectory(), PhotoPath);
             }
 
             ReportPath += String.Format("\\{0}_report.json", reportId.ToString());

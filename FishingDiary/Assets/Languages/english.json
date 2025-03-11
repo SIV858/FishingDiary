@@ -23,6 +23,7 @@
     "sErrorCorruptedLanguageFile": "The current language file not found or is corrupted",
     "sErrorFileNotFound": "The following file was not found: ",
     "sErrorCorruptedFile": "The following file is corrupted: ",
+    "sErrorOpenFile": "Failed to open file",
     "sParamNotFound": "Parameter with given ID not found (Parameter:ID): ",
     "sNullNameWater": "It is necessary to specify the name of the reservoir",
     "sIdAlreadyExists": "Such an Id already exists"
@@ -168,6 +169,7 @@
     "sStatisticWeight": "weigh",
     "sStatisticYear": "",
     "sStatisticPcs": "pcs",
+    "sStatisticPcsInHour": "pcs/h",
     "sCentimeter": "cm",
     "sGram": "g",
     "sStatisticFish": "Fish:",

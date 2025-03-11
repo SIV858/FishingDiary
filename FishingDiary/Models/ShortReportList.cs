@@ -145,6 +145,11 @@ namespace FishingDiary.Models
                 foreach (var report in mListReports)
                 {
                     report.PhotoMini = Helpers.LoadFromFile(report.PhotoPath);
+                    if (report.PhotoMini == null) 
+                    {
+                        report.PhotoMini = Helpers.LoadFromFile(PathsAndConstants.NO_PHOTO_PATH_MINI);
+                        report.PhotoPath = PathsAndConstants.NO_PHOTO_PATH_MINI;
+                    }
                 }
             }
 

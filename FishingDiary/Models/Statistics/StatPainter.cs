@@ -273,13 +273,13 @@ namespace FishingDiary.Models
                     Inscription = String.Format("{0}) {1} ({2}{3}) {4} {5} {6}, " +
                         "{7}, {8}, {9} {10} {11}, {12} {13} {14}",
                         index,
-                        CommonData.EditableTexts.Fishes[record.FishId].Text,
+                        CommonData.EditableTexts.Fishes.Find(x => x.Id == record.FishId).Text,
                         record.Time.Year,
                         CommonData.GenLanguages.StatWindow.sStatisticYear,
                         record.Time.Date.ToString("dd-MM-yyyy"),
                         CommonData.GenLanguages.StatWindow.sStatisticCatching,
-                        CommonData.EditableTexts.Baits[record.BaitId].Text,
-                        CommonData.EditableTexts.Methods[record.MethodId].Text,
+                        CommonData.EditableTexts.Baits.Find(x => x.Id == record.BaitId).Text,
+                        CommonData.EditableTexts.Methods.Find(x => x.Id == record.MethodId).Text,
                         record.BodyOfWater,
                         CommonData.GenLanguages.StatWindow.sStatisticLenght,
                         record.Length,
@@ -293,13 +293,13 @@ namespace FishingDiary.Models
                     Inscription = String.Format("{0}) {1} ({2}{3}) {4} {5} {6}, " +
                         "{7}, {8}, {9} {10} {11}",
                         index,
-                        CommonData.EditableTexts.Fishes[record.FishId].Text,
+                        CommonData.EditableTexts.Fishes.Find(x => x.Id == record.FishId).Text,
                         record.Time.Year,
                         CommonData.GenLanguages.StatWindow.sStatisticYear,
                         record.Time.Date.ToString("dd-MM-yyyy"),
                         CommonData.GenLanguages.StatWindow.sStatisticCatching,
-                        CommonData.EditableTexts.Baits[record.BaitId].Text,
-                        CommonData.EditableTexts.Methods[record.MethodId].Text,
+                        CommonData.EditableTexts.Baits.Find(x => x.Id == record.BaitId).Text,
+                        CommonData.EditableTexts.Methods.Find(x => x.Id == record.MethodId).Text,
                         record.BodyOfWater,
                         CommonData.GenLanguages.StatWindow.sStatisticLenght,
                         record.Length,
@@ -353,7 +353,7 @@ namespace FishingDiary.Models
                         index,
                         record.First().Date.Date.ToString("dd-MM-yyyy"),
                         record.First().Record,
-                        CommonData.GenLanguages.StatWindow.sStatisticPcs);
+                        CommonData.GenLanguages.StatWindow.sStatisticPcsInHour);
                 }
                 else
                 {
@@ -373,7 +373,7 @@ namespace FishingDiary.Models
                     }
                     Inscription += String.Format("({0} {1:N2})",
                         record.First().Record,
-                        CommonData.GenLanguages.StatWindow.sStatisticPcs);
+                        CommonData.GenLanguages.StatWindow.sStatisticPcsInHour);
                 }
                 p = new Paragraph(new Phrase(Inscription, _Font));
                 doc.Add(p);

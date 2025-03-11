@@ -33,7 +33,7 @@ namespace FishingDiary.Models.Statistics
         public StatFish(RecordFish fish)
         {
             _Id = fish.FishId;
-            _Name = fish.Fishes[fish.FishId];
+            _Name = fish.Fishes[fish.FishIdView];
             _Baits = new List<StatBait>();
             _Baits.Add(new StatBait(fish));
             _Quantity = fish.Quantity;

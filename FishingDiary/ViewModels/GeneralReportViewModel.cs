@@ -141,6 +141,11 @@ namespace FishingDiary.ViewModels
                 }
                 // update photo on form
                 Photo = Helpers.LoadFromFile(CurrentReport.PhotoPath);
+                if (Photo == null)
+                {
+                    Photo = Helpers.LoadFromFile(PathsAndConstants.NO_PHOTO_PATH);
+                    CurrentReport.PhotoPath = PathsAndConstants.NO_PHOTO_PATH;
+                }
             }
         }
 
@@ -386,7 +391,7 @@ namespace FishingDiary.ViewModels
             if (String.IsNullOrEmpty(Path))
             {
                 CurrentReport = new Report();
-                _photo = Helpers.LoadFromResource("Assets/Data/No_Photo.png");
+                _photo = Helpers.LoadFromFile(PathsAndConstants.NO_PHOTO_PATH);
                 // New report - reset ID
                 RecordFish.ResetId();
 
@@ -425,6 +430,11 @@ namespace FishingDiary.ViewModels
                 ListGroundbaits = CurrentReport.GetGroundbaitsText();
                 ListBaits = CurrentReport.GetBaitsText();
                 _photo = Helpers.LoadFromFile(CurrentReport.PhotoPath);
+                if (_photo == null)
+                {
+                    _photo = Helpers.LoadFromFile(PathsAndConstants.NO_PHOTO_PATH);
+                    CurrentReport.PhotoPath = PathsAndConstants.NO_PHOTO_PATH;
+                }
                 RecordFish.SetId((ushort)(CurrentReport.CaughtFishes.Count + 1));
             }
         }

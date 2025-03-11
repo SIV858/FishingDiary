@@ -26,7 +26,7 @@ namespace FishingDiary.Models.Statistics
         public StatMethod(RecordFish fish)
         {
             _Id = fish.MethodId;
-            _Name = fish.Methods[fish.MethodId];
+            _Name = fish.Methods[fish.MethodIdView];
             _Quantity = fish.Quantity;
             if (fish.AverageLength != 0)
             {

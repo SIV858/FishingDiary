@@ -55,12 +55,19 @@ namespace FishingDiary.Views
 
             if (result.Length > 0)
             {
-                using (FileStream file = new FileStream(result[0], FileMode.Open))
+                try
                 {
-                    byte[] data = new byte[file.Length];
-                    file.Read(data, 0, (int)file.Length);
-                    Encoding encoding =  Encoding.GetEncoding(1251);
-                    sData = encoding.GetString(data);
+                    using (FileStream file = new FileStream(result[0], FileMode.Open))
+                    {
+                        byte[] data = new byte[file.Length];
+                        file.Read(data, 0, (int)file.Length);
+                        Encoding encoding = Encoding.GetEncoding(1251);
+                        sData = encoding.GetString(data);
+                    }
+                }catch(IOException)
+                {
+                    MessageBox.Show(this, CommonData.GenLanguages.ErrorTexts.sErrorOpenFile, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                    return;
                 }
                 AddWindowViewModel model = (AddWindowViewModel)this.DataContext;
                 model.LoadReport(sData, Path.GetDirectoryName(Path.GetDirectoryName(result[0])));
