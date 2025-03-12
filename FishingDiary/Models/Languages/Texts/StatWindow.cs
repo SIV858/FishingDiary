@@ -12,7 +12,7 @@ namespace FishingDiary.Models
         public string sPaintButton { get; set; } = "Paint statistics";
         public string sHeader { get; set; } = "All time statistics";
         public string sHeaderYear { get; set; } = "Statistics for the year: ";
-        public string sHeaderPeriod { get; set; } = "Statistics for the period: ";
+        public string sHeaderPeriod { get; set; } = "Statistics for the period from ";
 
         public string sNumber { get; set; } = "№";
         public string sFishName { get; set; } = "Name of fish";
@@ -26,6 +26,8 @@ namespace FishingDiary.Models
         public string sYearMode { get; set; } = "Year";
         public string sPeriodMode { get; set; } = "Period";
         public string sYear { get; set; } = "Year:";
+        public string sPeriodFrom { get; set; } = "Period from";
+        public string sPeriodTo { get; set; } = "to";
 
         public string sSave { get; set; } = "Save";
 

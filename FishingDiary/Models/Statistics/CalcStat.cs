@@ -13,6 +13,7 @@ namespace FishingDiary.Models
 
         StatisticsTimeMode _TimeMode = StatisticsTimeMode.AllTime;
         int _Param = 0;
+        int _EndYear = 0;
 
         private List<StatFish> _Fishes;
 
@@ -26,11 +27,12 @@ namespace FishingDiary.Models
 
         public Records Records => _Records;
 
-        public CalcStat(StatisticsTimeMode timeMode, int Param) 
+        public CalcStat(StatisticsTimeMode timeMode, int Param, int EndYear) 
         {
             _Fishes = new List<StatFish>();
             _TimeMode = timeMode;
             _Param = Param;
+            _EndYear = EndYear;
             _Records = new Records();
         }
 
@@ -47,8 +49,17 @@ namespace FishingDiary.Models
                         //If the year does not match, skip it.
                         continue;
                     }
-                    _ReportCount++;
                 }
+                if (_TimeMode == StatisticsTimeMode.Period)
+                {
+                    if (report.StartDate.Year < _Param || report.StartDate.Year > _EndYear)
+                    {
+                        //If the year does not fall within the period, skip it.
+                        continue;
+                    }
+                }
+                _ReportCount++;
+
 
                 _Records.NewReport(report.ReportId, report.StartDate, report.EndDate);
 

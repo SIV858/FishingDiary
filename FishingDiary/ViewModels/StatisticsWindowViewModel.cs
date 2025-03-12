@@ -18,7 +18,10 @@ namespace FishingDiary.ViewModels
         Bitmap? _ImageStat;
 
         private int _CurrentYear = 0;
+        private int _StartYear = 0;
+        private int _EndYear = 0;
         private bool _IsVisibleYear = false;
+        private bool _IsVisiblePeriod = false;
 
         private StatisticsTimeMode _PeriodMode = StatisticsTimeMode.AllTime;
 
@@ -33,12 +36,38 @@ namespace FishingDiary.ViewModels
         public string txtYearMode => CommonData.GenLanguages.StatWindow.sYearMode;
         public string txtPeriodMode => CommonData.GenLanguages.StatWindow.sPeriodMode;
         public string txtYear => CommonData.GenLanguages.StatWindow.sYear;
+        public string txtPeriodFrom => CommonData.GenLanguages.StatWindow.sPeriodFrom;
+        public string txtPeriodTo => CommonData.GenLanguages.StatWindow.sPeriodTo;
 
         public List<int> Years => ReportsList.Years;
         public int CurrentYear
         {
             get => _CurrentYear;
             set => this.RaiseAndSetIfChanged(ref _CurrentYear, value);
+        }
+        public int StartYear
+        {
+            get => _StartYear;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _StartYear, value);
+                if (_StartYear > _EndYear)
+                {
+                    EndYear = _StartYear;
+                }
+            }
+        }
+        public int EndYear
+        {
+            get => _EndYear;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _EndYear, value);
+                if (_StartYear > _EndYear)
+                {
+                    StartYear = _EndYear;
+                }
+            }
         }
 
         public double dFontSize => Properties.GetInstance().FontSize;
@@ -47,6 +76,11 @@ namespace FishingDiary.ViewModels
             get => _IsVisibleYear;
             set => this.RaiseAndSetIfChanged(ref _IsVisibleYear, value);
         }
+        public bool IsVisiblePeriod
+        {
+            get => _IsVisiblePeriod;
+            set => this.RaiseAndSetIfChanged(ref _IsVisiblePeriod, value);
+        }
 
         public StatisticsTimeMode PeriodMode
         {
@@ -54,13 +88,20 @@ namespace FishingDiary.ViewModels
             set 
             {
                 this.RaiseAndSetIfChanged(ref _PeriodMode, value);
-                if (_PeriodMode != StatisticsTimeMode.Year)
+                switch(_PeriodMode)
                 {
-                    IsVisibleYear = false;
-                }
-                else
-                {
-                    IsVisibleYear = true;
+                    case StatisticsTimeMode.Year:
+                        IsVisibleYear = true;
+                        IsVisiblePeriod = false;
+                        break;
+                    case StatisticsTimeMode.Period:
+                        IsVisibleYear = false;
+                        IsVisiblePeriod = true;
+                        break;
+                    default:
+                        IsVisibleYear = false;
+                        IsVisiblePeriod = false;
+                        break;
                 }
             }
         }
@@ -102,7 +143,14 @@ namespace FishingDiary.ViewModels
 
         public void PaintStat()
         {
-            _StatPainter.PaintStat(PeriodMode, Years[CurrentYear]);
+            if (PeriodMode == StatisticsTimeMode.Period)
+            {
+                _StatPainter.PaintStat(PeriodMode, Years[_StartYear], Years[_EndYear]);
+            }
+            else
+            {
+                _StatPainter.PaintStat(PeriodMode, Years[CurrentYear]);
+            }
             ImageStat = _StatPainter.GetImage();
 
             UpdateWindow?.Invoke(this, null);

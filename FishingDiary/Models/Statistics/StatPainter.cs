@@ -74,7 +74,12 @@ namespace FishingDiary.Models
             _Font = new Font(baseFont, _FontSize, Font.NORMAL);
         }
 
-        public void PaintStat(StatisticsTimeMode timeMode, int Param)
+        public void PaintStat(StatisticsTimeMode timeMode, int CurrentYear)
+        {
+            PaintStat(timeMode, CurrentYear, 0);
+        }
+
+        public void PaintStat(StatisticsTimeMode timeMode, int Param, int EndYear)
         {
             _StatStream = new MemoryStream();
 
@@ -102,13 +107,18 @@ namespace FishingDiary.Models
             generalTable.SetWidths(widths);
 
             // Header
-            if (timeMode == StatisticsTimeMode.AllTime)
+            switch(timeMode)
             {
-                AddCell(generalTable, CommonData.GenLanguages.StatWindow.sHeader, GENEGAL_COUNT_COLUMN);
-            }
-            else
-            {
-                AddCell(generalTable, CommonData.GenLanguages.StatWindow.sHeaderYear + Param.ToString(), GENEGAL_COUNT_COLUMN);
+                case StatisticsTimeMode.Year:
+                    AddCell(generalTable, CommonData.GenLanguages.StatWindow.sHeaderYear + Param.ToString(), GENEGAL_COUNT_COLUMN);
+                    break;
+                case StatisticsTimeMode.Period:
+                    AddCell(generalTable, CommonData.GenLanguages.StatWindow.sHeaderPeriod + Param.ToString() 
+                        + " " + CommonData.GenLanguages.StatWindow.sPeriodTo + " " +  EndYear.ToString(), GENEGAL_COUNT_COLUMN);
+                    break;
+                default:
+                    AddCell(generalTable, CommonData.GenLanguages.StatWindow.sHeader, GENEGAL_COUNT_COLUMN);
+                    break;
             }
 
 
@@ -122,7 +132,7 @@ namespace FishingDiary.Models
                 CommonData.GenLanguages.StatWindow.sAverageLenght,
                 CommonData.GenLanguages.StatWindow.sCentimeter));
 
-            CalcStat calcStat = new CalcStat(timeMode, Param);
+            CalcStat calcStat = new CalcStat(timeMode, Param, EndYear);
             calcStat.Calc();
 
 

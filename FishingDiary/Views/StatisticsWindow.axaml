@@ -24,7 +24,7 @@
 		<DockPanel DockPanel.Dock="Top">
 			<DockPanel DockPanel.Dock="Top">
 				<TextBlock Text="{Binding txtPeriod}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<ComboBox SelectionChanged="OnPeriodChanged" SelectedIndex="{Binding PeriodMode}" FontSize="{Binding dFontSize}">
+				<ComboBox SelectionChanged="OnPeriodChanged" Margin="5 0" SelectedIndex="{Binding PeriodMode}" FontSize="{Binding dFontSize}">
 					<ComboBoxItem>
 						<TextBlock Text="{Binding txtAllTimeMode}" />
 					</ComboBoxItem>
@@ -35,8 +35,15 @@
 						<TextBlock Text="{Binding txtPeriodMode}" />
 					</ComboBoxItem>
 				</ComboBox>
-				<TextBlock IsVisible="{Binding IsVisibleYear}" Text="{Binding txtYear}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
-				<ComboBox IsVisible="{Binding IsVisibleYear}" SelectedIndex="{Binding CurrentYear}" ItemsSource="{Binding Years}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+				<TextBlock IsVisible="{Binding IsVisibleYear}" Margin="5 0" Text="{Binding txtYear}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+				<ComboBox IsVisible="{Binding IsVisibleYear}" SelectedIndex="{Binding CurrentYear}" ItemsSource="{Binding Years}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding dFontSize}" />
+				<TextBlock IsVisible="{Binding IsVisibleYear}" Text=""/>
+				<!--Period-->
+				<TextBlock IsVisible="{Binding IsVisiblePeriod}" Margin="5 0" Text="{Binding txtPeriodFrom}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+				<ComboBox IsVisible="{Binding IsVisiblePeriod}" SelectedIndex="{Binding StartYear}" ItemsSource="{Binding Years}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding dFontSize}" />
+				<TextBlock IsVisible="{Binding IsVisiblePeriod}" Margin="5 0" Text="{Binding txtPeriodTo}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding dFontSize}"/>
+				<ComboBox IsVisible="{Binding IsVisiblePeriod}" SelectedIndex="{Binding EndYear}" ItemsSource="{Binding Years}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding dFontSize}" />
+				<TextBlock IsVisible="{Binding IsVisiblePeriod}" Text=""/>
 			</DockPanel>
 			<Button Click="OnPaintClick" Name="buttonPaint" DockPanel.Dock="Bottom" FontSize="{Binding dFontSize}" Content="{Binding txtPaintButton}"/>
 		</DockPanel>
