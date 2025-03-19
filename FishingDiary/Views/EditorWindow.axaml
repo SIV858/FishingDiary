@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="FishingDiary.Views.EditorWindow"
+		Width="600"
 		MinHeight="450"
 		MinWidth="500"
         Title="{Binding txtHead}">
@@ -14,7 +15,9 @@
 		<vm:EditorWindowViewModel/>
 	</Design.DataContext>
 	<DockPanel>
-	<TabControl ItemsSource="{Binding EditTables}" SelectedItem="{Binding SelectedItem}">
+	<StackPanel DockPanel.Dock="Top">
+	<!--Tables-->
+	<TabControl ItemsSource="{Binding EditTables}" SelectedItem="{Binding SelectedTab}">
 		<TabControl.ItemTemplate>
 			<DataTemplate>
 				<TextBlock Text="{Binding TableName}" FontSize="{Binding dFontSize}"/>
@@ -23,7 +26,7 @@
 		<TabControl.ContentTemplate>
 			<DataTemplate>
 				<StackPanel>
-				<ItemsControl ItemsSource ="{Binding ListColumns}">
+				<ItemsControl ItemsSource ="{Binding ListColumnsSelect}">
 					<ItemsControl.ItemsPanel>
 						<ItemsPanelTemplate>
 							<WrapPanel Orientation="Horizontal"/>
@@ -31,18 +34,18 @@
 					</ItemsControl.ItemsPanel>
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<DataGrid Margin="0" MaxHeight="600" ItemsSource="{Binding DataList}"
+							<DataGrid Margin="0" MaxHeight="600" ItemsSource="{Binding DataList}" SelectedIndex="{Binding SelectedIndex}"
 						  IsReadOnly="True"
 						  GridLinesVisibility="All"
 						  CanUserSortColumns="False"
 						  BorderThickness="0" BorderBrush="Gray">
 								<DataGrid.Columns>
-									<DataGridTextColumn Binding="{Binding Id}">
+									<DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}">
 										<DataGridTextColumn.Header>
 											<TextBlock Text="ID" Width="150" FontSize="{Binding dFontSize}"/>
 										</DataGridTextColumn.Header>
 									</DataGridTextColumn>
-									<DataGridTextColumn Binding="{Binding Text}">
+									<DataGridTextColumn Binding="{Binding Text}" >
 										<DataGridTextColumn.Header>
 											<TextBlock Text="{Binding ColumnName}" Width="150" FontSize="{Binding dFontSize}"/>
 										</DataGridTextColumn.Header>
@@ -56,14 +59,21 @@
 			</DataTemplate>
 		</TabControl.ContentTemplate>
 	</TabControl>
-	<DockPanel DockPanel.Dock="Right">
-		<StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
-			<Button Click="OnAddClick" Name="buttonAdd" FontSize="{Binding dFontSize}" Content="{Binding txtAddButton}"/>
-			<Button Click="OnApplyClick" Name="buttonSave" FontSize="{Binding dFontSize}" Content="{Binding txtApplyButton}"/>
-			<Button Click="OnCancelClick" Name="buttonCancel" FontSize="{Binding dFontSize}" Content="{Binding txtCancelButton}"/>
-		</StackPanel>
-		<TextBlock Text=""/>
+	<DockPanel Margin="0, 5" DockPanel.Dock="Bottom">
+		<Button Click="OnAddClick" MinWidth="133" Name="buttonAdd" FontSize="{Binding dFontSize}" Content="{Binding txtAddButton}"/>
+		<Button Click="OnEditClick" MinWidth="134" Name="buttonEdit" FontSize="{Binding dFontSize}" Content="{Binding txtEditButton}"/>
+		<Button Click="OnDeleteClick" MinWidth="133" Name="buttonDelete" FontSize="{Binding dFontSize}" Content="{Binding txtDeleteButton}"/>
+		<TextBlock Text=" " FontSize="{Binding dFontSize}"/>
 	</DockPanel>
-		<TextBlock Text=""/>
+	</StackPanel>
+	<DockPanel DockPanel.Dock="Bottom">
+		<Button DockPanel.Dock="Right" IsEnabled="{Binding IsEnabledApply}" MinWidth="100" Click="OnApplyClick" Name="buttonSave" FontSize="{Binding dFontSize}" Content="{Binding txtApplyButton}"/>
+		<Button DockPanel.Dock="Right" MinWidth="100" Click="OnCancelClick" Name="buttonCancel" FontSize="{Binding dFontSize}" Content="{Binding txtCancelButton}"/>
+		<Button DockPanel.Dock="Right" MinWidth="100" Click="OnOkClick" Name="buttonOk" FontSize="{Binding dFontSize}" Content="{Binding txtOkButton}"/>
+		<TextBlock Text=" " FontSize="{Binding dFontSize}"/>
+	</DockPanel>
+		<DockPanel DockPanel.Dock="Bottom">
+			<TextBlock Text=" " FontSize="{Binding dFontSize}"/>
+		</DockPanel>
 	</DockPanel>
 </Window>

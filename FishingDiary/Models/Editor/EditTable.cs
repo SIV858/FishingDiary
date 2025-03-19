@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Linq;
 
 namespace FishingDiary.Models
 {
@@ -11,22 +12,38 @@ namespace FishingDiary.Models
     {
         private string _ParamName;
         internal ObservableCollection<ColumnTable> _listColumns;
+        internal ObservableCollection<ColumnTable> _listColumnsSelect;
 
         public string TableName
         {
             get => CommonData.GenLanguages.EditorTexts.GetLocaleParam(_ParamName);
         }
 
+        /// <summary>
+        /// All languages
+        /// </summary>
         public ObservableCollection<ColumnTable> ListColumns
         {
             get => _listColumns;
             set => _listColumns = value;
         }
 
+        /// <summary>
+        /// Selected languages
+        /// </summary>
+        public ObservableCollection<ColumnTable> ListColumnsSelect
+        {
+            get => _listColumnsSelect;
+            set => _listColumnsSelect = value;
+        }
+
+        public ColumnTable ColumnTableSelect => _listColumnsSelect.First();
+
         public EditTable(string ParamName)
         {
             _ParamName = ParamName;
             _listColumns = new ObservableCollection<ColumnTable>();
+            _listColumnsSelect = new ObservableCollection<ColumnTable>();
         }
 
         public void ReadTable()
@@ -44,6 +61,10 @@ namespace FishingDiary.Models
                 ColumnTable columnTable = new ColumnTable(lang);
                 columnTable.ReadTable(DataPath);
                 _listColumns.Add(columnTable);
+                if (lang == CommonData.CurrentLang.Language)
+                { 
+                    _listColumnsSelect.Add(columnTable);
+                }
             }
         }
 

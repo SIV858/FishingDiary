@@ -3,11 +3,16 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using FishingDiary.ViewModels;
 using System;
+using static FishingDiary.MessageBox;
 
 namespace FishingDiary.Views
 {
     public partial class AddParamWindow : Window
     {
+        private MessageBoxResult _MessageBoxResult;
+
+        public MessageBoxResult Result => _MessageBoxResult;
+
         public AddParamWindow()
         {
             InitializeComponent();
@@ -21,7 +26,15 @@ namespace FishingDiary.Views
             try
             {
                 AddParamWindowViewModel model = (AddParamWindowViewModel)this.DataContext;
-                model.AddParam();
+                if (model.IsAdd)
+                {
+                    model.AddParam();
+                }
+                else
+                {
+                    model.EditParam();
+                }
+                _MessageBoxResult = MessageBoxResult.Ok;
                 this.Close();
             }
             catch(Exception ex)
@@ -35,6 +48,7 @@ namespace FishingDiary.Views
         /// </summary>
         private void OnCancelClick(object sender, RoutedEventArgs e)
         {
+            _MessageBoxResult = MessageBoxResult.Cancel;
             this.Close();
         }
     }

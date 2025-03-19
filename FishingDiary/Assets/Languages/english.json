@@ -10,6 +10,9 @@
     "sButtonExit": "Exit",
     "sButtonApply": "Apply",
     "sButtonAdd": "Add",
+    "sButtonAddRow": "Add row",
+    "sButtonEditRow": "Edit row",
+    "sButtonDeleteRow": "Delete row",
     "sButtonChange": "Change",
     "sButtonLoad": "Load",
     "sButtonImport": "Import",
@@ -26,7 +29,10 @@
     "sErrorOpenFile": "Failed to open file",
     "sParamNotFound": "Parameter with given ID not found (Parameter:ID): ",
     "sNullNameWater": "It is necessary to specify the name of the reservoir",
-    "sIdAlreadyExists": "Such an Id already exists"
+    "sIdAlreadyExists": "Such an Id already exists",
+    "sNullIdEdit": "The zero element cannot be edited!",
+    "sNullIdDelete": "The zero element cannot be deleted!",
+    "sNoItemSelected": "No item selected!"
   },
   "SelectLanguage": {
     "sHead": "Languages",
@@ -112,8 +118,6 @@
     "sMaxLength": "Max length",
     "sMaxWeight": "Max weight",
     "sTime": "Time",
-    "sAddRow": "Add row",
-    "sDeleteRow": "Delete row",
     "sBiggest": "Biggest:",
     "sWeight": "Weight:",
     "sTotalWeight": "Total weight:",
@@ -188,6 +192,7 @@
   },
   "EditorTexts": {
     "sHead": "Editor",
+    "sWarnDeletion": "Are you sure you want to delete this row?",
     "EditParamDict": {
       "Methods": "Methods",
       "Options": "Options",
@@ -198,6 +203,7 @@
     }
   },
   "AddParamTexts": {
-    "sHead": "Add parameter to table: "
+    "sHeadAdd": "Add parameter to table: ",
+    "sHeadEdit": "Edit parameter to table: "
   }
 }

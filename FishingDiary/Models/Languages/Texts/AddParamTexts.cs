@@ -7,6 +7,7 @@ namespace FishingDiary.Models
 {
     public class CAddParamTexts
     {
-        public string sHead { get; set; } = "Add parameter to table: ";
+        public string sHeadAdd { get; set; } = "Add parameter to table: ";
+        public string sHeadEdit { get; set; } = "Edit parameter to table: ";
     }
 }

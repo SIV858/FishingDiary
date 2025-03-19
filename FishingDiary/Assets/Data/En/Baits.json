@@ -5,7 +5,7 @@
   },
   {
     "Id": 1,
-    "Text": " "
+    "Text": "Chatter"
   },
   {
     "Id": 2,
@@ -13,11 +13,11 @@
   },
   {
     "Id": 3,
-    "Text": " "
+    "Text": "Semolina"
   },
   {
     "Id": 4,
-    "Text": " "
+    "Text": "Bloodworm"
   },
   {
     "Id": 5,
@@ -105,7 +105,7 @@
   },
   {
     "Id": 102,
-    "Text": "Maggot + "
+    "Text": "Maggot + Chatter"
   },
   {
     "Id": 110,
@@ -121,7 +121,7 @@
   },
   {
     "Id": 120,
-    "Text": " "
+    "Text": "Barley + Chatter"
   },
   {
     "Id": 1000,

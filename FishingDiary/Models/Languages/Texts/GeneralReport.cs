@@ -87,10 +87,6 @@ namespace FishingDiary.Models
         public string sMaxWeight { get; set; } = "Max Weight";
         public string sTime { get; set; } = "Time";
 
-        public string sAddRow { get; set; } = "Add row";
-        public string sDeleteRow { get; set; } = "Delete row";
-
-
         public string sBiggest { get; set; } = "Biggest:";
         public string sWeight { get; set; } = "Weight:";
         public string sTotalWeight { get; set; } = "Total weight:";

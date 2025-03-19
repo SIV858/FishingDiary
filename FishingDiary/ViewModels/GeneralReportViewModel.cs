@@ -116,8 +116,8 @@ namespace FishingDiary.ViewModels
         public string txtMaxWeight => CommonData.GenLanguages.GeneralReport.sMaxWeight;
         public string txtTime => CommonData.GenLanguages.GeneralReport.sTime;
 
-        public string txtAddRow => CommonData.GenLanguages.GeneralReport.sAddRow;
-        public string txtDeleteRow => CommonData.GenLanguages.GeneralReport.sDeleteRow;
+        public string txtAddRow => CommonData.GenLanguages.CommonTexts.sButtonAddRow;
+        public string txtDeleteRow => CommonData.GenLanguages.CommonTexts.sButtonDeleteRow;
 
         public string txtOpenPhoto => CommonData.GenLanguages.GeneralReport.sOpenPhoto;
 

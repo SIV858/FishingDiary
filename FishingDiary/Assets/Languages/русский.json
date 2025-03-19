@@ -9,6 +9,9 @@
     "sButtonExit": "Выйти",
     "sButtonApply": "Применить",
     "sButtonAdd": "Добавить",
+    "sButtonAddRow": "Добавить строку",
+    "sButtonEditRow": "Изменить строку",
+    "sButtonDeleteRow": "Удалить строку",
     "sButtonChange": "Изменить",
     "sButtonLoad": "Загрузить",
     "sButtonImport": "Импортировать",
@@ -25,7 +28,10 @@
     "sErrorOpenFile": "Не удалось открыть файл",
     "sParamNotFound": "Параметр с данным ID не найден (Параметр:ID): ",
     "sNullNameWater": "Необходимо задать название водоёма",
-    "sIdAlreadyExists": "Такой Id уже есть"
+    "sIdAlreadyExists": "Такой Id уже есть",
+    "sNullIdEdit": "Нулевой элемент не можут быть отредактирован!",
+    "sNullIdDelete": "Нулевой элемент не может быть удалён!",
+    "sNoItemSelected": "Не выбран элемент!"
   },
   "SelectLanguage": {
     "sHead": "Выбор языка",
@@ -111,8 +117,6 @@
     "sMaxLength": "Максимальная длина",
     "sMaxWeight": "Максимальный вес",
     "sTime": "Время поимки",
-    "sAddRow": "Добавить строку",
-    "sDeleteRow": "Удалить строку",
     "sBiggest": "Самая крупная:",
     "sWeight": "Вес:",
     "sTotalWeight": "Общий вес:",
@@ -187,6 +191,7 @@
   },
   "EditorTexts": {
     "sHead": "Редактор параметров",
+    "sWarnDeletion": "Вы уверены, что хотите удалить строку?",
     "EditParamDict": {
       "Methods": "Способы ловли",
       "Options": "Опции",
@@ -197,6 +202,7 @@
     }
   },
   "AddParamTexts": {
-    "sHead": "Добавить элемент в таблицу: "
+    "sHeadAdd": "Добавить элемент в таблицу: ",
+    "sHeadEdit": "Редактировать элемент в таблице: "
   }
 }

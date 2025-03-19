@@ -5,6 +5,10 @@ using System.Text;
 using ReactiveUI;
 using FishingDiary.Models;
 using System.Collections.ObjectModel;
+using DynamicData;
+using static iTextSharp.text.pdf.AcroFields;
+using static Org.BouncyCastle.Bcpg.Attr.ImageAttrib;
+using Tmds.DBus.Protocol;
 
 namespace FishingDiary.ViewModels
 {
@@ -186,7 +190,47 @@ namespace FishingDiary.ViewModels
             txtNull = CommonData.GenLanguages.Settings.sNull;
             txtViewReportCount = CommonData.GenLanguages.Settings.sViewReportCount;
             txtAll = CommonData.GenLanguages.Settings.sAll;
-    }
+
+            // How to change the message of the selected item to normal?
+            DateTimeMode dateTimeModePrev = DateMode;
+            DateTimeMode dateTimeMode;
+            if (DateMode == DateTimeMode.Now)
+            {
+                dateTimeMode = DateTimeMode.Previous;
+            }
+            else
+            {
+                dateTimeMode = DateTimeMode.Now;
+            }
+            DateMode = dateTimeMode;
+            DateMode = dateTimeModePrev;
+
+
+            dateTimeModePrev = TimeMode;
+            if (TimeMode == DateTimeMode.Now)
+            {
+                dateTimeMode = DateTimeMode.Previous;
+            }
+            else
+            {
+                dateTimeMode = DateTimeMode.Now;
+            }
+            TimeMode = dateTimeMode;
+            TimeMode = dateTimeModePrev;
+
+            ViewReportMode viewReportModePrev = ViewReportMode;
+            ViewReportMode viewReportMode;
+            if (ViewReportMode == ViewReportMode.All)
+            {
+                viewReportMode = ViewReportMode.M8;
+            }
+            else
+            {
+                viewReportMode = ViewReportMode.All;
+            }
+            ViewReportMode = viewReportMode;
+            ViewReportMode = viewReportModePrev;
+        }
 
 
     }

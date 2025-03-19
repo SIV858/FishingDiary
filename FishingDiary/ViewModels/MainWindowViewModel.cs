@@ -160,7 +160,7 @@ namespace FishingDiary.ViewModels
             txtAddButton = CommonData.GenLanguages.MainWindow.sAddButton;
             txtViewButton = CommonData.GenLanguages.MainWindow.sViewButton;
             txtStatButton = CommonData.GenLanguages.MainWindow.sStatButton;
-            mEditorButton = CommonData.GenLanguages.MainWindow.sEditorButton;
+            txtEditorButton = CommonData.GenLanguages.MainWindow.sEditorButton;
             txtSettingsButton = CommonData.GenLanguages.MainWindow.sSettings;
         }
     }

@@ -47,31 +47,27 @@ namespace FishingDiary.Views
         /// <summary>
         /// Handling the event of clicking the "Delete" button
         /// </summary>
-        private void OnDeleteClick(object sender, RoutedEventArgs e)
+        private async void OnDeleteClick(object sender, RoutedEventArgs e)
         {
-            var task = MessageBox.Show(this, CommonData.GenLanguages.ViewWindow.sWarnDeletion,
+            var result = await MessageBox.Show(this, CommonData.GenLanguages.ViewWindow.sWarnDeletion,
                 CommonData.GenLanguages.CommonTexts.sProgramName, MessageBox.MessageBoxButtons.YesNo);
 
             Button currentBunnon = (Button)sender;
             ShortReport currentReport = (ShortReport)currentBunnon.DataContext;
 
-            Task.Run(() =>
+
+            if (result == MessageBoxResult.Yes)
             {
-                if (task.Result == MessageBoxResult.Yes)
+                try
                 {
-                    try
-                    {
-                        ShortReportsList.DeleteReport(currentReport);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(this, ex.Message, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
-                    }
+                    ShortReportsList.DeleteReport(currentReport);
                 }
-            });
-
-            this.UpdateWindow();
-
+                catch (Exception ex)
+                {
+                    await MessageBox.Show(this, ex.Message, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                }
+                this.UpdateWindow();
+            }
         }
 
         /// <summary>

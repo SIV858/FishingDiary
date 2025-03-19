@@ -8,6 +8,9 @@ namespace FishingDiary.Models
     public class CEditorTexts
     {
         public string sHead { get; set; } = "Editor";
+
+        public string sWarnDeletion { get; set; } = "Are you sure you want to delete this row?";
+
         public Dictionary<string, string> EditParamDict { get; set; } = new Dictionary<string, string>();
 
         //Returns the local name of the parameter.

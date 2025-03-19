@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.Json;
 using HarfBuzzSharp;
+using System.Linq;
+using System.Reflection;
 
 namespace FishingDiary.Models
 {
@@ -15,35 +17,55 @@ namespace FishingDiary.Models
 
         private string _DataPath;
 
+        private int _SelectedIndex = -1;
+
         private ObservableCollection<DataElement> _DataList;
 
-        private DataElement _AddedElement;
+        private DataElement _CurrentElement;
 
-        public string ColumnName => _ColumnName;
+        public string ColumnName 
+        { 
+            get => _ColumnName; 
+            set => _ColumnName = value;
+        }
         public ObservableCollection<DataElement> DataList
         {
             get => _DataList;
             set => _DataList = value;
         }
            
-
-        public uint AddedId
+        public int SelectedIndex
         {
-            get => _AddedElement.Id;
-            set => _AddedElement.Id = value;
+            get => _SelectedIndex;
+            set
+            {
+                _SelectedIndex = value;
+                if (_SelectedIndex != -1)
+                {
+                    _CurrentElement.Id = DataList[_SelectedIndex].Id;
+                    _CurrentElement.Text = DataList[_SelectedIndex].Text;
+                }
+            }
         }
 
-        public string AddedText
+
+        public uint CurrentId
         {
-            get => _AddedElement.Text;
-            set => _AddedElement.Text = value;
+            get => _CurrentElement.Id;
+            set => _CurrentElement.Id = value;
+        }
+
+        public string CurrentText
+        {
+            get => _CurrentElement.Text;
+            set => _CurrentElement.Text = value;
         }
 
 
         public ColumnTable(string ColumnName)
         {
             _ColumnName = ColumnName;
-            _AddedElement = new DataElement();
+            _CurrentElement = new DataElement();
         }
 
         public void AddCurrentElement()   
@@ -51,9 +73,9 @@ namespace FishingDiary.Models
             int index = 0;
             foreach (DataElement element in _DataList)
             {
-                if (element.Id >= _AddedElement.Id)
+                if (element.Id >= _CurrentElement.Id)
                 {
-                    if (element.Id == _AddedElement.Id)
+                    if (element.Id == _CurrentElement.Id)
                     {
                         throw new Exception(CommonData.GenLanguages.ErrorTexts.sIdAlreadyExists);
                     }
@@ -66,7 +88,24 @@ namespace FishingDiary.Models
                 index++;
             }
 
-            DataList.Insert(index, _AddedElement);
+            DataList.Insert(index, new DataElement() { Id = _CurrentElement.Id, Text = _CurrentElement.Text });
+        }
+
+        public void EditCurrentElement()
+        {
+            foreach (DataElement element in _DataList)
+            {
+                if (element.Id == _CurrentElement.Id)
+                {
+                    element.Text = _CurrentElement.Text;
+                    break;
+                }
+            }
+        }
+
+        public void DeleteCurrentElement()
+        {
+            _DataList.RemoveAt(_SelectedIndex);
         }
 
         public void ReadTable(string DataPath)

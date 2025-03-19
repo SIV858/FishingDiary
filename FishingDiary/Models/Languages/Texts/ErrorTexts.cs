@@ -16,5 +16,8 @@ namespace FishingDiary.Models
         public string sParamNotFound { get; set; } = "Parameter with given ID not found (Parameter:ID): ";
         public string sNullNameWater { get; set; } = "It is necessary to specify the name of the reservoir";
         public string sIdAlreadyExists { get; set; } = "Such an Id already exists";
+        public string sNullIdEdit { get; set; } = "The zero element cannot be edited";
+        public string sNullIdDelete { get; set; } = "The zero element cannot be deleted";
+        public string sNoItemSelected { get; set; } = "No item selected";
     }
 }

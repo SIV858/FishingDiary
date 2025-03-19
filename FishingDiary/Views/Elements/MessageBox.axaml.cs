@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using FishingDiary.Models;
 
 namespace FishingDiary
 {
@@ -37,13 +38,20 @@ namespace FishingDiary
                 Title = title
             };
             msgbox.FindControl<TextBlock>("Text").Text = text;
+            msgbox.FindControl<TextBlock>("Text").FontSize = Properties.GetInstance().FontSize;
+
             var buttonPanel = msgbox.FindControl<StackPanel>("Buttons");
 
             var res = MessageBoxResult.Ok;
 
+            
+
             void AddButton(string caption, MessageBoxResult r, bool def = false)
             {
-                var btn = new Button { Content = caption };
+                var btn = new Button { Content = caption,
+                MinWidth = 75,
+                FontSize = Properties.GetInstance().FontSize
+                };
                 btn.Click += (_, __) =>
                 {
                     res = r;
