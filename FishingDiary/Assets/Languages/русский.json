@@ -168,7 +168,7 @@
     "sAllFishes": "Рыбы поймано:",
     "sRecordHeader": "Рекорды за всё время",
     "sRecordHeaderYear": "Рекорды за следующий год: ",
-    "sRecordHeaderPeriod": "Рекорды за период:",
+    "sRecordHeaderPeriod": "Рекорды за период: ",
     "sStatisticCatching": "пойман(а) на",
     "sStatisticLenght": "длина",
     "sStatisticWeight": "вес",
@@ -187,7 +187,10 @@
     "sBestDaysFirst": "первое место",
     "sBestDaysSecond": "второе",
     "sBestDaysThird": "третье",
-    "sBestDaysAll": "всего"
+    "sBestDaysAll": "всего",
+    "sYearsHeader": "Статистика по годам за всё время",
+    "sYearsHeaderYear": "Статистика за год: ",
+    "sYearsHeaderPeriod": "Статистика по годам за период: "
   },
   "EditorTexts": {
     "sHead": "Редактор параметров",

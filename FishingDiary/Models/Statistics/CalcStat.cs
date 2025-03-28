@@ -1,4 +1,6 @@
 ﻿//03.12.24;
+using Avalonia.Controls.Shapes;
+using Avalonia.Styling;
 using FishingDiary.Models.Statistics;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,8 @@ namespace FishingDiary.Models
 
         private Records _Records;
 
+        private List<StatYear> _Years = null;
+
         public List<StatFish> Fishes => _Fishes;
 
         public int ReportCount => _ReportCount;
@@ -26,6 +30,8 @@ namespace FishingDiary.Models
         public uint TotalFishCount => _TotalFishCount;
 
         public Records Records => _Records;
+
+        public List<StatYear> Years => _Years;
 
         public CalcStat(StatisticsTimeMode timeMode, int Param, int EndYear) 
         {
@@ -84,6 +90,24 @@ namespace FishingDiary.Models
 
             _Records.CalcBestDays(_Fishes);
 
+            if (_TimeMode != StatisticsTimeMode.Year)
+            {
+                // If statistics are not selected for a year, then we calculate statistics for years
+                _Years = new List<StatYear>();
+                foreach(var Day in _Records.BestDays)
+                {
+                    var Year = _Years.Find(x => x.Year == Day.Date.Year);
+                    if (Year == null)
+                    {
+                        Year = new StatYear(Day.Date.Year);
+                        _Years.Add(Year);
+                    }
+                    Year.AddFirst(Day.Record.FirstPlace);
+                    Year.AddSecond(Day.Record.SecondPlace);
+                    Year.AddThird(Day.Record.ThirdPlace);
+                }
+                _Years.Sort();
+            }
             // sort by quantity descending for all
             _Fishes.Sort();
             _Records.Sort();

@@ -260,13 +260,18 @@ namespace FishingDiary.Models
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////
             string Inscription;
 
-            if (timeMode == StatisticsTimeMode.AllTime)
+            switch (timeMode)
             {
-                Inscription = CommonData.GenLanguages.StatWindow.sRecordHeader;
-            }
-            else
-            {
-                Inscription = CommonData.GenLanguages.StatWindow.sRecordHeaderYear + Param.ToString();
+                case StatisticsTimeMode.Year:
+                    Inscription = CommonData.GenLanguages.StatWindow.sRecordHeaderYear + Param.ToString();
+                    break;
+                case StatisticsTimeMode.Period:
+                    Inscription = CommonData.GenLanguages.StatWindow.sRecordHeaderPeriod + Param.ToString()
+                        + " " + CommonData.GenLanguages.StatWindow.sPeriodTo + " " + EndYear.ToString();
+                    break;
+                default:
+                    Inscription = CommonData.GenLanguages.StatWindow.sRecordHeader;
+                    break;
             }
             p = new Paragraph(new Phrase(Inscription, _Font));
             p.Alignment = 1;
@@ -393,13 +398,18 @@ namespace FishingDiary.Models
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ///Best days
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            if (timeMode == StatisticsTimeMode.AllTime)
+            switch (timeMode)
             {
-                Inscription = CommonData.GenLanguages.StatWindow.sBestDaysHeader;
-            }
-            else
-            {
-                Inscription = CommonData.GenLanguages.StatWindow.sBestDaysHeaderYear + Param.ToString();
+                case StatisticsTimeMode.Year:
+                    Inscription = CommonData.GenLanguages.StatWindow.sBestDaysHeaderYear + Param.ToString();
+                    break;
+                case StatisticsTimeMode.Period:
+                    Inscription = CommonData.GenLanguages.StatWindow.sBestDaysHeaderPeriod + Param.ToString()
+                        + " " + CommonData.GenLanguages.StatWindow.sPeriodTo + " " + EndYear.ToString();
+                    break;
+                default:
+                    Inscription = CommonData.GenLanguages.StatWindow.sBestDaysHeader;
+                    break;
             }
             p = new Paragraph(new Phrase(Inscription, _Font));
             p.Alignment = 1;
@@ -429,6 +439,51 @@ namespace FishingDiary.Models
                     break;
                 }
                 index++;
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///Statistics of the years
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            if (timeMode != StatisticsTimeMode.Year)
+            {
+                switch (timeMode)
+                {
+                    case StatisticsTimeMode.Year:
+                        Inscription = CommonData.GenLanguages.StatWindow.sYearsHeaderYear + Param.ToString();
+                        break;
+                    case StatisticsTimeMode.Period:
+                        Inscription = CommonData.GenLanguages.StatWindow.sYearsHeaderPeriod + Param.ToString()
+                            + " " + CommonData.GenLanguages.StatWindow.sPeriodTo + " " + EndYear.ToString();
+                        break;
+                    default:
+                        Inscription = CommonData.GenLanguages.StatWindow.sYearsHeader;
+                        break;
+                }
+                p = new Paragraph(new Phrase(Inscription, _Font));
+                p.Alignment = 1;
+                doc.Add(p);
+
+
+                index = 1;
+                foreach (var Year in calcStat.Years)
+                {
+                    Inscription = String.Format("{0}) {1} {2}:{3} {4}:{5} {6}:{7} {8}:{9})",
+                        index,
+                        Year.Year.ToString(),
+                        CommonData.GenLanguages.StatWindow.sBestDaysFirst,
+                        Year.FirstPlaces,
+                        CommonData.GenLanguages.StatWindow.sBestDaysSecond,
+                        Year.SecondPlaces,
+                        CommonData.GenLanguages.StatWindow.sBestDaysThird,
+                        Year.ThirdPlaces,
+                        CommonData.GenLanguages.StatWindow.sBestDaysAll,
+                        Year.AllPlaces);
+                    p = new Paragraph(new Phrase(Inscription, _Font));
+                    doc.Add(p);
+
+                    index++;
+                }
             }
 
 
