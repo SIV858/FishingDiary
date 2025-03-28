@@ -117,21 +117,21 @@ namespace FishingDiary.Models
         {
             switch (temperature)
             {
-                case "-35...-30":
+                case "-30...-35":
                     return AirTemperature.Minus35_Minus30;
-                case "-30...-25":
+                case "-25...-30":
                     return AirTemperature.Minus30_Minus25;
-                case "-25...-20":
+                case "-20...-25":
                     return AirTemperature.Minus25_Minus20;
-                case "-20...-15":
+                case "-15...-20":
                     return AirTemperature.Minus20_Minus15;
-                case "-15...-10":
+                case "-10...-15":
                     return AirTemperature.Minus15_Minus10;
-                case "-10...-5":
+                case "-5...-10":
                     return AirTemperature.Minus10_Minus5;
-                case "-5...-0":
+                case "0...-5":
                     return AirTemperature.Minus5_Zero;
-                case "+0...+5":
+                case "0...+5":
                     return AirTemperature.Zero_Plus5;
                 case "+5...+10":
                     return AirTemperature.Plus5_Plus10;

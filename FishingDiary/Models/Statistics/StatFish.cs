@@ -39,8 +39,8 @@ namespace FishingDiary.Models.Statistics
             _Quantity = fish.Quantity;
             if (fish.AverageLength != 0)
             {
-                _NotNullCount = _Quantity;
-                _TotalLenght = fish.AverageLength * _Quantity;
+                _NotNullCount = fish.Quantity;
+                _TotalLenght = fish.AverageLength * fish.Quantity;
             }
         }
 
@@ -58,8 +58,8 @@ namespace FishingDiary.Models.Statistics
             _Quantity += fish.Quantity;
             if (fish.AverageLength != 0)
             {
-                _NotNullCount += _Quantity;
-                _TotalLenght += fish.AverageLength * _Quantity;
+                _NotNullCount += fish.Quantity;
+                _TotalLenght += fish.AverageLength * fish.Quantity;
             }
         }
 

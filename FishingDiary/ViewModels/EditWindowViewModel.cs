@@ -11,6 +11,8 @@ namespace FishingDiary.ViewModels
     {
         public string txtHead => CommonData.GenLanguages.EditReport.sHead;
 
+        public double dFontSize => Properties.GetInstance().FontSize;
+
         public string txtChange => CommonData.GenLanguages.CommonTexts.sButtonChange;
         public string txtCancel => CommonData.GenLanguages.CommonTexts.sButtonCancel;
 

@@ -125,6 +125,7 @@ namespace FishingDiary.Views
                 if (model.IsEnabledApply)
                 {
                     model.SaveTables();
+                    CommonData.EditableTexts.Parse();
                 }
                 this.Close();
             }
@@ -153,6 +154,7 @@ namespace FishingDiary.Views
                 EditorWindowViewModel model = (EditorWindowViewModel)this.DataContext;
                 model.SaveTables();
                 model.IsEnabledApply = false;
+                CommonData.EditableTexts.Parse();
             }
             catch (Exception ex)
             {
