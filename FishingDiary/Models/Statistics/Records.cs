@@ -355,7 +355,7 @@ namespace FishingDiary.Models
             // Records
             foreach(var statFish in statFishes)
             {
-                if (statFish.Quantity > 10)
+                if (statFish.Quantity >= 10)
                 {
                     var fishRecord = _FishRecords.Find(x=> x.FishId == statFish.Id);
 

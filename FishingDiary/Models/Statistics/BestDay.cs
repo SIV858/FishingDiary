@@ -81,7 +81,7 @@ namespace FishingDiary.Models.Statistics
                             }
                             else
                             {
-                                if (other._SecondPlace == this._SecondPlace)
+                                if (other._ThirdPlace == this._ThirdPlace)
                                 {
                                     return 0;
                                 }
