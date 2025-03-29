@@ -31,11 +31,13 @@ namespace FishingDiary.ViewModels
         /// <summary>
         /// Change current report
         /// </summary>
-        public void EditCurrentReport()
+        /// <returns>Error message or empty line</returns>
+        public string EditCurrentReport()
         {
-            if (String.IsNullOrEmpty(generalReport.CurrentReport.BodyOfWater))
+            string error = generalReport.CurrentReport.CheckReport();
+            if (error != String.Empty)
             {
-                return;
+                return error;
             }
 
             // saving the report
@@ -49,6 +51,8 @@ namespace FishingDiary.ViewModels
             {
                 CommonData.EditableTexts.AddWater(generalReport.CurrentReport.BodyOfWater);
             }
+
+            return String.Empty;
         }
     }
 }

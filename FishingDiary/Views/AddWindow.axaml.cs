@@ -29,9 +29,10 @@ namespace FishingDiary.Views
         private void OnAddClick(object sender, RoutedEventArgs e)
         {
             AddWindowViewModel model = (AddWindowViewModel)this.DataContext;
-            if (!model.AddCurrentReport())
+            string error = model.AddCurrentReport();
+            if (error != String.Empty)
             {
-                MessageBox.Show(this, CommonData.GenLanguages.ErrorTexts.sNullNameWater, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                MessageBox.Show(this, error, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
                 return;
             }
             Properties.GetInstance().SaveProperties();

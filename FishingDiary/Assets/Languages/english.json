@@ -32,7 +32,15 @@
     "sIdAlreadyExists": "Such an Id already exists",
     "sNullIdEdit": "The zero element cannot be edited!",
     "sNullIdDelete": "The zero element cannot be deleted!",
-    "sNoItemSelected": "No item selected!"
+    "sNoItemSelected": "No item selected!",
+    "sErrorEndDate": "The end date and time of fishing cannot be less than the start time",
+    "sNullMethods": "Fishing methods must be specified",
+    "sNullTackles": "Fishing tackles must be specified",
+    "sNullGroundbaits": "It is necessary to specify the groundbait",
+    "sNullBaits": "It is necessary to specify the bait",
+    "sErrorFishLenght": "The maximum length cannot be less than the average",
+    "sErrorFishTime": "The time of catching fish must fall within the fishing time range",
+    "sErrorOneFishLenght": "The average and maximum lengths of one fish should be equal"
   },
   "SelectLanguage": {
     "sHead": "Languages",

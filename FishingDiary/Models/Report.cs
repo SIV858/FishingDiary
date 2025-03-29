@@ -390,5 +390,57 @@ namespace FishingDiary.Models
             return ReportPath;
         }
 
+        /// <summary>
+        /// Checking the report for discrepancies
+        /// </summary>
+        /// <returns>Error message or empty line</returns>
+        public string CheckReport()
+        {
+            if (String.IsNullOrEmpty(this.BodyOfWater))
+            {
+                return CommonData.GenLanguages.ErrorTexts.sNullNameWater;
+            }    
+            if (this.StartDate > this.EndDate)
+            {
+                return CommonData.GenLanguages.ErrorTexts.sErrorEndDate;
+            }
+            if (this.FishingMethods.Count == 0)
+            {
+                return CommonData.GenLanguages.ErrorTexts.sNullMethods;
+            }
+            if (this.FishingTackles.Count == 0)
+            {
+                return CommonData.GenLanguages.ErrorTexts.sNullTackles;
+            }
+            if (this.Groundbaits.Count == 0)
+            {
+                return CommonData.GenLanguages.ErrorTexts.sNullGroundbaits;
+            }
+            if(this.Baits.Count == 0)
+            {
+                return CommonData.GenLanguages.ErrorTexts.sNullBaits;
+            }
+
+            foreach(var fish in this.CaughtFishes)
+            {
+                if (fish.AverageLength > fish.MaxLength)
+                {
+                    return CommonData.GenLanguages.ErrorTexts.sErrorFishLenght;
+                }
+                if (fish.Time.Year > 1 && this.StartDate != this.EndDate)
+                {
+                    if (fish.Time < this.StartDate || fish.Time > this.EndDate)
+                    {
+                        return CommonData.GenLanguages.ErrorTexts.sErrorFishTime;
+                    }
+                }
+                if (fish.Quantity == 1 && fish.AverageLength != fish.MaxLength)
+                {
+                    return CommonData.GenLanguages.ErrorTexts.sErrorOneFishLenght;
+                }
+            }
+
+            return String.Empty;
+        }
     }
 }

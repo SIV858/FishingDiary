@@ -158,25 +158,47 @@ namespace FishingDiary.ViewModels
         public DateTimeOffset StartDate
         {
             get => new DateTimeOffset(CurrentReport.StartDate);
-            set => this.RaiseAndSetIfChanged(ref CurrentReport._StartDate, value.Date + CurrentReport.StartDate.TimeOfDay);
+            set
+            {
+                this.RaiseAndSetIfChanged(ref CurrentReport._StartDate, value.Date + CurrentReport.StartDate.TimeOfDay);
+                if (CurrentReport._StartDate > CurrentReport._EndDate)
+                {
+                    EndDate = CurrentReport._StartDate;
+                    EndTime = CurrentReport._StartDate.TimeOfDay;
+                }
+            }
         }
 
         public TimeSpan StartTime
         {
             get => new TimeSpan(CurrentReport.StartDate.Hour, CurrentReport.StartDate.Minute, CurrentReport.StartDate.Second);
-            set => this.RaiseAndSetIfChanged(ref CurrentReport._StartDate, CurrentReport.StartDate.Date + value);
+            set
+            {
+                this.RaiseAndSetIfChanged(ref CurrentReport._StartDate, CurrentReport.StartDate.Date + value);
+                if (CurrentReport._StartDate > CurrentReport._EndDate)
+                {
+                    EndDate = CurrentReport._StartDate;
+                    EndTime = CurrentReport._StartDate.TimeOfDay;
+                }
+            }
         }
 
         public DateTimeOffset EndDate
         {
             get => new DateTimeOffset(CurrentReport.EndDate);
-            set => this.RaiseAndSetIfChanged(ref CurrentReport._EndDate, value.DateTime + CurrentReport.EndDate.TimeOfDay);
+            set 
+            { 
+                this.RaiseAndSetIfChanged(ref CurrentReport._EndDate, value.Date + CurrentReport.EndDate.TimeOfDay);
+            }
         }
 
         public TimeSpan EndTime
         {
             get => new TimeSpan(CurrentReport.EndDate.Hour, CurrentReport.EndDate.Minute, CurrentReport.EndDate.Second);
-            set => this.RaiseAndSetIfChanged(ref CurrentReport._EndDate, CurrentReport.EndDate.Date + value);
+            set 
+            { 
+                this.RaiseAndSetIfChanged(ref CurrentReport._EndDate, CurrentReport.EndDate.Date + value);
+            }
         }
 
 

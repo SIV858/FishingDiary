@@ -33,12 +33,15 @@ namespace FishingDiary.ViewModels
         }
 
         /// <summary>
+        /// Add Report
         /// </summary>
-        public bool AddCurrentReport()
+        /// <returns>Error message or empty line</returns>
+        public string AddCurrentReport()
         {
-            if (String.IsNullOrEmpty(generalReport.CurrentReport.BodyOfWater))
+            string error = generalReport.CurrentReport.CheckReport();
+            if (error != String.Empty)
             {
-                return false;
+                return error;
             }
 
             ShortReport shortReport = new ShortReport(generalReport.CurrentReport);
@@ -58,7 +61,7 @@ namespace FishingDiary.ViewModels
                 CommonData.EditableTexts.AddWater(generalReport.CurrentReport.BodyOfWater);
             }
 
-            return true;
+            return String.Empty;
         }
 
         public void LoadReport(string Data, string FishermanDiaryPath)

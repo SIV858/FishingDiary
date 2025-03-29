@@ -3,8 +3,10 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using DynamicData.Kernel;
 using FishingDiary.Models;
 using FishingDiary.ViewModels;
+using System;
 
 namespace FishingDiary.Views
 {
@@ -26,7 +28,12 @@ namespace FishingDiary.Views
         private void OnChangeClick(object sender, RoutedEventArgs e)
         {
             EditWindowViewModel model = (EditWindowViewModel)this.DataContext;
-            model.EditCurrentReport();
+            string error = model.EditCurrentReport();
+            if (error != String.Empty)
+            {
+                MessageBox.Show(this, error, CommonData.GenLanguages.ErrorTexts.sTextError, MessageBox.MessageBoxButtons.Ok);
+                return;
+            }
             Properties.GetInstance().SaveProperties();
 
             // Updating the owner window

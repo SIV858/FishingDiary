@@ -19,5 +19,13 @@ namespace FishingDiary.Models
         public string sNullIdEdit { get; set; } = "The zero element cannot be edited";
         public string sNullIdDelete { get; set; } = "The zero element cannot be deleted";
         public string sNoItemSelected { get; set; } = "No item selected";
+        public string sErrorEndDate { get; set; } = "The end date and time of fishing cannot be less than the start time";
+        public string sNullMethods { get; set; } = "Fishing methods must be specified";
+        public string sNullTackles { get; set; } = "Fishing tackles must be specified";
+        public string sNullGroundbaits { get; set; } = "It is necessary to specify the groundbait";
+        public string sNullBaits { get; set; } = "It is necessary to specify the bait";
+        public string sErrorFishLenght { get; set; } = "The maximum length cannot be less than the average";
+        public string sErrorFishTime { get; set; } = "The time of catching fish must fall within the fishing time range";
+        public string sErrorOneFishLenght { get; set; } = "The average and maximum lengths of one fish should be equal";
     }
 }
