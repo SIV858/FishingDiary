@@ -31,7 +31,7 @@ namespace FishingDiary.Models
         {
             get 
             {
-                if (_FishIdView == 0 && FishId != 0)
+                if (FishId != 0)
                 {
                     _FishIdView = CommonData.EditableTexts.Fishes.FindIndex(0, x => x.Id == (uint)FishId);
                 }
@@ -49,7 +49,7 @@ namespace FishingDiary.Models
         {
             get
             {
-                if (_BaitIdView == 0 && BaitId != 0)
+                if (BaitId != 0)
                 {
                     _BaitIdView = CommonData.EditableTexts.Baits.FindIndex(0, x => x.Id == (uint)BaitId);
                 }
@@ -67,7 +67,7 @@ namespace FishingDiary.Models
         {
             get
             {
-                if (_MethodIdView == 0 && MethodId != 0)
+                if (MethodId != 0)
                 {
                     _MethodIdView = CommonData.EditableTexts.Methods.FindIndex(0, x => x.Id == (uint)MethodId);
                 }
@@ -84,7 +84,7 @@ namespace FishingDiary.Models
         {
             get
             {
-                if (_OptionIdView == 0 && OptionId != 0)
+                if (OptionId != 0)
                 {
                     _OptionIdView = CommonData.EditableTexts.Options.FindIndex(0, x => x.Id == (uint)OptionId);
                 }
