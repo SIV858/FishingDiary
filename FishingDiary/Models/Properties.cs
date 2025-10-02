@@ -47,6 +47,11 @@ namespace FishingDiary.Models
 
         private DateTime _NextDataTime = DateTime.Now;
 
+        internal DateTimeMode _DateMode = DateTimeMode.Now;
+        internal DateTimeMode _TimeMode = DateTimeMode.Now;
+
+        private string _CurrentPhotoDirectory;
+
         public uint CurrentReportId
         {
             get => _CurrentReportId;
@@ -70,14 +75,12 @@ namespace FishingDiary.Models
             get => _DateMode;
             set => _DateMode = value;
         }
-        internal DateTimeMode _DateMode = DateTimeMode.Now;
 
         public DateTimeMode TimeMode
         {
             get => _TimeMode;
             set => _TimeMode = value;
         }
-        internal DateTimeMode _TimeMode = DateTimeMode.Now;
 
         public ViewReportMode ViewReportMode
         {
@@ -86,6 +89,11 @@ namespace FishingDiary.Models
         }
         internal ViewReportMode _ViewReportMode = ViewReportMode.M8;
 
+        public string CurrentPhotoDirectory
+        {
+            get => _CurrentPhotoDirectory;
+            set => _CurrentPhotoDirectory = value;
+        }
 
         public static Properties GetInstance()
         {

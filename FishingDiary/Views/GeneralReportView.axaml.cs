@@ -3,13 +3,19 @@ using Avalonia;
 using Avalonia.Interactivity;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+
+using System.IO;
+
 using FishingDiary.ViewModels;
-using System.Threading.Tasks;
+using FishingDiary.Models;
 
 namespace FishingDiary.Views
 {
     public partial class GeneralReportView : UserControl
     {
+
+        private string _CurrentDirectory = System.IO.Directory.GetCurrentDirectory();
+
         public GeneralReportView()
         {
             this.InitializeComponent();
@@ -81,11 +87,12 @@ namespace FishingDiary.Views
             });
 
 
-            openFileDialog.Directory = System.IO.Directory.GetCurrentDirectory();
+            openFileDialog.Directory = Properties.GetInstance().CurrentPhotoDirectory;
             var result = await openFileDialog.ShowAsync(window);
 
             if (result.Length != 0)
             {
+                Properties.GetInstance().CurrentPhotoDirectory = Path.GetDirectoryName(result[0]);
                 model.SetPhoto(result[0]);
             }
         }

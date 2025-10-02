@@ -189,7 +189,7 @@ namespace FishingDiary.Models
                 foreach (DataFish f in dataFishList)
                 {
                     // If the record is broken, then replace the data
-                    if (f.Length < fish.MaxLength || f.Weight < fish.MaxWeight)
+                    if (f.Length < fish.MaxLength /*|| f.Weight < fish.MaxWeight*/)
                     {
                         if (IsFirst)
                         {
