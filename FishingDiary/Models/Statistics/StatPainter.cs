@@ -386,7 +386,7 @@ namespace FishingDiary.Models
                                 part.Date.Date.ToString("dd-MM-yyyy"));
                         }
                     }
-                    Inscription += String.Format("({0} {1:N2})",
+                    Inscription += String.Format("({0:N2} {1})",
                         record.First().Record,
                         CommonData.GenLanguages.StatWindow.sStatisticPcsInHour);
                 }
